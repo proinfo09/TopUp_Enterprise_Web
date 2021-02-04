@@ -1,0 +1,75 @@
+﻿@model Enterprise_Web.Models.Admin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.admin_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin_username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.admin_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.admin_fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin_fullname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.admin_mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin_mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.admin_gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin_gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.admin_doB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin_doB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.admin_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin_phone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.admID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

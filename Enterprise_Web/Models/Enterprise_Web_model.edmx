@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WebEntepriseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admID" />
+          </Key>
+          <Property Name="admID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="admin_password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="admin_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="admin_mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="admin_gender" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="admin_doB" Type="date" />
+          <Property Name="admin_phone" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Closure Day">
+          <Key>
+            <PropertyRef Name="csdID" />
+          </Key>
+          <Property Name="csdID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="startDay" Type="date" Nullable="false" />
+          <Property Name="endDay" Type="date" Nullable="false" />
+          <Property Name="finalDay" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contributions">
+          <Key>
+            <PropertyRef Name="consID" />
+          </Key>
+          <Property Name="consID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cons_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cons_FileName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cons_comment" Type="varchar" MaxLength="100" />
+          <Property Name="cons_submit" Type="date" />
+          <Property Name="cons_status" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="imgID" Type="int" Nullable="false" />
+          <Property Name="stdID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Faculty">
+          <Key>
+            <PropertyRef Name="facID" />
+          </Key>
+          <Property Name="facID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="facName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="gstID" />
+          </Key>
+          <Property Name="gstID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gst_username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="gst_password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="gst_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gst_mail" Type="varchar" MaxLength="50" />
+          <Property Name="gst_gender" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="gst_doB" Type="date" />
+          <Property Name="gst_phone" Type="varchar" MaxLength="10" />
+          <Property Name="facID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="imgID" />
+          </Key>
+          <Property Name="imgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="img_Title" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Marketing Coordinator">
+          <Key>
+            <PropertyRef Name="mkcID" />
+          </Key>
+          <Property Name="mkcID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mkc_username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="mkc_password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="mkc_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mkc_mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mkc_gender" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="mkc_doB" Type="date" />
+          <Property Name="mkc_phone" Type="varchar" MaxLength="10" />
+          <Property Name="facID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marketing Manager">
+          <Key>
+            <PropertyRef Name="mkmID" />
+          </Key>
+          <Property Name="mkmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mkm_username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="mkm_password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="mkm_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mkm_mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mkm_gender" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="mkm_doB" Type="date" />
+          <Property Name="mkm_phone" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="stdID" />
+          </Key>
+          <Property Name="stdID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="std_username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="std_password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="std_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="std_mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="std_gender" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="std_doB" Type="date" />
+          <Property Name="std_phone" Type="varchar" MaxLength="10" />
+          <Property Name="facID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_cons_imgID">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="Contributions" Type="Self.Contributions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="imgID" />
+            </Principal>
+            <Dependent Role="Contributions">
+              <PropertyRef Name="imgID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cons_stdID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Contributions" Type="Self.Contributions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="stdID" />
+            </Principal>
+            <Dependent Role="Contributions">
+              <PropertyRef Name="stdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_gst_facID">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+          <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="facID" />
+            </Principal>
+            <Dependent Role="Guest">
+              <PropertyRef Name="facID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mkc_facID">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+          <End Role="Marketing Coordinator" Type="Self.Marketing Coordinator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="facID" />
+            </Principal>
+            <Dependent Role="Marketing Coordinator">
+              <PropertyRef Name="facID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_std_facID">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="facID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="facID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebEntepriseModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Closure Day" EntityType="Self.Closure Day" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contributions" EntityType="Self.Contributions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marketing Coordinator" EntityType="Self.Marketing Coordinator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marketing Manager" EntityType="Self.Marketing Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_cons_imgID" Association="Self.fk_cons_imgID">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Contributions" EntitySet="Contributions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cons_stdID" Association="Self.fk_cons_stdID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Contributions" EntitySet="Contributions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_gst_facID" Association="Self.fk_gst_facID">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="Guest" EntitySet="Guest" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mkc_facID" Association="Self.fk_mkc_facID">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="Marketing Coordinator" EntitySet="Marketing Coordinator" />
+          </AssociationSet>
+          <AssociationSet Name="fk_std_facID" Association="Self.fk_std_facID">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebEntepriseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admID" />
+          </Key>
+          <Property Name="admID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_doB" Type="DateTime" Precision="0" />
+          <Property Name="admin_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Closure_Day">
+          <Key>
+            <PropertyRef Name="csdID" />
+          </Key>
+          <Property Name="csdID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="startDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="endDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="finalDay" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Contribution">
+          <Key>
+            <PropertyRef Name="consID" />
+          </Key>
+          <Property Name="consID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cons_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cons_FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cons_comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cons_submit" Type="DateTime" Precision="0" />
+          <Property Name="cons_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imgID" Type="Int32" Nullable="false" />
+          <Property Name="stdID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Image" Relationship="Self.fk_cons_imgID" FromRole="Contributions" ToRole="Image" />
+          <NavigationProperty Name="Student" Relationship="Self.fk_cons_stdID" FromRole="Contributions" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Faculty">
+          <Key>
+            <PropertyRef Name="facID" />
+          </Key>
+          <Property Name="facID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="facName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Guests" Relationship="Self.fk_gst_facID" FromRole="Faculty" ToRole="Guest" />
+          <NavigationProperty Name="Marketing_Coordinator" Relationship="Self.fk_mkc_facID" FromRole="Faculty" ToRole="Marketing_Coordinator" />
+          <NavigationProperty Name="Students" Relationship="Self.fk_std_facID" FromRole="Faculty" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="gstID" />
+          </Key>
+          <Property Name="gstID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gst_username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gst_password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gst_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gst_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gst_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gst_doB" Type="DateTime" Precision="0" />
+          <Property Name="gst_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="facID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Faculty" Relationship="Self.fk_gst_facID" FromRole="Guest" ToRole="Faculty" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="imgID" />
+          </Key>
+          <Property Name="imgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="img_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contributions" Relationship="Self.fk_cons_imgID" FromRole="Image" ToRole="Contributions" />
+        </EntityType>
+        <EntityType Name="Marketing_Coordinator">
+          <Key>
+            <PropertyRef Name="mkcID" />
+          </Key>
+          <Property Name="mkcID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mkc_username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mkc_password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mkc_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mkc_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mkc_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mkc_doB" Type="DateTime" Precision="0" />
+          <Property Name="mkc_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="facID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Faculty" Relationship="Self.fk_mkc_facID" FromRole="Marketing_Coordinator" ToRole="Faculty" />
+        </EntityType>
+        <EntityType Name="Marketing_Manager">
+          <Key>
+            <PropertyRef Name="mkmID" />
+          </Key>
+          <Property Name="mkmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mkm_username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mkm_password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mkm_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mkm_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mkm_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mkm_doB" Type="DateTime" Precision="0" />
+          <Property Name="mkm_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="stdID" />
+          </Key>
+          <Property Name="stdID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="std_username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="std_password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="std_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="std_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="std_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="std_doB" Type="DateTime" Precision="0" />
+          <Property Name="std_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="facID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contributions" Relationship="Self.fk_cons_stdID" FromRole="Student" ToRole="Contributions" />
+          <NavigationProperty Name="Faculty" Relationship="Self.fk_std_facID" FromRole="Student" ToRole="Faculty" />
+        </EntityType>
+        <Association Name="fk_cons_imgID">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="Contributions" Type="Self.Contribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="imgID" />
+            </Principal>
+            <Dependent Role="Contributions">
+              <PropertyRef Name="imgID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cons_stdID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Contributions" Type="Self.Contribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="stdID" />
+            </Principal>
+            <Dependent Role="Contributions">
+              <PropertyRef Name="stdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_gst_facID">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+          <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="facID" />
+            </Principal>
+            <Dependent Role="Guest">
+              <PropertyRef Name="facID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mkc_facID">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+          <End Role="Marketing_Coordinator" Type="Self.Marketing_Coordinator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="facID" />
+            </Principal>
+            <Dependent Role="Marketing_Coordinator">
+              <PropertyRef Name="facID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_std_facID">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="facID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="facID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebEntepriseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Closure_Days" EntityType="Self.Closure_Day" />
+          <EntitySet Name="Contributions" EntityType="Self.Contribution" />
+          <EntitySet Name="Faculties" EntityType="Self.Faculty" />
+          <EntitySet Name="Guests" EntityType="Self.Guest" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="Marketing_Coordinators" EntityType="Self.Marketing_Coordinator" />
+          <EntitySet Name="Marketing_Managers" EntityType="Self.Marketing_Manager" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <AssociationSet Name="fk_cons_imgID" Association="Self.fk_cons_imgID">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Contributions" EntitySet="Contributions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cons_stdID" Association="Self.fk_cons_stdID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Contributions" EntitySet="Contributions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_gst_facID" Association="Self.fk_gst_facID">
+            <End Role="Faculty" EntitySet="Faculties" />
+            <End Role="Guest" EntitySet="Guests" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mkc_facID" Association="Self.fk_mkc_facID">
+            <End Role="Faculty" EntitySet="Faculties" />
+            <End Role="Marketing_Coordinator" EntitySet="Marketing_Coordinators" />
+          </AssociationSet>
+          <AssociationSet Name="fk_std_facID" Association="Self.fk_std_facID">
+            <End Role="Faculty" EntitySet="Faculties" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebEntepriseModelStoreContainer" CdmEntityContainer="WebEntepriseEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="WebEntepriseModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="admID" ColumnName="admID" />
+                <ScalarProperty Name="admin_username" ColumnName="admin_username" />
+                <ScalarProperty Name="admin_password" ColumnName="admin_password" />
+                <ScalarProperty Name="admin_fullname" ColumnName="admin_fullname" />
+                <ScalarProperty Name="admin_mail" ColumnName="admin_mail" />
+                <ScalarProperty Name="admin_gender" ColumnName="admin_gender" />
+                <ScalarProperty Name="admin_doB" ColumnName="admin_doB" />
+                <ScalarProperty Name="admin_phone" ColumnName="admin_phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Closure_Days">
+            <EntityTypeMapping TypeName="WebEntepriseModel.Closure_Day">
+              <MappingFragment StoreEntitySet="Closure Day">
+                <ScalarProperty Name="csdID" ColumnName="csdID" />
+                <ScalarProperty Name="startDay" ColumnName="startDay" />
+                <ScalarProperty Name="endDay" ColumnName="endDay" />
+                <ScalarProperty Name="finalDay" ColumnName="finalDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contributions">
+            <EntityTypeMapping TypeName="WebEntepriseModel.Contribution">
+              <MappingFragment StoreEntitySet="Contributions">
+                <ScalarProperty Name="consID" ColumnName="consID" />
+                <ScalarProperty Name="cons_Name" ColumnName="cons_Name" />
+                <ScalarProperty Name="cons_FileName" ColumnName="cons_FileName" />
+                <ScalarProperty Name="cons_comment" ColumnName="cons_comment" />
+                <ScalarProperty Name="cons_submit" ColumnName="cons_submit" />
+                <ScalarProperty Name="cons_status" ColumnName="cons_status" />
+                <ScalarProperty Name="imgID" ColumnName="imgID" />
+                <ScalarProperty Name="stdID" ColumnName="stdID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faculties">
+            <EntityTypeMapping TypeName="WebEntepriseModel.Faculty">
+              <MappingFragment StoreEntitySet="Faculty">
+                <ScalarProperty Name="facID" ColumnName="facID" />
+                <ScalarProperty Name="facName" ColumnName="facName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guests">
+            <EntityTypeMapping TypeName="WebEntepriseModel.Guest">
+              <MappingFragment StoreEntitySet="Guest">
+                <ScalarProperty Name="gstID" ColumnName="gstID" />
+                <ScalarProperty Name="gst_username" ColumnName="gst_username" />
+                <ScalarProperty Name="gst_password" ColumnName="gst_password" />
+                <ScalarProperty Name="gst_fullname" ColumnName="gst_fullname" />
+                <ScalarProperty Name="gst_mail" ColumnName="gst_mail" />
+                <ScalarProperty Name="gst_gender" ColumnName="gst_gender" />
+                <ScalarProperty Name="gst_doB" ColumnName="gst_doB" />
+                <ScalarProperty Name="gst_phone" ColumnName="gst_phone" />
+                <ScalarProperty Name="facID" ColumnName="facID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="WebEntepriseModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="imgID" ColumnName="imgID" />
+                <ScalarProperty Name="img_Title" ColumnName="img_Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marketing_Coordinators">
+            <EntityTypeMapping TypeName="WebEntepriseModel.Marketing_Coordinator">
+              <MappingFragment StoreEntitySet="Marketing Coordinator">
+                <ScalarProperty Name="mkcID" ColumnName="mkcID" />
+                <ScalarProperty Name="mkc_username" ColumnName="mkc_username" />
+                <ScalarProperty Name="mkc_password" ColumnName="mkc_password" />
+                <ScalarProperty Name="mkc_fullname" ColumnName="mkc_fullname" />
+                <ScalarProperty Name="mkc_mail" ColumnName="mkc_mail" />
+                <ScalarProperty Name="mkc_gender" ColumnName="mkc_gender" />
+                <ScalarProperty Name="mkc_doB" ColumnName="mkc_doB" />
+                <ScalarProperty Name="mkc_phone" ColumnName="mkc_phone" />
+                <ScalarProperty Name="facID" ColumnName="facID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marketing_Managers">
+            <EntityTypeMapping TypeName="WebEntepriseModel.Marketing_Manager">
+              <MappingFragment StoreEntitySet="Marketing Manager">
+                <ScalarProperty Name="mkmID" ColumnName="mkmID" />
+                <ScalarProperty Name="mkm_username" ColumnName="mkm_username" />
+                <ScalarProperty Name="mkm_password" ColumnName="mkm_password" />
+                <ScalarProperty Name="mkm_fullname" ColumnName="mkm_fullname" />
+                <ScalarProperty Name="mkm_mail" ColumnName="mkm_mail" />
+                <ScalarProperty Name="mkm_gender" ColumnName="mkm_gender" />
+                <ScalarProperty Name="mkm_doB" ColumnName="mkm_doB" />
+                <ScalarProperty Name="mkm_phone" ColumnName="mkm_phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="WebEntepriseModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="stdID" ColumnName="stdID" />
+                <ScalarProperty Name="std_username" ColumnName="std_username" />
+                <ScalarProperty Name="std_password" ColumnName="std_password" />
+                <ScalarProperty Name="std_fullname" ColumnName="std_fullname" />
+                <ScalarProperty Name="std_mail" ColumnName="std_mail" />
+                <ScalarProperty Name="std_gender" ColumnName="std_gender" />
+                <ScalarProperty Name="std_doB" ColumnName="std_doB" />
+                <ScalarProperty Name="std_phone" ColumnName="std_phone" />
+                <ScalarProperty Name="facID" ColumnName="facID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

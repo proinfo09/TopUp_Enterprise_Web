@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Enterprise_Web.Models.Contribution>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cons_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cons_FileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cons_comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cons_submit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cons_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image.img_Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.std_username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cons_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cons_FileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cons_comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cons_submit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cons_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image.img_Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.std_username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.consID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.consID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.consID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,9 +128,57 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\ContributionsController.cs" />
+    <Compile Include="Controllers\GuestsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Marketing_CoordinatorController.cs" />
+    <Compile Include="Controllers\Marketing_ManagerController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>Enterprise_Web_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Closure_Day.cs">
+      <DependentUpon>Enterprise_Web_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contribution.cs">
+      <DependentUpon>Enterprise_Web_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Enterprise_Web_model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Enterprise_Web_model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Enterprise_Web_model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Enterprise_Web_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Enterprise_Web_model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Enterprise_Web_model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Faculty.cs">
+      <DependentUpon>Enterprise_Web_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Guest.cs">
+      <DependentUpon>Enterprise_Web_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Image.cs">
+      <DependentUpon>Enterprise_Web_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Marketing_Coordinator.cs">
+      <DependentUpon>Enterprise_Web_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Marketing_Manager.cs">
+      <DependentUpon>Enterprise_Web_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student.cs">
+      <DependentUpon>Enterprise_Web_model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -136,8 +192,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Enterprise_Web_model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Enterprise_Web_model.Context.cs</LastGenOutput>
+      <DependentUpon>Enterprise_Web_model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Enterprise_Web_model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Enterprise_Web_model.edmx</DependentUpon>
+      <LastGenOutput>Enterprise_Web_model.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Enterprise_Web_model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Enterprise_Web_model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Enterprise_Web_model.edmx.diagram">
+      <DependentUpon>Enterprise_Web_model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -163,10 +236,40 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Contributions\Create.cshtml" />
+    <Content Include="Views\Contributions\Delete.cshtml" />
+    <Content Include="Views\Contributions\Details.cshtml" />
+    <Content Include="Views\Contributions\Edit.cshtml" />
+    <Content Include="Views\Contributions\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Admins\Create.cshtml" />
+    <Content Include="Views\Admins\Delete.cshtml" />
+    <Content Include="Views\Admins\Details.cshtml" />
+    <Content Include="Views\Admins\Edit.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Guests\Create.cshtml" />
+    <Content Include="Views\Guests\Delete.cshtml" />
+    <Content Include="Views\Guests\Details.cshtml" />
+    <Content Include="Views\Guests\Edit.cshtml" />
+    <Content Include="Views\Guests\Index.cshtml" />
+    <Content Include="Views\Marketing_Coordinator\Create.cshtml" />
+    <Content Include="Views\Marketing_Coordinator\Delete.cshtml" />
+    <Content Include="Views\Marketing_Coordinator\Details.cshtml" />
+    <Content Include="Views\Marketing_Coordinator\Edit.cshtml" />
+    <Content Include="Views\Marketing_Coordinator\Index.cshtml" />
+    <Content Include="Views\Marketing_Manager\Create.cshtml" />
+    <Content Include="Views\Marketing_Manager\Delete.cshtml" />
+    <Content Include="Views\Marketing_Manager\Details.cshtml" />
+    <Content Include="Views\Marketing_Manager\Edit.cshtml" />
+    <Content Include="Views\Marketing_Manager\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -180,6 +283,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
