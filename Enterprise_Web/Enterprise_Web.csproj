@@ -192,6 +192,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\1.jpg" />
     <Content Include="Models\Enterprise_Web_model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Enterprise_Web_model.Context.cs</LastGenOutput>
@@ -267,6 +268,7 @@
     <Content Include="Views\Marketing_Manager\Details.cshtml" />
     <Content Include="Views\Marketing_Manager\Edit.cshtml" />
     <Content Include="Views\Marketing_Manager\Index.cshtml" />
+    <Content Include="Views\Students\ContributionsManagemnt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

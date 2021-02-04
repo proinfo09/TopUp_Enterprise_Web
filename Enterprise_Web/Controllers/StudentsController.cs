@@ -18,7 +18,7 @@ namespace Enterprise_Web.Controllers
         public ActionResult Index()
         {
             var students = db.Students.Include(s => s.Faculty);
-            return View(students.ToList());
+            return View();
         }
 
         // GET: Students/Details/5
@@ -118,6 +118,11 @@ namespace Enterprise_Web.Controllers
             db.Students.Remove(student);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ContributionsManagemnt()
+        {
+            return View();
         }
 
         protected override void Dispose(bool disposing)
