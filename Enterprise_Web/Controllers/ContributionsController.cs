@@ -12,7 +12,7 @@ namespace Enterprise_Web.Controllers
 {
     public class ContributionsController : Controller
     {
-        private WebEntepriseEntities1 db = new WebEntepriseEntities1();
+        private WebEntepriseEntities2 db = new WebEntepriseEntities2();
 
         // GET: Contributions
         public ActionResult Index()

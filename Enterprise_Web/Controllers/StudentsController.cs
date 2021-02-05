@@ -12,7 +12,7 @@ namespace Enterprise_Web.Controllers
 {
     public class StudentsController : Controller
     {
-        private WebEntepriseEntities1 db = new WebEntepriseEntities1();
+        private WebEntepriseEntities2 db = new WebEntepriseEntities2();
 
         // GET: Students
         public ActionResult Index()
