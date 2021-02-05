@@ -13,10 +13,10 @@ namespace Enterprise_Web.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WebEntepriseEntities : DbContext
+    public partial class WebEntepriseEntities1 : DbContext
     {
-        public WebEntepriseEntities()
-            : base("name=WebEntepriseEntities")
+        public WebEntepriseEntities1()
+            : base("name=WebEntepriseEntities1")
         {
         }
     

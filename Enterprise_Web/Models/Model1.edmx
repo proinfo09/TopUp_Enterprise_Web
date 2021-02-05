@@ -379,7 +379,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WebEntepriseEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WebEntepriseEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Closure_Days" EntityType="Self.Closure_Day" />
           <EntitySet Name="Contributions" EntityType="Self.Contribution" />
@@ -415,7 +415,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WebEntepriseModelStoreContainer" CdmEntityContainer="WebEntepriseEntities">
+        <EntityContainerMapping StorageEntityContainer="WebEntepriseModelStoreContainer" CdmEntityContainer="WebEntepriseEntities1">
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="WebEntepriseModel.Admin">
               <MappingFragment StoreEntitySet="Admin">

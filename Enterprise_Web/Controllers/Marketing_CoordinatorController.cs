@@ -12,7 +12,7 @@ namespace Enterprise_Web.Controllers
 {
     public class Marketing_CoordinatorController : Controller
     {
-        private WebEntepriseEntities db = new WebEntepriseEntities();
+        private WebEntepriseEntities1 db = new WebEntepriseEntities1();
 
         // GET: Marketing_Coordinator
         public ActionResult Index()
