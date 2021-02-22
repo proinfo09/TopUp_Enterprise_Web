@@ -133,5 +133,10 @@ namespace Enterprise_Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult StudentDashBoard()
+        { 
+            return View();
+        }
     }
 }

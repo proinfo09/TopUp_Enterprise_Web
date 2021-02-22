@@ -269,6 +269,7 @@
     <Content Include="Views\Marketing_Manager\Edit.cshtml" />
     <Content Include="Views\Marketing_Manager\Index.cshtml" />
     <Content Include="Views\Students\ContributionsManagemnt.cshtml" />
+    <Content Include="Views\Students\StudentDashBoard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
