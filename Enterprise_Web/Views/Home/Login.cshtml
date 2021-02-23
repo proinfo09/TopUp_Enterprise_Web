@@ -2,27 +2,39 @@
     ViewBag.Title = "Login";
 }
 
-
 <div class="jumbotron">
     <div class="login-box">
         <h1>Login</h1>
-        <div class="form-group">
-            <hr class="my-4">
-            <div class="textbox">
-                <i class="fas fa-user"></i>
-                <label class="col-form-label col-form-label-lg" for="inputLarge">Username</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Username">
-            </div>
+        <form action="#" method="post">
+            <div class="form-group">
+                <hr class="my-4">
+                <div class="textbox">
+                    <i class="fas fa-user"></i>
+                    <label class="col-form-label col-form-label-lg" for="inputLarge">Username</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Username">
+                </div>
 
-            <div class="textbox">
-                <i class="fas fa-lock"></i>
-                <label class="col-form-label col-form-label-lg" for="inputLarge">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <p class="account"><a href="#">Forgot your password ?</a></p>
-            <input type="button" class="btn btn-primary btn-lg" value="Sign in">
+                <div class="textbox">
+                    <i class="fas fa-lock"></i>
+                    <label class="col-form-label col-form-label-lg" for="inputLarge">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <br>
+                <div>
+                    @Html.DropDownList("roles", new List<SelectListItem>
+                        {
+                            new SelectListItem { Text=  "---Select your role---", Value = "0"},
+                            new SelectListItem { Text = "Students role", Value = "1" },
+                            new SelectListItem { Text = "Marketing Managers role", Value = "2" },
+                            new SelectListItem { Text = "Marketing_Coordinators role", Value = "3" },
+                            new SelectListItem { Text = "Admins role", Value = "4" },
+                        }, new { style = "width: 180px;" })
+                </div> <br/>
 
-        </div>
+                <p class="account"><a href="#">Forgot your password ?</a></p>
+                <button class="btn btn-primary btn-lg"  value="Login" type="submit">Sign in</button>
+            </div>
+        </form>
     </div>
 </div>
 

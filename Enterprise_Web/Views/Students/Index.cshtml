@@ -2,141 +2,74 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = null;
 }
 
-<!DOCTYPE html>
+<h2>Index</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            list-style: none;
-            font-family: sans-serif;
-        }
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.std_username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_doB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Faculty.facName)
+        </th>
+        <th></th>
+    </tr>
 
-        .wrapper {
-            position: absolute;
-            top: 50%;
-            left: 40%;
-            transform: translate(-50%, -50%);
-            width: 1000px;
-            display: flex;
-        }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_doB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Faculty.facName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.stdID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.stdID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.stdID })
+        </td>
+    </tr>
+}
 
-            .wrapper .left {
-                width: 35%;
-                padding: 30px 25px;
-                border-top-left-radius: 5px;
-                border-bottom-left-radius: 5px;
-                text-align: center;
-            }
-
-                .wrapper .left img {
-                    width: 180px;
-                    height: 200px;
-                    margin-bottom: 10px;
-                    border-radius: 5px;
-                }
-
-                .wrapper .left h4 {
-                    margin-bottom: 10px;
-                }
-
-                .wrapper .left p {
-                    font-size: 12px;
-                }
-
-            .wrapper .right {
-                width: 65%;
-                border-top-right-radius: 5px;
-                border-top-left-radius: 5px;
-                padding: 30px 25px;
-            }
-
-                .wrapper .right .info {
-                    margin-bottom: 25px;
-                }
-
-                    .wrapper .right .info h3 {
-                        margin-bottom: 15px;
-                        padding-bottom: 5px;
-                        border-bottom: 1px solid #e0e0e0;
-                        color: #353c4e;
-                        text-transform: uppercase;
-                        letter-spacing: 5px;
-                    }
-
-                .wrapper .right .info_data .data {
-                    width: 45%;
-                    display: flex;
-                }
-
-                    .wrapper .right .info_data .data h4 {
-                        color: #353c4e;
-                        margin-bottom: 10px;
-                    }
-
-                    .wrapper .right .info_data .data p {
-                        font-size: 15px;
-                        margin-bottom: 10px;
-                        color: #919aa3;
-                        text-align: left;
-                        margin-left: 200px;
-                        position: absolute;
-                    }
-    </style>
-</head>
-
-<body>
-    <div>
-        <div class="wrapper">
-            <div class="left">
-                <img src="~/images/1.jpg" alt="student" width="100" />
-                <h4>Snip Hieu</h4>
-            </div>
-            <div class="right">
-                <div class="info">
-                    <h3>Account Information</h3>
-                    <div class="info_data">
-                        <div class="data">
-                            <h4>Account</h4>
-                            <p>Std_Bu</p>
-                        </div>
-                        <div class="data">
-                            <h4>Name</h4>
-                            <p>Snip Hieu</p>
-                        </div>
-                        <div class="data">
-                            <h4>Year</h4>
-                            <p>2018-2035</p>
-                        </div>
-                        <div class="data">
-                            <h4>Role</h4>
-                            <p>Student</p>
-                        </div>
-                        <div class="data">
-                            <h4>Gender</h4>
-                            <p>Male</p>
-                        </div>
-                        <div class="data">
-                            <h4>Date of birth</h4>
-                            <p>2000</p>
-                        </div>
-                        <div class="data">
-                            <h4>Phone</h4>
-                            <p>05435434543</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+</table>

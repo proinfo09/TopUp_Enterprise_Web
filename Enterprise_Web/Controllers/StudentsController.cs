@@ -18,7 +18,36 @@ namespace Enterprise_Web.Controllers
         public ActionResult Index()
         {
             var students = db.Students.Include(s => s.Faculty);
+            return View(students);
+        }
+
+        public ActionResult Login()
+        {
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(Student student)
+        {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            if (ModelState.IsValid)
+            {
+                var obj = db.Students.Where(a => a.std_username.Equals(student.std_username) &&
+                                     a.std_password.Equals(student.std_password)).FirstOrDefault();
+                if (obj != null)
+                {
+                    Session["StudentID"] = obj.stdID.ToString();
+                    Session["Student_UserName"] = obj.std_username.ToString();
+                    return RedirectToAction("StaffDashBoard");
+                }
+            }
+            return View(student);
+        }
+
+        public ActionResult Style_Index()
+        {
+            var students = db.Students.Include(s => s.Faculty);
+            return View(students);
         }
 
         // GET: Students/Details/5
@@ -120,7 +149,7 @@ namespace Enterprise_Web.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ContributionsManagemnt()
+        public ActionResult ContributionsManagement()
         {
             return View();
         }
@@ -137,6 +166,53 @@ namespace Enterprise_Web.Controllers
         public ActionResult StudentDashBoard()
         { 
             return View();
+        }
+
+        public ActionResult ChangePassword()
+        {
+                return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(string old_password, string new_password, string confirm_password)
+        {
+            string std_username = Session["Student_UserName"].ToString();
+            var obj = db.Students.Where(a => a.std_username.Equals(std_username) &&
+                    a.std_username.Equals(old_password)).FirstOrDefault();
+            if (obj != null)
+            {
+                if (new_password.Equals(confirm_password))
+                {
+                    obj.std_username = new_password;
+                    db.SaveChanges();
+                    return RedirectToAction("StudentDashBoard");
+                }
+            }
+            ViewData["Message"] = "Old password is not correct or New password" + "Confirm New Password are not match";
+            return View();
+        }
+
+        public ActionResult StudentProfile()
+        {
+            int stdId = Convert.ToInt32(Session["ID"]);
+            //if (stdId == 0)
+            //{
+            //    return RedirectToAction("Login", "Home");
+            //}
+            return View(db.Students.Find(stdId));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult StudentProfile([Bind(Include = "stdID,std_username,std_password,std_fullname,std_mail,std_gender,std_doB,std_phone,facID")] Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(student).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("UpdateInfo");
+            }
+            return View(student);
         }
     }
 }
