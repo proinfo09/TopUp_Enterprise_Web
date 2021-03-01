@@ -12,7 +12,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Enterprise_Web.Models;
 
-namespace Web_Enterprise
+namespace Enterprise_Web
 {
     public class EmailService : IIdentityMessageService
     {
