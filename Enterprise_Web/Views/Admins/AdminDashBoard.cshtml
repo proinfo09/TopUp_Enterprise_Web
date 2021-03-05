@@ -4,7 +4,9 @@
 }
 
 <h2>AdminDashBoard</h2>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <div class="list-group">
     <ul style=" font-size: 20px">
@@ -17,23 +19,24 @@
         <li>
             @Html.ActionLink("Dashboard", "DashboardReport", "Admins")
         </li>
-        <li class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Manage Accounts
-            </a>
-
-            <a class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                @Html.ActionLink("Manage Students", "Index", "Students", new { @class = "dropdown-item" })
-                @Html.ActionLink("Manage MCs", "Index", "Marketing_Coordinator", new { @class = "dropdown-item" })
-                @Html.ActionLink("Manage MMs", "Index", "Marketing_Manager", new { @class = "dropdown-item" })
-            </a>
-        </li>
         <li>
             @Html.ActionLink("Report", "Report", "Admins")
         </li>
         <li>
-            @Html.ActionLink("Setting Closure date", "ClosuredateSetting", "Admins")
+            @Html.ActionLink("Setting Closure date", "Index", "Closure_Day")
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
 </div>
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Manage Accounts
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("Manage Students", "Index", "Students")</li>
+        <li>@Html.ActionLink("Manage MCs", "Index", "Marketing_Coordinator")</li>
+        <li>@Html.ActionLink("Manage MMs", "Index", "Marketing_Manager")</li>
+    </ul>
+</div>
+
