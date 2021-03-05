@@ -128,5 +128,36 @@ namespace Enterprise_Web.Controllers
         {
             return View();
         }
+
+        // GET: Admins/AdminProfile/5
+        public ActionResult AdminProfile(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Admin admin = db.Admins.Find(id);
+            if (admin == null)
+            {
+                return HttpNotFound();
+            }
+            return View(admin);
+        }
+
+        // POST: Admins/AdminProfile/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdminProfile([Bind(Include = "admID,admin_username,admin_password,admin_fullname,admin_mail,admin_gender,admin_doB,admin_phone")] Admin admin)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(admin).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(admin);
+        }
     }
 }

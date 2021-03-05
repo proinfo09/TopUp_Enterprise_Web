@@ -132,5 +132,11 @@ namespace Enterprise_Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult ContributionsManagement()
+        {
+            var contributions = db.Contributions.Include(c => c.Image).Include(c => c.Student);
+            return View(contributions.ToList());
+        }
     }
 }

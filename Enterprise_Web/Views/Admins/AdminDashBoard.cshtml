@@ -6,4 +6,26 @@
 <h2>AdminDashBoard</h2>
 
 
-
+<div class="list-group">
+    <ul style=" font-size: 20px">
+        <li>
+            @Html.ActionLink("My profile", "AdminProfile", "Admins")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Contributions", "ContributionsManagement", "Contributions")
+        </li>
+        <li>
+            @Html.ActionLink("Dashboard", "DashboardReport", "Admins")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Accounts", "AccountsManagement", "Admins")
+        </li>
+        <li>
+            @Html.ActionLink("Report", "Report", "Admins")
+        </li>
+        <li>
+            @Html.ActionLink("Setting Closure date", "ClosuredateSetting", "Admins")
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+</div>
