@@ -1,0 +1,43 @@
+﻿@model Enterprise_Web.Models.Closure_Day
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Closure_Day</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.startDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.finalDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.finalDay)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.csdID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

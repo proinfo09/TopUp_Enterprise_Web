@@ -164,6 +164,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\Closure_DayController.cs" />
     <Compile Include="Controllers\ContributionsController.cs" />
     <Compile Include="Controllers\GuestsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -246,6 +247,11 @@
     </Content>
     <Content Include="Views\Admins\AdminProfile.cshtml" />
     <Content Include="Views\Contributions\ContributionsManagement.cshtml" />
+    <Content Include="Views\Closure_Day\Create.cshtml" />
+    <Content Include="Views\Closure_Day\Delete.cshtml" />
+    <Content Include="Views\Closure_Day\Details.cshtml" />
+    <Content Include="Views\Closure_Day\Edit.cshtml" />
+    <Content Include="Views\Closure_Day\Index.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
