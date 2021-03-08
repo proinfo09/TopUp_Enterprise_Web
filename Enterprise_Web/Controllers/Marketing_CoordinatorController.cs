@@ -166,5 +166,11 @@ namespace Enterprise_Web.Controllers
             ViewBag.facID = new SelectList(db.Faculties, "facID", "facName", marketing_Coordinator.facID);
             return View(marketing_Coordinator);
         }
+
+        public ActionResult StudentsManagement(int? id)
+        {
+            Marketing_Coordinator marketing_Coordinator = db.Marketing_Coordinators.Find(id);
+            return View(db.Students.Find(marketing_Coordinator.Faculty));
+        }
     }
 }

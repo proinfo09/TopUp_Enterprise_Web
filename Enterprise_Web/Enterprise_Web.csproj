@@ -256,6 +256,7 @@
     <Content Include="Views\Marketing_Manager\Marketing_ManagerProfile.cshtml" />
     <Content Include="Views\Marketing_Coordinator\Marketing_CoordinatorDashBoard.cshtml" />
     <Content Include="Views\Marketing_Coordinator\Marketing_CoordinatorProfile.cshtml" />
+    <Content Include="Views\Students\StudentsManagement.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
