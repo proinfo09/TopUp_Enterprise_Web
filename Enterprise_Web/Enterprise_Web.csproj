@@ -252,6 +252,7 @@
     <Content Include="Views\Closure_Day\Details.cshtml" />
     <Content Include="Views\Closure_Day\Edit.cshtml" />
     <Content Include="Views\Closure_Day\Index.cshtml" />
+    <Content Include="Views\Marketing_Manager\Marketing_ManagerDashBoard.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
