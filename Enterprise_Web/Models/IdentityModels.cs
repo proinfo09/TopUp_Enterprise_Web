@@ -9,6 +9,7 @@ namespace Enterprise_Web.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public int facID { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -18,16 +19,16 @@ namespace Enterprise_Web.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class AppUsersDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public AppUsersDbContext()
+            : base("SystemUsers", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static AppUsersDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new AppUsersDbContext();
         }
     }
 }

@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Enterprise_Web.Models;
+using System.Net;
+using static Enterprise_Web.ApplicationUserManager;
 
 namespace Enterprise_Web.Controllers
 {
@@ -17,15 +19,18 @@ namespace Enterprise_Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            ///Make an instance of the role manager in the constructor to avoid null reference exception
+            RoleManager = roleManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -49,6 +54,18 @@ namespace Enterprise_Web.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? Request.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
 
@@ -89,6 +106,59 @@ namespace Enterprise_Web.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+        }
+
+        [AllowAnonymous]
+        [Route("users/{id:guid}/roles")]
+        [HttpPut]
+        public async Task<ActionResult> AssignRolesToUser(string id, string[] rolesToAssign)
+        {
+            if (rolesToAssign == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ///find the user we want to assign roles to
+            var appUser = await this.UserManager.FindByIdAsync(id);
+
+            //if (appUser == null || appUser.IsDeleted)
+            if (appUser == null)
+            {
+                return HttpNotFound();
+            }
+
+            ///check if the user currently has any roles
+            var currentRoles = await this.UserManager.GetRolesAsync(appUser.Id);
+
+
+            var rolesNotExist = rolesToAssign.Except(this.RoleManager.Roles.Select(x => x.Name)).ToArray();
+
+            if (rolesNotExist.Count() > 0)
+            {
+                ModelState.AddModelError("", string.Format("Roles '{0}' does not exist in the system", string.Join(",", rolesNotExist)));
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ///remove user from current roles, if any
+            IdentityResult removeResult = await this.UserManager.RemoveFromRolesAsync(appUser.Id, currentRoles.ToArray());
+
+
+            if (!removeResult.Succeeded)
+            {
+                ModelState.AddModelError("", "Failed to remove user roles");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ///assign user to the new roles
+            IdentityResult addResult = await this.UserManager.AddToRolesAsync(appUser.Id, rolesToAssign);
+
+            if (!addResult.Succeeded)
+            {
+                ModelState.AddModelError("", "Failed to add user roles");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return View(new { userId = id, rolesAssigned = rolesToAssign });
         }
 
         //
@@ -151,7 +221,7 @@ namespace Enterprise_Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, facID =  model.facID };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
