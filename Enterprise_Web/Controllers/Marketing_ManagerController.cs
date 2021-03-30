@@ -12,7 +12,7 @@ namespace Enterprise_Web.Controllers
 {
     public class Marketing_ManagerController : Controller
     {
-        private WebEntepriseEntities db = new WebEntepriseEntities();
+        private WebEntepriseEntities2 db = new WebEntepriseEntities2();
 
         // GET: Marketing_Manager
         public ActionResult Index()
@@ -122,6 +122,42 @@ namespace Enterprise_Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Marketing_ManagerDashBoard()
+        {
+            return View();
+        }
+
+        // GET: Marketing_Manager/Edit/5
+        public ActionResult Marketing_ManagerProfile(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Marketing_Manager marketing_Manager = db.Marketing_Managers.Find(id);
+            if (marketing_Manager == null)
+            {
+                return HttpNotFound();
+            }
+            return View(marketing_Manager);
+        }
+
+        // POST: Marketing_Manager/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Marketing_ManagerProfile([Bind(Include = "mkmID,mkm_username,mkm_password,mkm_fullname,mkm_mail,mkm_gender,mkm_doB,mkm_phone")] Marketing_Manager marketing_Manager)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(marketing_Manager).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(marketing_Manager);
         }
     }
 }

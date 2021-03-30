@@ -12,7 +12,7 @@ namespace Enterprise_Web.Controllers
 {
     public class ContributionsController : Controller
     {
-        private WebEntepriseEntities db = new WebEntepriseEntities();
+        private WebEntepriseEntities2 db = new WebEntepriseEntities2();
 
         // GET: Contributions
         public ActionResult Index()
@@ -131,6 +131,12 @@ namespace Enterprise_Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult ContributionsManagement()
+        {
+            var contributions = db.Contributions.Include(c => c.Image).Include(c => c.Student);
+            return View(contributions.ToList());
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Marketing_CoordinatorDashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Marketing_CoordinatorDashBoard</h2>
+
+<div class="list-group">
+    <ul style=" font-size: 20px">
+        <li>
+            @Html.ActionLink("Dashboard", "DashboardReport", "Marketing_CoordinatorDashBoard")
+        </li>
+        <li>
+            @Html.ActionLink("My profile", "Marketing_ManagerProfile", "Marketing_CoordinatorDashBoard")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Contributions", "ContributionsManagement", "Contributions")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Students", "StudentsManagement", "Students")
+        </li>
+        <li>
+            @Html.ActionLink("Report", "Report", "Marketing_CoordinatorDashBoard")
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+</div>

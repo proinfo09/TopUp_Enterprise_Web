@@ -12,7 +12,7 @@ namespace Enterprise_Web.Controllers
 {
     public class Marketing_CoordinatorController : Controller
     {
-        private WebEntepriseEntities db = new WebEntepriseEntities();
+        private WebEntepriseEntities2 db = new WebEntepriseEntities2();
 
         // GET: Marketing_Coordinator
         public ActionResult Index()
@@ -127,6 +127,50 @@ namespace Enterprise_Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Marketing_CoordinatorDashBoard()
+        {
+            return View();
+        }
+
+        // GET: Marketing_Coordinator/Edit/5
+        public ActionResult Marketing_CoordinatorProfile(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Marketing_Coordinator marketing_Coordinator = db.Marketing_Coordinators.Find(id);
+            if (marketing_Coordinator == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.facID = new SelectList(db.Faculties, "facID", "facName", marketing_Coordinator.facID);
+            return View(marketing_Coordinator);
+        }
+
+        // POST: Marketing_Coordinator/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Marketing_CoordinatorProfile([Bind(Include = "mkcID,mkc_username,mkc_password,mkc_fullname,mkc_mail,mkc_gender,mkc_doB,mkc_phone,facID")] Marketing_Coordinator marketing_Coordinator)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(marketing_Coordinator).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.facID = new SelectList(db.Faculties, "facID", "facName", marketing_Coordinator.facID);
+            return View(marketing_Coordinator);
+        }
+
+        public ActionResult StudentsManagement(int? id)
+        {
+            Marketing_Coordinator marketing_Coordinator = db.Marketing_Coordinators.Find(id);
+            return View(db.Students.Find(marketing_Coordinator.Faculty));
         }
     }
 }
