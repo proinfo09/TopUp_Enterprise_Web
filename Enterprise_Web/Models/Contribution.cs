@@ -16,14 +16,15 @@ namespace Enterprise_Web.Models
     {
         public int consID { get; set; }
         public string cons_Name { get; set; }
-        public string cons_FileName { get; set; }
         public string cons_comment { get; set; }
         public Nullable<System.DateTime> cons_submit { get; set; }
         public string cons_status { get; set; }
         public int imgID { get; set; }
         public int stdID { get; set; }
+        public int fileID { get; set; }
     
+        public virtual File File { get; set; }
         public virtual Image Image { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual User_Student_Detail User_Student_Detail { get; set; }
     }
 }

@@ -12,18 +12,24 @@ namespace Enterprise_Web.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Faculty
+    public partial class User_Student_Detail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Faculty()
+        public User_Student_Detail()
         {
-            this.AspNetUsers = new HashSet<AspNetUser>();
+            this.Contributions = new HashSet<Contribution>();
         }
     
-        public int facID { get; set; }
-        public string facName { get; set; }
+        public string userId { get; set; }
+        public int stdID { get; set; }
+        public string std_fullname { get; set; }
+        public string std_mail { get; set; }
+        public string std_gender { get; set; }
+        public Nullable<System.DateTime> std_doB { get; set; }
+        public string std_phone { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+        public virtual ICollection<Contribution> Contributions { get; set; }
     }
 }

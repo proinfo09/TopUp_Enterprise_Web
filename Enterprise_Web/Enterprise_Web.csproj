@@ -168,13 +168,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\Closure_DayController.cs" />
-    <Compile Include="Controllers\ContributionsController.cs" />
     <Compile Include="Controllers\GuestsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Marketing_CoordinatorController.cs" />
     <Compile Include="Controllers\Marketing_ManagerController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\User_Admin_DetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,21 +182,39 @@
     <Compile Include="Models\Admin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Closure_Day.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Contribution.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Faculty.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\File.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Guest.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Marketing_Coordinator.cs">
@@ -223,6 +241,36 @@
     <Compile Include="Models\Student.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\User_Admin_Detail.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_Guest_Detail.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_Marketing_Coordinator_Detail.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_Marketing_Manager_Detail.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_Student_Detail.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebEnterpriseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebEnterpriseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebEnterpriseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebEnterpriseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebEnterpriseModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -248,6 +296,16 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\WebEnterpriseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebEnterpriseModel.edmx</DependentUpon>
+      <LastGenOutput>WebEnterpriseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\WebEnterpriseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebEnterpriseModel.edmx</DependentUpon>
+      <LastGenOutput>WebEnterpriseModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Views\Admins\AdminProfile.cshtml" />
     <Content Include="Views\Contributions\ContributionsManagement.cshtml" />
     <Content Include="Views\Closure_Day\Create.cshtml" />
@@ -260,6 +318,18 @@
     <Content Include="Views\Marketing_Coordinator\Marketing_CoordinatorDashBoard.cshtml" />
     <Content Include="Views\Marketing_Coordinator\Marketing_CoordinatorProfile.cshtml" />
     <Content Include="Views\Marketing_Coordinator\StudentsManagement.cshtml" />
+    <EntityDeploy Include="Models\WebEnterpriseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WebEnterpriseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\WebEnterpriseModel.edmx.diagram">
+      <DependentUpon>WebEnterpriseModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\User_Admin_Detail\Create.cshtml" />
+    <Content Include="Views\User_Admin_Detail\Delete.cshtml" />
+    <Content Include="Views\User_Admin_Detail\Details.cshtml" />
+    <Content Include="Views\User_Admin_Detail\Edit.cshtml" />
+    <Content Include="Views\User_Admin_Detail\Index.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

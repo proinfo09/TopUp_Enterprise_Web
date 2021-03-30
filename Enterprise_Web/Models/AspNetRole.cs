@@ -12,16 +12,16 @@ namespace Enterprise_Web.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Faculty
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Faculty()
+        public AspNetRole()
         {
             this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int facID { get; set; }
-        public string facName { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }

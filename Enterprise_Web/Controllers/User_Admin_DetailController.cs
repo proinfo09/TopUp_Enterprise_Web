@@ -10,107 +10,113 @@ using Enterprise_Web.Models;
 
 namespace Enterprise_Web.Controllers
 {
-    public class Closure_DayController : Controller
+    public class User_Admin_DetailController : Controller
     {
-        private WebEntepriseEntities2 db = new WebEntepriseEntities2();
+        private WebEnterpriseEntities db = new WebEnterpriseEntities();
 
-        // GET: Closure_Day
+        [Authorize(Roles = "Admin")]
+        // GET: User_Admin_Detail
         public ActionResult Index()
         {
-            return View(db.Closure_Days.ToList());
+            var user_Admin_Detail = db.User_Admin_Detail.Include(u => u.AspNetUser);
+            return View(user_Admin_Detail.ToList());
         }
 
-        // GET: Closure_Day/Details/5
+        // GET: User_Admin_Detail/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Closure_Day closure_Day = db.Closure_Days.Find(id);
-            if (closure_Day == null)
+            User_Admin_Detail user_Admin_Detail = db.User_Admin_Detail.Find(id);
+            if (user_Admin_Detail == null)
             {
                 return HttpNotFound();
             }
-            return View(closure_Day);
+            return View(user_Admin_Detail);
         }
 
-        // GET: Closure_Day/Create
+        // GET: User_Admin_Detail/Create
         public ActionResult Create()
         {
+            ViewBag.userId = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 
-        // POST: Closure_Day/Create
+        // POST: User_Admin_Detail/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "csdID,startDay,endDay,finalDay")] Closure_Day closure_Day)
+        public ActionResult Create([Bind(Include = "userId,admID,admin_fullname,admin_mail,admin_gender,admin_doB,admin_phone")] User_Admin_Detail user_Admin_Detail)
         {
             if (ModelState.IsValid)
             {
-                db.Closure_Days.Add(closure_Day);
+                db.User_Admin_Detail.Add(user_Admin_Detail);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(closure_Day);
+            ViewBag.userId = new SelectList(db.AspNetUsers, "Id", "Email", user_Admin_Detail.userId);
+            return View(user_Admin_Detail);
         }
 
-        // GET: Closure_Day/Edit/5
+        // GET: User_Admin_Detail/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Closure_Day closure_Day = db.Closure_Days.Find(id);
-            if (closure_Day == null)
+            User_Admin_Detail user_Admin_Detail = db.User_Admin_Detail.Find(id);
+            if (user_Admin_Detail == null)
             {
                 return HttpNotFound();
             }
-            return View(closure_Day);
+            ViewBag.userId = new SelectList(db.AspNetUsers, "Id", "Email", user_Admin_Detail.userId);
+            return View(user_Admin_Detail);
         }
 
-        // POST: Closure_Day/Edit/5
+        // POST: User_Admin_Detail/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "csdID,startDay,endDay,finalDay")] Closure_Day closure_Day)
+        public ActionResult Edit([Bind(Include = "userId,admID,admin_fullname,admin_mail,admin_gender,admin_doB,admin_phone")] User_Admin_Detail user_Admin_Detail)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(closure_Day).State = EntityState.Modified;
+                db.Entry(user_Admin_Detail).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(closure_Day);
+            ViewBag.userId = new SelectList(db.AspNetUsers, "Id", "Email", user_Admin_Detail.userId);
+            return View(user_Admin_Detail);
         }
 
-        // GET: Closure_Day/Delete/5
+        // GET: User_Admin_Detail/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Closure_Day closure_Day = db.Closure_Days.Find(id);
-            if (closure_Day == null)
+            User_Admin_Detail user_Admin_Detail = db.User_Admin_Detail.Find(id);
+            if (user_Admin_Detail == null)
             {
                 return HttpNotFound();
             }
-            return View(closure_Day);
+            return View(user_Admin_Detail);
         }
 
-        // POST: Closure_Day/Delete/5
+        // POST: User_Admin_Detail/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Closure_Day closure_Day = db.Closure_Days.Find(id);
-            db.Closure_Days.Remove(closure_Day);
+            User_Admin_Detail user_Admin_Detail = db.User_Admin_Detail.Find(id);
+            db.User_Admin_Detail.Remove(user_Admin_Detail);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
