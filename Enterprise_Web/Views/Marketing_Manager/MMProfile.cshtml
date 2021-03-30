@@ -1,0 +1,175 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+
+        .sidebar {
+            height: 100%;
+            width: 240px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            background: #027581;
+            color: #fff;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            padding: 0rem 1rem;
+        }
+
+        .sidebar-menu {
+            padding: 1rem;
+        }
+
+        .sidebar li {
+            margin-bottom: 1rem;
+        }
+
+
+        .sidebar a {
+            color: #fff;
+            font-size: .9rem;
+        }
+
+        .sidebar a span:last-child {
+                padding-left: .6rem;
+            }
+
+        .main-content {
+            position: relative;
+            margin-left: 240px;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #BA68C8
+        }
+
+        .profile-button {
+            background: #BA68C8;
+            box-shadow: none;
+            border: none
+        }
+
+        .profile-button:hover {
+                background: #000;
+            }
+
+        .profile-button:focus {
+                background: #682773;
+                box-shadow: none
+            }
+
+        .profile-button:active {
+                background: #682773;
+                box-shadow: none
+            }
+
+        .back:hover {
+            color: #682773;
+            cursor: pointer
+        }
+
+        .labels {
+            font-size: 11px
+        }
+
+        .add-experience:hover {
+            background: #BA68C8;
+            color: #fff;
+            cursor: pointer;
+            border: solid 1px #BA68C8
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span>Web Enterprise</span>
+            </h3>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="">
+                        <span class="ti-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-folder"></span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-settings"></span>
+                        <span>Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-4 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="~/images/1.jpg" width="170" height="170">
+                    <h4 class="font-weight-bold">Hieu snip</h4>
+                    <span class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Edit Profile</button></span>
+                    </div>
+
+                </div>
+                <div class="col-md-8">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="text-right">Profile</h6>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">Account</label><input type="text" class="form-control" placeholder="account" value="hieusnip"></div>
+                            <div class="col-md-6"><label class="labels">Start date</label><input type="text" class="form-control" value="date" placeholder="2/3/2020"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="name" value="Harry Huy"></div>
+                            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="email" value="snip123@gmail.com"></div>
+                            <div class="col-md-12"><label class="labels">Phone</label><input type="text" class="form-control" placeholder="phone" value="0944332211"></div>
+                            <div class="col-md-12"><label class="labels">Date of birth</label><input type="text" class="form-control" placeholder="dob" value="1/1/2000"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6"><label class="labels">Role</label><input type="text" class="form-control" placeholder="role" value="Marketing manager"></div>
+                            <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" value="Not sure" placeholder="gender"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

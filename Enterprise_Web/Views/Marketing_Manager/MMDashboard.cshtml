@@ -1,0 +1,373 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wep Enterprise</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <style>
+        :root {
+            --main-color: #027581;
+            --color-dark: #1D2231;
+            --text-grey: #8390A2;
+        }
+
+        * {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style-type: none;
+            box-sizing: border-box;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 240px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            background: var(--main-color);
+            color: #fff;        
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            padding: 0rem 1rem;
+        }
+
+        .sidebar-menu {
+            padding: 1rem;
+        }
+        
+        .sidebar li {
+            margin-bottom: 1rem;
+        }
+
+        .sidebar a {
+            color: #fff;
+            font-size: .9rem;
+        }
+
+        .sidebar a span:last-child {
+            padding-left: .6rem;
+        }
+
+        .main-content {
+            position: relative;
+            margin-left: 240px;
+        }
+
+        header {
+            position: fixed;
+            left: 240px;
+            top: 0;
+            z-index: 100;
+            width: calc(100% - 240px);
+            background: #fff;
+            height: 60px;
+            padding: 0rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+            .search-wrapper input {
+                border: 0;
+                outline: 0;
+                padding: 1rem;
+                height: 38px;
+            }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+        }
+
+            .social-icons span,
+            .social-icons div {
+                margin-left: 1.2rem;
+            }
+
+            .social-icons div {
+                height: 38px;
+                width: 38px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-image: url(img/1.jpg);
+                border-radius: 50%;
+            }
+
+        main {
+            margin-top: 60px;
+            background: #f1f5f9;
+            min-height: 90vh;
+            padding: 1rem 3rem;
+        }
+
+        .dashboard-title {
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: 3rem;
+        }
+
+        .card-single {
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+        }
+
+        .card-body {
+            padding: 1.3rem 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+            .card-body span {
+                font-size: 1.5rem;
+                color: #777;
+                padding-right: 1.4rem;
+            }
+
+            .card-body h5 {
+                color: var(--text-grey--);
+                font-size: 1rem;
+            }
+
+            .card-body h4 {
+                color: var(--color-dark--);
+                font-size: 1.1rem;
+                margin-top: .2rem;
+            }
+
+        .card-footer {
+            padding: .2rem 1rem;
+            background: #f9fafc;
+        }
+
+        .recent {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .recent-grid {
+            display: grid;
+            grid-template-columns: 100%;
+            grid-column-gap: 1.5rem;
+        }
+
+        .recent-card {
+            background: #fff;
+            border-radius: 7px;
+        }
+
+            .recent-card h3 {
+                color: var(--text-grey);
+                margin: 1rem;
+            }
+
+            .recent-card table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .recent-card thead {
+                background: #efefef;
+                text-align: left;
+            }
+
+        th, td {
+            font-size: .9rem;
+            padding: 1rem 1rem;
+            color: var(--color-dark);
+        }
+
+        td {
+            font-size: .8rem;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f9fafc;
+        }
+
+        .badge {
+            padding: .2rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+            .badge.success {
+                background: #DEF7EC;
+                color: var(--main-color);
+            }
+
+            .badge.warning {
+                background: #F0F6B2;
+                color: orange;
+            }
+
+        .download {
+            color: goldenrod;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span>Web Enterprise</span>
+            </h3>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="">
+                        <span class="ti-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-folder"></span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-settings"></span>
+                        <span>Log out</span>
+                    </a>
+                </li>                           
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="search-wrapper">
+                <span class="ti-search"></span>
+                <input type="search" placeholder="Search">            
+            </div>          
+
+        </header>
+
+        <main>
+            <h2 class="dashboard-title">Overview</h2>
+
+            <div class="dashboard-cards">
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-briefcase"></span>
+                        <div>
+                            <h5>Number of contributions</h5>
+                            <h4>15203</h4>
+                        </div>
+                    </div>                    
+                </div>
+
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-briefcase"></span>
+                        <div>
+                            <h5>Number of falcuty</h5>
+                            <h4>10</h4>
+                        </div>
+                    </div>                  
+                </div>
+
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-briefcase"></span>
+                        <div>
+                            <h5>Number of year</h5>
+                            <h4>2</h4>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+
+            <section class="recent">
+                <div class="recent-grid">
+                    <div class="recent-card">
+                        <h3>Recent Report</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Falcuty</th>
+                                    <th>Title</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>              
+                            </thead> 
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Business</td>
+                                    <td>Hay chon gia dung</td>
+                                    <td>1/1/2020</td>
+                                    <td>
+                                        <span class="badge warning">Waiting</span>
+                                    </td>
+                                    <td><a href ="#" class="download">Download</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>IT</td>
+                                    <td>Code khong sai chung ta sai</td>
+                                    <td>2/1/2020</td>
+                                    <td>
+                                        <span class="badge success">Selected</span>
+                                    </td>
+                                    <td><a href="#" class="download">Download</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>IT</td>
+                                    <td>Code cua ngay hom qua</td>
+                                    <td>2/1/2020</td>
+                                    <td>
+                                        <span class="badge success">Selected</span>
+                                    </td>
+                                    <td><a href="#" class="download">Download</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>               
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
+
+

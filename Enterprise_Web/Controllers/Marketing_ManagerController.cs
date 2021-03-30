@@ -115,6 +115,51 @@ namespace Enterprise_Web.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult MMDashboard()
+        {
+            return View();
+        }
+
+        public ActionResult MMDashboard4()
+        {
+            return View();
+        }
+
+        public ActionResult MMDashboard2()
+        {
+            return View();
+        }
+
+        public ActionResult MMDashboard3()
+        {
+            return View();
+        }
+
+        public ActionResult MMProfile()
+        {
+            return View();
+        }
+
+        public ActionResult MMEditProfile()
+        {
+            return View();
+        }
+
+        public ActionResult MMProfile2()
+        {
+            return View();
+        }
+
+        public ActionResult MMEditProfile2()
+        {
+            return View();
+        }
+
+        public ActionResult MMDetails()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

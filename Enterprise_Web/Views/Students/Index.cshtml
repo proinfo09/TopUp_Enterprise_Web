@@ -20,6 +20,49 @@
             font-family: sans-serif;
         }
 
+        .sidebar {
+            height: 100%;
+            width: 240px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            background: #027581;
+            color: #fff;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            padding: 0rem 1rem;
+        }
+
+        .sidebar-menu {
+            padding: 1rem;
+        }
+
+        .sidebar li {
+            margin-bottom: 1rem;
+        }
+
+
+        .sidebar a {
+            color: #fff;
+            font-size: .9rem;
+        }
+
+            .sidebar a span:last-child {
+                padding-left: .6rem;
+            }
+
+        .main-content {
+            position: relative;
+            margin-left: 240px;
+        }
+
+
         .wrapper {
             position: absolute;
             top: 50%;
@@ -94,7 +137,41 @@
 </head>
 
 <body>
-    <div>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span>Web Enterprise</span>
+            </h3>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="">
+                        <span class="ti-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-folder"></span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-settings"></span>
+                        <span>Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
         <div class="wrapper">
             <div class="left">
                 <img src="~/images/1.jpg" alt="student" width="100" />

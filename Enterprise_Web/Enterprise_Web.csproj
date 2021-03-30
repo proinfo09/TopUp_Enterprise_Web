@@ -193,6 +193,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\1.jpg" />
+    <Content Include="images\avatar3.png" />
     <Content Include="Models\Enterprise_Web_model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Enterprise_Web_model.Context.cs</LastGenOutput>
@@ -223,6 +224,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Marketing_Manager\MMDashboard4.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -269,6 +271,14 @@
     <Content Include="Views\Marketing_Manager\Edit.cshtml" />
     <Content Include="Views\Marketing_Manager\Index.cshtml" />
     <Content Include="Views\Students\ContributionsManagemnt.cshtml" />
+    <Content Include="Views\Marketing_Manager\MMDashboard.cshtml" />
+    <Content Include="Views\Marketing_Manager\MMDashboard3.cshtml" />
+    <Content Include="Views\Marketing_Manager\MMProfile.cshtml" />
+    <Content Include="Views\Marketing_Manager\MMEditProfile.cshtml" />
+    <Content Include="Views\Marketing_Manager\MMDashboard2.cshtml" />
+    <Content Include="Views\Marketing_Manager\MMProfile2.cshtml" />
+    <Content Include="Views\Marketing_Manager\MMEditProfile2.cshtml" />
+    <Content Include="Views\Marketing_Manager\MMDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
