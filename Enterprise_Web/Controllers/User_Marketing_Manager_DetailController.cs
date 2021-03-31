@@ -133,5 +133,19 @@ namespace Enterprise_Web.Controllers
         {
             return View();
         }
+
+        public ActionResult MmProfile(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User_Marketing_Manager_Detail user_Marketing_Manager_Detail = db.User_Marketing_Manager_Detail.Find(id);
+            if (user_Marketing_Manager_Detail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user_Marketing_Manager_Detail);
+        }
     }
 }

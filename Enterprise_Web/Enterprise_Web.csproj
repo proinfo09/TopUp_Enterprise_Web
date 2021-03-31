@@ -318,6 +318,9 @@
     <Content Include="Views\User_Marketing_Coordinator_Detail\McDashboard.cshtml" />
     <Content Include="Views\User_Marketing_Coordinator_Detail\McProfile.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\MmDashboard.cshtml" />
+    <Content Include="Views\User_Marketing_Manager_Detail\MmProfile.cshtml" />
+    <Content Include="Views\Contributions\Mm_ContributionManagments.cshtml" />
+    <Content Include="Views\Contributions\Mc_ContributionManagments.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

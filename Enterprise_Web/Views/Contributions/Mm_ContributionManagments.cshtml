@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Enterprise_Web.Models.Contribution>
+
+@{
+    ViewBag.Title = "Mm_ContributionManagments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mm_ContributionManagments</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.consID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cons_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cons_comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cons_submit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cons_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imgID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stdID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fileID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.consID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cons_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cons_comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cons_submit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cons_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.imgID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stdID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fileID)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Download", "Download", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

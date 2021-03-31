@@ -141,6 +141,17 @@ namespace Enterprise_Web.Controllers
             var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
             return View(contributions.ToList());
         }
-       
+
+        public ActionResult Mm_ContributionManagments()
+        {
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
+            return View(contributions.ToList());
+        }
+
+        public ActionResult Mc_ContributionManagments()
+        {
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
+            return View(contributions.ToList());
+        }
     }
 }
