@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Details</h2>
@@ -16,14 +17,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.cons_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.cons_FileName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cons_FileName)
         </dd>
 
         <dt>
@@ -51,6 +44,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.File.file_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.File.file_Title)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Image.img_Title)
         </dt>
 
@@ -59,11 +60,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Student.std_username)
+            @Html.DisplayNameFor(model => model.User_Student_Detail.userId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Student.std_username)
+            @Html.DisplayFor(model => model.User_Student_Detail.userId)
         </dd>
 
     </dl>

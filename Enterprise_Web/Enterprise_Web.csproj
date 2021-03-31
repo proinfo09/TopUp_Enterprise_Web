@@ -166,22 +166,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\Closure_DayController.cs" />
-    <Compile Include="Controllers\GuestsController.cs" />
+    <Compile Include="Controllers\ContributionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\Marketing_CoordinatorController.cs" />
-    <Compile Include="Controllers\Marketing_ManagerController.cs" />
-    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\User_Admin_DetailController.cs" />
+    <Compile Include="Controllers\User_Guest_DetailController.cs" />
+    <Compile Include="Controllers\User_Marketing_Coordinator_DetailController.cs" />
+    <Compile Include="Controllers\User_Marketing_Manager_DetailController.cs" />
+    <Compile Include="Controllers\User_Student_DetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Admin.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AspNetRole.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
@@ -209,38 +206,11 @@
     <Compile Include="Models\File.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Guest.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Marketing_Coordinator.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Marketing_Manager.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Student.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\User_Admin_Detail.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
@@ -286,16 +256,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\1.jpg" />
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <Content Include="Models\WebEnterpriseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WebEnterpriseModel.edmx</DependentUpon>
@@ -306,18 +266,6 @@
       <DependentUpon>WebEnterpriseModel.edmx</DependentUpon>
       <LastGenOutput>WebEnterpriseModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\Admins\AdminProfile.cshtml" />
-    <Content Include="Views\Contributions\ContributionsManagement.cshtml" />
-    <Content Include="Views\Closure_Day\Create.cshtml" />
-    <Content Include="Views\Closure_Day\Delete.cshtml" />
-    <Content Include="Views\Closure_Day\Details.cshtml" />
-    <Content Include="Views\Closure_Day\Edit.cshtml" />
-    <Content Include="Views\Closure_Day\Index.cshtml" />
-    <Content Include="Views\Marketing_Manager\Marketing_ManagerDashBoard.cshtml" />
-    <Content Include="Views\Marketing_Manager\Marketing_ManagerProfile.cshtml" />
-    <Content Include="Views\Marketing_Coordinator\Marketing_CoordinatorDashBoard.cshtml" />
-    <Content Include="Views\Marketing_Coordinator\Marketing_CoordinatorProfile.cshtml" />
-    <Content Include="Views\Marketing_Coordinator\StudentsManagement.cshtml" />
     <EntityDeploy Include="Models\WebEnterpriseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WebEnterpriseModel.Designer.cs</LastGenOutput>
@@ -330,6 +278,40 @@
     <Content Include="Views\User_Admin_Detail\Details.cshtml" />
     <Content Include="Views\User_Admin_Detail\Edit.cshtml" />
     <Content Include="Views\User_Admin_Detail\Index.cshtml" />
+    <Content Include="Views\User_Admin_Detail\View.cshtml" />
+    <Content Include="Views\User_Marketing_Manager_Detail\Create.cshtml" />
+    <Content Include="Views\User_Marketing_Manager_Detail\Delete.cshtml" />
+    <Content Include="Views\User_Marketing_Manager_Detail\Details.cshtml" />
+    <Content Include="Views\User_Marketing_Manager_Detail\Edit.cshtml" />
+    <Content Include="Views\User_Marketing_Manager_Detail\Index.cshtml" />
+    <Content Include="Views\User_Student_Detail\Create.cshtml" />
+    <Content Include="Views\User_Student_Detail\Delete.cshtml" />
+    <Content Include="Views\User_Student_Detail\Details.cshtml" />
+    <Content Include="Views\User_Student_Detail\Edit.cshtml" />
+    <Content Include="Views\User_Student_Detail\Index.cshtml" />
+    <Content Include="Views\User_Marketing_Coordinator_Detail\Create.cshtml" />
+    <Content Include="Views\User_Marketing_Coordinator_Detail\Delete.cshtml" />
+    <Content Include="Views\User_Marketing_Coordinator_Detail\Details.cshtml" />
+    <Content Include="Views\User_Marketing_Coordinator_Detail\Edit.cshtml" />
+    <Content Include="Views\User_Marketing_Coordinator_Detail\Index.cshtml" />
+    <Content Include="Views\User_Guest_Detail\Create.cshtml" />
+    <Content Include="Views\User_Guest_Detail\Delete.cshtml" />
+    <Content Include="Views\User_Guest_Detail\Details.cshtml" />
+    <Content Include="Views\User_Guest_Detail\Edit.cshtml" />
+    <Content Include="Views\User_Guest_Detail\Index.cshtml" />
+    <Content Include="Views\Closure_Day\Create.cshtml" />
+    <Content Include="Views\Closure_Day\Delete.cshtml" />
+    <Content Include="Views\Closure_Day\Details.cshtml" />
+    <Content Include="Views\Closure_Day\Edit.cshtml" />
+    <Content Include="Views\Closure_Day\Index.cshtml" />
+    <Content Include="Views\Contributions\Create.cshtml" />
+    <Content Include="Views\Contributions\Delete.cshtml" />
+    <Content Include="Views\Contributions\Details.cshtml" />
+    <Content Include="Views\Contributions\Edit.cshtml" />
+    <Content Include="Views\Contributions\Index.cshtml" />
+    <Content Include="Views\User_Admin_Detail\AdminDashboard.cshtml" />
+    <Content Include="Views\User_Admin_Detail\AdminProfile.cshtml" />
+    <Content Include="Views\Contributions\ContributionManagments.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -346,13 +328,6 @@
     <None Include="_bin_deployableAssemblies\amd64\sqlceca40.dll" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -472,41 +447,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Contributions\Create.cshtml" />
-    <Content Include="Views\Contributions\Delete.cshtml" />
-    <Content Include="Views\Contributions\Details.cshtml" />
-    <Content Include="Views\Contributions\Edit.cshtml" />
-    <Content Include="Views\Contributions\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Students\Create.cshtml" />
-    <Content Include="Views\Students\Delete.cshtml" />
-    <Content Include="Views\Students\Details.cshtml" />
-    <Content Include="Views\Students\Edit.cshtml" />
-    <Content Include="Views\Students\Style_Index.cshtml" />
-    <Content Include="Views\Admins\Create.cshtml" />
-    <Content Include="Views\Admins\Delete.cshtml" />
-    <Content Include="Views\Admins\Details.cshtml" />
-    <Content Include="Views\Admins\Edit.cshtml" />
-    <Content Include="Views\Admins\Index.cshtml" />
-    <Content Include="Views\Guests\Create.cshtml" />
-    <Content Include="Views\Guests\Delete.cshtml" />
-    <Content Include="Views\Guests\Details.cshtml" />
-    <Content Include="Views\Guests\Edit.cshtml" />
-    <Content Include="Views\Guests\Index.cshtml" />
-    <Content Include="Views\Marketing_Coordinator\Create.cshtml" />
-    <Content Include="Views\Marketing_Coordinator\Delete.cshtml" />
-    <Content Include="Views\Marketing_Coordinator\Details.cshtml" />
-    <Content Include="Views\Marketing_Coordinator\Edit.cshtml" />
-    <Content Include="Views\Marketing_Coordinator\Index.cshtml" />
-    <Content Include="Views\Marketing_Manager\Create.cshtml" />
-    <Content Include="Views\Marketing_Manager\Delete.cshtml" />
-    <Content Include="Views\Marketing_Manager\Details.cshtml" />
-    <Content Include="Views\Marketing_Manager\Edit.cshtml" />
-    <Content Include="Views\Marketing_Manager\Index.cshtml" />
-    <Content Include="Views\Students\ContributionsManagement.cshtml" />
-    <Content Include="Views\Students\StudentDashBoard.cshtml" />
-    <Content Include="Views\Students\StudentProfile.cshtml" />
-    <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -517,7 +458,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Admins\AdminDashBoard.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />

@@ -129,5 +129,27 @@ namespace Enterprise_Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult AdminDashboard()
+        {
+            var user_Admin_Detail = db.User_Admin_Detail.Include(u => u.AspNetUser);
+            return View(user_Admin_Detail.ToList());
+        }
+
+
+        // GET: User_Admin_Detail/Details/5
+        public ActionResult AdminProfile(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User_Admin_Detail user_Admin_Detail = db.User_Admin_Detail.Find(id);
+            if (user_Admin_Detail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user_Admin_Detail);
+        }
     }
 }

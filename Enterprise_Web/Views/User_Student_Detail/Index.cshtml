@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Enterprise_Web.Models.User_Student_Detail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.std_fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_doB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.std_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_doB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.std_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.stdID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.stdID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.stdID })
+        </td>
+    </tr>
+}
+
+</table>
