@@ -1,0 +1,20 @@
+﻿
+
+@{
+    ViewBag.Title = "StudentDashBoard";
+}
+
+<h2>StudentDashBoard</h2>
+
+<div class="list-group">
+    <ul style=" font-size: 20px">
+        <li>
+            @Html.ActionLink("My profile", "StudentProfile", "User_Student_Detail")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Contributions", "ContributionsManagement", "Students")
+        </li>
+    </ul>
+</div>
+
+

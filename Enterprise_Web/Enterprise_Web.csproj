@@ -312,6 +312,9 @@
     <Content Include="Views\User_Admin_Detail\AdminDashboard.cshtml" />
     <Content Include="Views\User_Admin_Detail\AdminProfile.cshtml" />
     <Content Include="Views\Contributions\ContributionManagments.cshtml" />
+    <Content Include="Views\User_Student_Detail\StudentDashboard.cshtml" />
+    <Content Include="Views\User_Student_Detail\StudentProfile.cshtml" />
+    <Content Include="Views\User_Student_Detail\StudentContribution.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

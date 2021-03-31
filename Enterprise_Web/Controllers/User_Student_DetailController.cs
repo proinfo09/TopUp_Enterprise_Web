@@ -79,7 +79,6 @@ namespace Enterprise_Web.Controllers
 
         // POST: User_Student_Detail/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "userId,stdID,std_fullname,std_mail,std_gender,std_doB,std_phone")] User_Student_Detail user_Student_Detail)
@@ -127,6 +126,34 @@ namespace Enterprise_Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // GET: User_Student_Detail
+        public ActionResult StudentDashboard()
+        {
+            var user_Student_Detail = db.User_Student_Detail.Include(u => u.AspNetUser);
+            return View(user_Student_Detail.ToList());
+        }
+
+        // GET: User_Student_Detail/Details/5
+        public ActionResult StudentProfile(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User_Student_Detail user_Student_Detail = db.User_Student_Detail.Find(id);
+            if (user_Student_Detail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user_Student_Detail);
+        }
+
+        public ActionResult StudentContribution()
+        {
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
+            return View(contributions.ToList());
         }
     }
 }
