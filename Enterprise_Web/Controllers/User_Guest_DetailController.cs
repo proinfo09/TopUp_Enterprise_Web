@@ -128,5 +128,16 @@ namespace Enterprise_Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult GuestDashboard()
+        {
+            return View();
+        }
+
+        public ActionResult GuestContribution(int? id)
+        {
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
+            return View(contributions.ToList().Where(item => item.stdID != id));
+        }
     }
 }
