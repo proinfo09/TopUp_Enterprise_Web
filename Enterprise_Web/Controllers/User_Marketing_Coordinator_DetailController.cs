@@ -128,5 +128,24 @@ namespace Enterprise_Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult McDashboard()
+        {           
+            return View();
+        }
+
+        public ActionResult McProfile(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User_Marketing_Coordinator_Detail user_Marketing_Coordinator_Detail = db.User_Marketing_Coordinator_Detail.Find(id);
+            if (user_Marketing_Coordinator_Detail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user_Marketing_Coordinator_Detail);
+        }
     }
 }

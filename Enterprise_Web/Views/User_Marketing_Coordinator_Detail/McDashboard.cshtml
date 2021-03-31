@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "McDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Marketing Cordinator Dashboard</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="list-group">
+    <ul style=" font-size: 20px">
+        <li>
+            @Html.ActionLink("My profile", "MCProfile", "User_Marketing_Coordinator_Detail")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Contributions", "ContributionManagements", "Contributions")
+        </li>
+        <li>
+            @Html.ActionLink("Dashboard(đang làm)", "DashboardReport", "User_Marketing_Coordinator_Detail")
+        </li>
+        <li>
+            @Html.ActionLink("Report(đang làm)", "Report", "User_Marketing_Coordinator_Detail")
+        </li>
+        <li>
+            @Html.ActionLink("Setting Closure date", "Index", "Closure_Day")
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+</div>
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Manage Accounts
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("Manage Students", "Index", "Students")</li>
+    </ul>
+</div>
+
