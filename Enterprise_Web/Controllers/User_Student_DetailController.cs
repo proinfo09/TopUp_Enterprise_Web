@@ -150,10 +150,10 @@ namespace Enterprise_Web.Controllers
             return View(user_Student_Detail);
         }
 
-        public ActionResult StudentContribution()
+        public ActionResult StudentContribution(int? id)
         {
             var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
-            return View(contributions.ToList());
+            return View(contributions.ToList().Where(item => item.stdID != id));
         }
     }
 }
