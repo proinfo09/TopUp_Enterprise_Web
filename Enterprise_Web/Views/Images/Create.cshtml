@@ -1,0 +1,29 @@
+﻿@model Enterprise_Web.Models.Image
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Images", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Image</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.img_Title)
+        </div>
+        <div class="editor-field">
+            <input id="img_Title" title="Upload a product image"
+                   type="file" name="file" />
+        </div>
+        <p><input type="submit" value="Create" /></p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

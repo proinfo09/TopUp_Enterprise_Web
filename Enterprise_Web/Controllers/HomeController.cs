@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,23 +9,31 @@ namespace Enterprise_Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult File()
         {
-            return View();
+            var path = Server.MapPath("~/Content/Files/");
+
+            var dir = new DirectoryInfo(path);
+
+            var files = dir.EnumerateFiles().Select(f => f.Name);
+
+            return View(files);
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult File(HttpPostedFileBase file)
         {
-            ViewBag.Message = "Your application description page.";
+            var path = Path.Combine(Server.MapPath("~/Content/Files/"), file.FileName);
 
-            return View();
-        }
+            var data = new byte[file.ContentLength];
+            file.InputStream.Read(data, 0, file.ContentLength);
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            using (var sw = new FileStream(path, FileMode.Create))
+            {
+                sw.Write(data, 0, data.Length);
+            }
 
-            return View();
+            return RedirectToAction("File");
         }
     }
 }
