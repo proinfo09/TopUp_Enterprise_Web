@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Enterprise_Web.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,6 +35,25 @@ namespace Enterprise_Web.Controllers
             }
 
             return RedirectToAction("File");
+        }
+
+        public ActionResult TermCondi()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult TermCondi(TermCondiModels viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            return Content("Success");
+        }
+        public ActionResult Index()
+        {
+            return View();
         }
     }
 }
