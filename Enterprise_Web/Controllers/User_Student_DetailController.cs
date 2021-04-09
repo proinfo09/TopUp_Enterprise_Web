@@ -131,8 +131,7 @@ namespace Enterprise_Web.Controllers
         // GET: User_Student_Detail
         public ActionResult StudentDashboard()
         {
-            var user_Student_Detail = db.User_Student_Detail.Include(u => u.AspNetUser);
-            return View(user_Student_Detail.ToList());
+            return View();
         }
 
         // GET: User_Student_Detail/Details/5
@@ -153,7 +152,21 @@ namespace Enterprise_Web.Controllers
         public ActionResult StudentContribution(int? id)
         {
             var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
-            return View(contributions.ToList().Where(item => item.stdID != id));
+            return View(contributions.ToList().Where(item => item.stdID == id));
+        }
+
+        public ActionResult CreateContribution()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateContribution(ContributionViewModels model)
+        {
+
+            return View();
         }
     }
 }

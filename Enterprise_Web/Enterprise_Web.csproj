@@ -198,6 +198,7 @@
     <Compile Include="Models\Contribution.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContributionViewModels.cs" />
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
@@ -285,10 +286,10 @@
     <Content Include="Views\User_Marketing_Manager_Detail\Details.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\Edit.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\Index.cshtml" />
-    <Content Include="Views\User_Student_Detail\Create.cshtml" />
-    <Content Include="Views\User_Student_Detail\Delete.cshtml" />
-    <Content Include="Views\User_Student_Detail\Details.cshtml" />
-    <Content Include="Views\User_Student_Detail\Edit.cshtml" />
+    <Content Include="Views\User_Student_Detail\CreateContribution.cshtml" />
+    <Content Include="Views\User_Student_Detail\DeleteContribution.cshtml" />
+    <Content Include="Views\User_Student_Detail\DetailsContribution.cshtml" />
+    <Content Include="Views\User_Student_Detail\EditContribution.cshtml" />
     <Content Include="Views\User_Student_Detail\Index.cshtml" />
     <Content Include="Views\User_Marketing_Coordinator_Detail\Create.cshtml" />
     <Content Include="Views\User_Marketing_Coordinator_Detail\Delete.cshtml" />
@@ -330,6 +331,10 @@
     <Content Include="Views\Images\Edit.cshtml" />
     <Content Include="Views\Images\Index.cshtml" />
     <Content Include="Views\Home\File.cshtml" />
+    <Content Include="Views\User_Student_Detail\Details.cshtml" />
+    <Content Include="Views\User_Student_Detail\Create.cshtml" />
+    <Content Include="Views\User_Student_Detail\Edit.cshtml" />
+    <Content Include="Views\User_Student_Detail\Delete.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
