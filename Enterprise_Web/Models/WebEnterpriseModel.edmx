@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -67,6 +67,14 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="facID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="BlogPost">
+          <Key>
+            <PropertyRef Name="BlogPostID" />
+          </Key>
+          <Property Name="BlogPostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Closure Day">
           <Key>
             <PropertyRef Name="csdID" />
@@ -75,6 +83,15 @@
           <Property Name="startDay" Type="date" Nullable="false" />
           <Property Name="endDay" Type="date" Nullable="false" />
           <Property Name="finalDay" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="BlogPostID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Contributions">
           <Key>
@@ -191,6 +208,18 @@
             </Principal>
             <Dependent Role="AspNetUsers">
               <PropertyRef Name="facID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cmt_BlogPost">
+          <End Role="BlogPost" Type="Self.BlogPost" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BlogPost">
+              <PropertyRef Name="BlogPostID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="BlogPostID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -341,7 +370,9 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogPost" EntityType="Self.BlogPost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Closure Day" EntityType="Self.Closure Day" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contributions" EntityType="Self.Contributions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="File" EntityType="Self.File" Schema="dbo" store:Type="Tables" />
@@ -358,6 +389,10 @@
           <AssociationSet Name="fk_AspUser_Faculty_facID" Association="Self.fk_AspUser_Faculty_facID">
             <End Role="Faculty" EntitySet="Faculty" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cmt_BlogPost" Association="Self.FK_Cmt_BlogPost">
+            <End Role="BlogPost" EntitySet="BlogPost" />
+            <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
           <AssociationSet Name="fk_cons_fileidID" Association="Self.fk_cons_fileidID">
             <End Role="File" EntitySet="File" />
@@ -404,8 +439,7 @@
             <End Role="User_Student_Detail" EntitySet="User_Student_Detail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -794,7 +828,44 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="BlogPosts" EntityType="Model.BlogPost" />
+          <EntitySet Name="Comments" EntityType="Model.Comment" />
+          <AssociationSet Name="FK_Cmt_BlogPost" Association="Model.FK_Cmt_BlogPost">
+            <End Role="BlogPost" EntitySet="BlogPosts" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="BlogPost">
+          <Key>
+            <PropertyRef Name="BlogPostID" />
+          </Key>
+          <Property Name="BlogPostID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comments" Relationship="Model.FK_Cmt_BlogPost" FromRole="BlogPost" ToRole="Comment" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BlogPostID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BlogPost" Relationship="Model.FK_Cmt_BlogPost" FromRole="Comment" ToRole="BlogPost" />
+        </EntityType>
+        <Association Name="FK_Cmt_BlogPost">
+          <End Type="Model.BlogPost" Role="BlogPost" Multiplicity="1" />
+          <End Type="Model.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BlogPost">
+              <PropertyRef Name="BlogPostID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="BlogPostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -978,6 +1049,25 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="BlogPosts">
+            <EntityTypeMapping TypeName="Model.BlogPost">
+              <MappingFragment StoreEntitySet="BlogPost">
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BlogPostID" ColumnName="BlogPostID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="Model.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="BlogPostID" ColumnName="BlogPostID" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

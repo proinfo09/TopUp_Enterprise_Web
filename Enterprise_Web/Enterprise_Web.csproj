@@ -92,6 +92,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PusherServer, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PusherServer.4.4.0\lib\net45\PusherServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -192,7 +195,13 @@
     <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BlogPost.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Closure_Day.cs">
+      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comment.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Contribution.cs">
@@ -330,6 +339,9 @@
     <Content Include="Views\Images\Edit.cshtml" />
     <Content Include="Views\Images\Index.cshtml" />
     <Content Include="Views\Home\File.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -464,7 +476,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />

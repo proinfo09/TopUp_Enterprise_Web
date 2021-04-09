@@ -1,14 +1,19 @@
-﻿using System;
+﻿using Enterprise_Web.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using PusherServer;
+
 
 namespace Enterprise_Web.Controllers
 {
     public class HomeController : Controller
     {
+        private WebEnterpriseEntities db = new WebEnterpriseEntities();
         public ActionResult File()
         {
             var path = Server.MapPath("~/Content/Files/");
@@ -34,6 +39,48 @@ namespace Enterprise_Web.Controllers
             }
 
             return RedirectToAction("File");
+        }
+
+        
+        public ActionResult Index()
+        {
+            return View(db.BlogPosts.AsQueryable());
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(BlogPost post)
+        {
+            db.BlogPosts.Add(post);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Details(int? id)
+        {
+            return View(db.BlogPosts.Find(id));
+        }
+
+        public ActionResult Comments(int? id)
+        {
+            var comments = db.Comments.Where(x => x.BlogPostID == id).ToArray();
+            return Json(comments, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Comment(Comment data)
+        {
+            db.Comments.Add(data);
+            db.SaveChanges();
+            var options = new PusherOptions();
+            options.Cluster = "ap1";
+            var pusher = new Pusher("1185884", "9711cf863b669984e1f2", "73a4067f2b75a0bfe4eb", options);
+            ITriggerResult result = await pusher.TriggerAsync("asp_channel", "asp_event", data);
+            return Content("ok");
         }
     }
 }

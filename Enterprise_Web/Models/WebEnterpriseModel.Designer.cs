@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Study\TopUp_Enterprise_Web\Enterprise_Web\Models\WebEnterpriseModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Admin\Desktop\New folder (3)\TopUp_Enterprise_Web\Enterprise_Web\Models\WebEnterpriseModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
