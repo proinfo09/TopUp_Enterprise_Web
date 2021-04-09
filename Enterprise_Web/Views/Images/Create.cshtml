@@ -21,9 +21,23 @@
             <input id="img_Title" title="Upload a product image"
                    type="file" name="file" />
         </div>
-        <p><input type="submit" value="Create" /></p>
+        <p><input type="submit" id="btnSubmit" class="button" value="Submit" /></p>
     </fieldset>
 }
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script>
+    window.onload = function () {
+        var myInterval = setInterval(checkTime, 1000);
+        function checkTime() {
+            var now = new Date();
+            var dateLimit = new Date("2021-01-04T15:00:00")
+            if (now > dateLimit) {
+                clearInterval(myInterval);
+                document.getElementById("btnSubmit").disabled = true;
+            }
+        }
+    }
+</script>
