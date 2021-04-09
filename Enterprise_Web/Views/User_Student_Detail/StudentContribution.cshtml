@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Enterprise_Web.Models.Contribution>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateContribution")
 </p>
 <table class="table">
     <tr>
@@ -53,9 +53,9 @@
             @Html.DisplayFor(modelItem => item.User_Student_Detail.userId)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.consID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.consID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.consID })
+            @Html.ActionLink("Edit", "EditContribution", new { id=item.consID }) |
+            @Html.ActionLink("Details", "DetailsContribution", new { id=item.consID }) |
+            @Html.ActionLink("Delete", "DeleteContribution", new { id=item.consID })
         </td>
     </tr>
 }

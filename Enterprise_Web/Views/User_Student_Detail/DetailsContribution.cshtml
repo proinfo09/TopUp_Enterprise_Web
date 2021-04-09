@@ -1,0 +1,75 @@
+﻿@model Enterprise_Web.Models.Contribution
+
+@{
+    ViewBag.Title = "DetailsContribution";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contribution</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cons_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cons_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cons_comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cons_comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cons_submit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cons_submit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cons_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cons_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.File.file_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.File.file_Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image.img_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image.img_Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Student_Detail.userId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Student_Detail.userId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.consID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

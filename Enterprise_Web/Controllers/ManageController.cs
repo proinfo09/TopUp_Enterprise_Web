@@ -13,6 +13,7 @@ namespace Enterprise_Web.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        private WebEnterpriseEntities db = new WebEnterpriseEntities();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -97,6 +98,15 @@ namespace Enterprise_Web.Controllers
                 message = ManageMessageId.Error;
             }
             return RedirectToAction("ManageLogins", new { Message = message });
+        }
+
+        public ActionResult Dashboard()
+        {
+            var userId = User.Identity.GetUserId();
+            //var userRole = db.AspNetRoles.Include(c => c.AspNetUser);
+
+            switch (userId) { }
+            return View();
         }
 
         //

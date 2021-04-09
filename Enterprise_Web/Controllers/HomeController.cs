@@ -14,6 +14,11 @@ namespace Enterprise_Web.Controllers
     public class HomeController : Controller
     {
         private WebEnterpriseEntities db = new WebEnterpriseEntities();
+        public ActionResult Index()
+        {
+            return View();
+        }
+        
         public ActionResult File()
         {
             var path = Server.MapPath("~/Content/Files/");
@@ -81,6 +86,23 @@ namespace Enterprise_Web.Controllers
             var pusher = new Pusher("1185884", "9711cf863b669984e1f2", "73a4067f2b75a0bfe4eb", options);
             ITriggerResult result = await pusher.TriggerAsync("asp_channel", "asp_event", data);
             return Content("ok");
+        public ActionResult TermCondi()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult TermCondi(TermCondiModels viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            return Content("Success");
+        }
+        public ActionResult Index()
+        {
+            return View();
         }
     }
 }

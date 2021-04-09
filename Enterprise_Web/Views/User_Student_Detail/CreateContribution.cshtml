@@ -1,16 +1,16 @@
 ﻿@model Enterprise_Web.Models.Contribution
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "CreateContribution";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>Contribution</h4>
         <hr />
@@ -77,10 +77,6 @@
             </div>
         </div>
     </div>
-
-   
-        
-
 }
 
 <div>
