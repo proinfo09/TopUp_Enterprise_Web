@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -163,10 +164,60 @@ namespace Enterprise_Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateContribution(ContributionViewModels model)
+        public ActionResult CreateContribution(ContributionViewModels model, HttpPostedFileBase file, HttpPostedFileBase imgfile)
         {
+            Image image = new Image();
+            Models.File title = new Models.File();
+            Contribution contribution = new Contribution();
+            if (ModelState.IsValid)
+            {
+                //add file doc
+                var path = Path.Combine(Server.MapPath("~/Content/Files/"), file.FileName);
 
-            return View();
+                var data = new byte[file.ContentLength];
+                file.InputStream.Read(data, 0, file.ContentLength);
+
+                using (var sw = new FileStream(path, FileMode.Create))
+                {
+                    sw.Write(data, 0, data.Length);
+                }
+                if (file != null)
+                {
+                    title.file_Title = file.FileName;
+                }
+                db.Files.Add(title);
+                db.SaveChanges();
+
+                //add image
+
+                if (imgfile != null)
+                {
+                    imgfile.SaveAs(HttpContext.Server.MapPath("~/image/")+ imgfile.FileName);
+                    image.img_Title = imgfile.FileName;
+                }
+                db.Images.Add(image);
+                db.SaveChanges();
+                
+
+                int latestFileId = image.imgID;
+                int latestImageId = title.fileID;
+
+                contribution.consID = model.consID;
+                contribution.cons_Name = model.cons_Name;
+                contribution.cons_comment = model.cons_comment;
+                contribution.cons_status = model.cons_status;
+                contribution.cons_submit = model.cons_submit;
+                contribution.fileID = latestFileId;
+                contribution.imgID = latestImageId;
+                contribution.stdID = model.stdID;
+                db.Contributions.Add(contribution);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
+            ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title", contribution.imgID);
+            ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
+            return View(contribution);
         }
     }
 }
