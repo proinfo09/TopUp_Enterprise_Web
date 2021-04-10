@@ -1,4 +1,4 @@
-﻿@model Enterprise_Web.Models.Contribution
+﻿@model Enterprise_Web.Models.ContributionViewModels
 
 @{
     ViewBag.Title = "CreateContribution";
@@ -7,10 +7,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Contribution</h4>
         <hr />
@@ -47,38 +47,38 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.imgID, "imgID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("imgID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.imgID, "", new { @class = "text-danger" })
-            </div>
+        
+        
+        
+        <div>
+            @using (Html.BeginForm("File", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <input type="File" name="file" id="file" value="Choose File" />
+                
+            }
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.stdID, "stdID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("stdID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.stdID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.fileID, "fileID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("fileID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.fileID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+        
     </div>
 }
 
+@using (Html.BeginForm("Create", "Images", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Image</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.img_Title)
+        </div>
+        <div class="editor-field">
+            <input id="img_Title" title="Upload a product image"
+                   type="file" name="file" />
+        </div>
+        <p><input type="submit" id="btnSubmit" class="button" value="Submit" /></p>
+    </fieldset>
+}
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

@@ -56,9 +56,5 @@ namespace Enterprise_Web.Controllers
 
             return Content("Success");
         }
-        public ActionResult Index()
-        {
-            return View();
-        }
     }
 }
