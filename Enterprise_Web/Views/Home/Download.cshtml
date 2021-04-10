@@ -123,6 +123,26 @@
         </tr>
 
     }
+
+    @*validate if the checkbox is selected or not, and the Sweet Alert popup will be shown to the end user.*@
+    <script>
+        //code for validation using checkbox
+        function validateData() {
+            if ($('[type="checkbox"]').is(':checked')) {
+                sweetAlert("Congratulations!!", "Your file is downloaded", "success");
+                return true;
+            }
+            //else if ($('[type="checkbox"]').not(':checked')) {
+            //    sweetAlert("Selection Was Empty!!", "Please select at least one", "error");
+            //    return false;
+            //}
+            else {
+                sweetAlert("Selection Was Empty!!", "Please select at least one", "error");
+                return false;
+            }
+            <input type="submit" id="fileUploadExcel" onclick="return validateData();" class="button button4" value="Download" />
+        }
+    </script>
 </table>
 
 
