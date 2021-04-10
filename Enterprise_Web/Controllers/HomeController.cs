@@ -136,7 +136,7 @@ namespace Enterprise_Web.Controllers
             foreach (string file in selectedfiles)
             {
                 zip.CreateEntryFromFile(Server.MapPath
-                     ("~/images/" + file), file);
+                     ("~/images" + file), file);
             }
             zip.Dispose();
             string input = "Filename.zip";
