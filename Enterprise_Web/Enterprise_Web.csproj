@@ -281,7 +281,6 @@
     <Content Include="images\Jellyfish.jpg" />
     <Content Include="images\Koala.jpg" />
     <Content Include="images\Tulips.jpg" />
-    <Content Include="image\1.jpg" />
     <Content Include="Models\WebEnterpriseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WebEnterpriseModel.edmx</DependentUpon>
