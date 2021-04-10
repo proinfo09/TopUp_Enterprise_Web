@@ -153,6 +153,16 @@ namespace Enterprise_Web.Controllers
         public ActionResult StudentContribution(int? id)
         {
             var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User_Student_Detail user_Student_Detail = db.User_Student_Detail.Find(id);
+            if (user_Student_Detail == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.userId = new SelectList(db.AspNetUsers, "Id", "Email", user_Student_Detail.userId);
             return View(contributions.ToList().Where(item => item.stdID == id));
         }
 
