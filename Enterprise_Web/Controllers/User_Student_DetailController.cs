@@ -231,7 +231,7 @@ namespace Enterprise_Web.Controllers
             ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
             ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title", contribution.imgID);
             ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
-            return View(contribution);
+            return View(model);
         }
     }
 }

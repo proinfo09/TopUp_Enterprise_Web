@@ -7,9 +7,11 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("CreateContribution", "User_Student_Detail", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
 
     <div class="form-horizontal">
         <h4>Contribution</h4>
@@ -47,37 +49,26 @@
             </div>
         </div>
 
-        
-        
-        
-        <div>
-            @using (Html.BeginForm("File", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <input type="File" name="file" id="file" value="Choose File" />
-                
-            }
-        </div>
 
-        
-    </div>
-}
 
-@using (Html.BeginForm("Create", "Images", null, FormMethod.Post,
-                              new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Image</legend>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.img_Title)
-        </div>
-        <div class="editor-field">
-            <input id="img_Title" title="Upload a product image"
-                   type="file" name="file" />
-        </div>
+
+
+        <input type="File" name="file" id="file" value="Choose File" />
+        <fieldset>
+            <legend>Image</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.img_Title)
+            </div>
+            <div class="editor-field">
+                <input id="img_Title" title="Upload a product image"
+                       type="file" name="file" />
+            </div>
+
+        </fieldset>
         <p><input type="submit" id="btnSubmit" class="button" value="Submit" /></p>
-    </fieldset>
+
+
+    </div>
 }
 <div>
     @Html.ActionLink("Back to List", "Index")
