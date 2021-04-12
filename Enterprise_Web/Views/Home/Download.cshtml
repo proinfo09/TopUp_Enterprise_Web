@@ -1,5 +1,5 @@
 ﻿@model List<string>
-<title>Download In Zip</title>
+<title>Satyaprakash File Download In Zip</title>
 <link href="~/App_Content/CSS/bootstrap.min.css" rel="stylesheet" />
 <link href="~/App_Content/CSS/font-awesome.min.css" rel="stylesheet" />
 <style>
@@ -76,75 +76,19 @@
 </div>
 
 <script>
-
     //code for validation using checkbox
     function validateData() {
         if ($('[type="checkbox"]').is(':checked')) {
             sweetAlert("Congratulations!!", "Your file is downloaded", "success");
             return true;
         }
-        //else if ($('[type="checkbox"]').not(':checked')) {
-        //    sweetAlert("Selection Was Empty!!", "Please select at least one", "error");
-        //    return false;
-        //}
+        else if ($('[type="checkbox"]').not(':checked')) {
+            sweetAlert("Selection Was Empty!!", "Please select at least one", "error");
+            return false;
+        }
         else {
             sweetAlert("Selection Was Empty!!", "Please select at least one", "error");
             return false;
         }
     }
-</script>
-
-
-@*put checkbox, and uploaded file name display and button*@
-<table align="center" border="1" cellpadding="4" cellspacing="4">
-    <thead>
-        <tr>
-            <th style="background-color: Yellow;color: blue">Select</th>
-            <th style="background-color: Yellow;color: blue">File Name</th>
-        </tr>
-    </thead>
-    @using (Html.BeginForm("ProcessForm", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
-    {
-        foreach (string file in Model)
-        {
-            <tr>
-                <td>
-                    <input type="checkbox" id="fileUpload"
-                           name="selectedfiles" value="@file" />
-                </td>
-                <td style="color: blue">@file</td>
-            </tr>
-
-        }
-        <tr>
-            <td colspan="2">
-                <input type="submit" id="fileUploadExcel" onclick="return validateData();" class="button button4" value="Download" />
-            </td>
-        </tr>
-
-    }
-</table>
-
-
-    @*validate if the checkbox is selected or not, and the Sweet Alert popup will be shown to the end user.*@
-<script>
-    //code for validation using checkbox
-    function validateData() {
-        if ($('[type="checkbox"]').is(':checked')) {
-            sweetAlert("Congratulations!!", "Your file is downloaded", "success");
-            return true;
-        }
-        //else if ($('[type="checkbox"]').not(':checked')) {
-        //    sweetAlert("Selection Was Empty!!", "Please select at least one", "error");
-        //    return false;
-        //}
-        else {
-            sweetAlert("Selection Was Empty!!", "Please select at least one", "error");
-            return false;
-        }
-        <input type="submit" id="fileUploadExcel" onclick="return validateData();" class="button button4" value="Download" />
-    }
-</script>
-
-
-
+</script> 

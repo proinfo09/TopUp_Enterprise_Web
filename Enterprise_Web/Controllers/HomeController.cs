@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using PusherServer;
-using System.IO.Compression;    
+using System.IO.Compression;   
+
 
 
 namespace Enterprise_Web.Controllers
@@ -109,7 +110,7 @@ namespace Enterprise_Web.Controllers
 
 
         //Zip & Download all sellected article
-        public ActionResult Index2()
+        public ActionResult Download()
         {
             string[] files = Directory.GetFiles(
                             Server.MapPath("~/images"));
@@ -122,24 +123,30 @@ namespace Enterprise_Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProcessForm(List<string> selectedfiles)
+        public FileResult ProcessForm(List<string> selectedfiles)
         {
             if (System.IO.File.Exists(Server.MapPath
-                              ("~/zipfiles/bundle.zip")))
+                              ("~/ZipFiles/bundle.zip")))
             {
                 System.IO.File.Delete(Server.MapPath
-                              ("~/zipfiles/bundle.zip"));
+                              ("~/ZipFiles/bundle.zip"));
             }
             ZipArchive zip = ZipFile.Open(Server.MapPath
-                     ("~/zipfiles/bundle.zip"), ZipArchiveMode.Create);
+                     ("~/ZipFiles/bundle.zip"), ZipArchiveMode.Create);
             foreach (string file in selectedfiles)
             {
                 zip.CreateEntryFromFile(Server.MapPath
                      ("~/images/" + file), file);
             }
             zip.Dispose();
-            return File(Server.MapPath("~/zipfiles/bundle.zip"),
-                      "application/zip", "Article.zip");
+            string input = "Filename.zip";
+            return File(Server.MapPath("~/ZipFiles/bundle.zip"),
+                      "application/zip", input);
         }
+        //public FileResult ProcessForm()
+        //{
+        //    string path = ExcelGenerationCode(fileName);
+        //    return File(path, "application/vnd.ms-excel", "your download file name");
+        //}
     }
 }
