@@ -102,10 +102,27 @@ namespace Enterprise_Web.Controllers
 
         public ActionResult Dashboard()
         {
-            var userId = User.Identity.GetUserId();
-            //var userRole = db.AspNetRoles.Include(c => c.AspNetUser);
-
-            switch (userId) { }
+            AspNetUser user = db.AspNetUsers.Find(User.Identity.GetUserId());
+            var role = user.AspNetRoles.FirstOrDefault();
+            switch (role.Id) {
+                case "1": //if role is admin 
+                    return Redirect("User_Admin_Detail/AdminDashboard");
+                    break;
+                case "2": //if role is admin 
+                    return Redirect("User_Marketing_Manager_Detail/MmDashboard");
+                    break;
+                case "3": //if role is admin 
+                    return Redirect("User_Marketing_Coordinator_Detail/McDashboard");
+                    break;
+                case "4": //if role is admin 
+                    return RedirectToAction("StudentDashboard");
+                    break;
+                case "5": //if role is admin 
+                    return Redirect("User_Guest_Detail/GuestDashboard");
+                    break;
+                default:
+                    break;
+            }
             return View();
         }
 

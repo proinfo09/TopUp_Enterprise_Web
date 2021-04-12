@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Enterprise_Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Enterprise_Web.Controllers
 {
@@ -150,10 +151,23 @@ namespace Enterprise_Web.Controllers
             return View(user_Student_Detail);
         }
 
-        public ActionResult StudentContribution(int? id)
+        public ActionResult StudentContribution()
         {
+
+            var userId = User.Identity.GetUserId();
             var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
-            return View(contributions.ToList().Where(item => item.stdID == id));
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AspNetUser user = db.AspNetUsers.Find(userId);
+            var std = user.User_Student_Detail.FirstOrDefault();
+            
+            if (std == null)
+            {
+                return HttpNotFound();
+            }
+            return View(contributions.ToList().Where(item => item.stdID == std.stdID));
         }
 
         public ActionResult CreateContribution()
