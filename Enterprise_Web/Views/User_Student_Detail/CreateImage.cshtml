@@ -2,7 +2,7 @@
 
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "CreateImage";
     Layout = null;
     WebGrid webGrid = new WebGrid(source: Model, canSort: false, canPage: false);
 }
@@ -52,7 +52,7 @@
     </style>
 </head>
 <body>
-    @using (Html.BeginForm("Create", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("CreateImage", "User_Student_Detail", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <input type="file" name="postedFile" />
         <input type="submit" id="btnUpload" value="Upload" />

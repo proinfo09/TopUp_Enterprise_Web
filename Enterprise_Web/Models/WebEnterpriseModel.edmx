@@ -124,8 +124,10 @@
             <PropertyRef Name="imgID" />
           </Key>
           <Property Name="imgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="img_Title" Type="varchar" MaxLength="50" />
+          <Property Name="img_Title" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="consID" Type="int" Nullable="false" />
+          <Property Name="ContentType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="User_Admin_Detail">
           <Key>
@@ -850,9 +852,11 @@
             <PropertyRef Name="imgID" />
           </Key>
           <Property Name="imgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="img_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="img_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="consID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Contribution" Relationship="Model.FK_Image_Contribution" FromRole="Image" ToRole="Contribution" />
+          <Property Name="ContentType" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Image_Contribution">
           <End Type="Model.Contribution" Role="Contribution" Multiplicity="1" />
@@ -1062,6 +1066,8 @@
           <EntitySetMapping Name="Images">
             <EntityTypeMapping TypeName="Model.Image">
               <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
                 <ScalarProperty Name="consID" ColumnName="consID" />
                 <ScalarProperty Name="img_Title" ColumnName="img_Title" />
                 <ScalarProperty Name="imgID" ColumnName="imgID" />

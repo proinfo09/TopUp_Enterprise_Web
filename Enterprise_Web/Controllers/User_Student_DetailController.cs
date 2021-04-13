@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -218,6 +219,49 @@ namespace Enterprise_Web.Controllers
             ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
             ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
             return View(model);
+        }
+
+        // GET: CreateImage
+        public ActionResult CreateImage(int? id)
+        {
+            Contribution contribution = db.Contributions.Find(id);
+            return View(db.Images.ToList().Where(item => item.consID == contribution.consID));
+        }
+
+        [HttpPost]
+        public ActionResult CreateImage(HttpPostedFileBase postedFile, int id)
+        {
+            try
+            {
+                byte[] bytes;
+                using (BinaryReader br = new BinaryReader(postedFile.InputStream))
+                {
+                    bytes = br.ReadBytes(postedFile.ContentLength);
+                }
+                db.Images.Add(new Image
+                {
+                    consID = id,
+                    img_Title = Path.GetFileName(postedFile.FileName),
+                    ContentType = postedFile.ContentType,
+                    Data = bytes
+                });
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+            return RedirectToAction("Create");
         }
     }
 }

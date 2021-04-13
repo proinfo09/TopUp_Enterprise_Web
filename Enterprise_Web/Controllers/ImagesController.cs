@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -35,32 +36,58 @@ namespace Enterprise_Web.Controllers
             return View(image);
         }
 
-        // GET: Images/Create
-        public ActionResult Create()
+        //// GET: Images/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
+
+        //// POST: Images/Create
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(Image img, HttpPostedFileBase file)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (file != null)
+        //        {
+        //            file.SaveAs(HttpContext.Server.MapPath("~/image/")
+        //                                                  + file.FileName);
+        //            img.img_Title = file.FileName;
+        //        }
+        //        db.Images.Add(img);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(img);
+        //}
+
+        // GET: Home
+        public ActionResult Create(int? id)
         {
-            return View();
+            Contribution contribution = db.Contributions.Find(id);
+            return View(db.Images.ToList().Where(item => item.consID == contribution.consID));
         }
 
-        // POST: Images/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Image img, HttpPostedFileBase file)
+        public ActionResult Create(HttpPostedFileBase postedFile,int id)
         {
-            if (ModelState.IsValid)
+            byte[] bytes;
+            using (BinaryReader br = new BinaryReader(postedFile.InputStream))
             {
-                if (file != null)
-                {
-                    file.SaveAs(HttpContext.Server.MapPath("~/image/")
-                                                          + file.FileName);
-                    img.img_Title = file.FileName;
-                }
-                db.Images.Add(img);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                bytes = br.ReadBytes(postedFile.ContentLength);
             }
-            return View(img);
+            db.Images.Add(new Image
+            {
+                consID = id,
+                img_Title = Path.GetFileName(postedFile.FileName),
+                ContentType = postedFile.ContentType,
+                Data = bytes
+            });
+            db.SaveChanges();
+            return RedirectToAction("Create");
         }
 
         // GET: Images/Edit/5

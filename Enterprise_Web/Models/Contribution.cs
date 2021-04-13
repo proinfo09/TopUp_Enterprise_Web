@@ -11,38 +11,26 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Contribution
     {
-        [Required]
-        [Display(Name = "Constribution ID")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Contribution()
+        {
+            this.Images = new HashSet<Image>();
+        }
+    
         public int consID { get; set; }
-
-        [Required]
-        [Display(Name = "Tittle")]
         public string cons_Name { get; set; }
-
-        [Display(Name = "Comment")]
         public string cons_comment { get; set; }
-
-        [Required]
-        [Display(Name = "Submit Date")]
         public Nullable<System.DateTime> cons_submit { get; set; }
-
-        [Required]
-        [Display(Name = "Status")]
         public string cons_status { get; set; }
-
-        [Required]
-        [Display(Name = "Student ID")]
         public int stdID { get; set; }
-
-        [Required]
-        [Display(Name = "File ID")]
         public int fileID { get; set; }
     
         public virtual File File { get; set; }
         public virtual User_Student_Detail User_Student_Detail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Image> Images { get; set; }
     }
 }
