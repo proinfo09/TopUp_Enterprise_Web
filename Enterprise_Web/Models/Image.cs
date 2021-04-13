@@ -16,10 +16,7 @@ namespace Enterprise_Web.Models
     public partial class Image
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Image()
-        {
-            this.Contributions = new HashSet<Contribution>();
-        }
+       
 
         [Display(Name = "ID")]
         public int imgID { get; set; }

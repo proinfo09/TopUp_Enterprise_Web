@@ -229,8 +229,6 @@
     <Compile Include="Models\Image.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ImgObj.cs" />
-    <Compile Include="Models\ImgViewModel.cs" />
     <Compile Include="Models\TermCondiModels.cs" />
     <Compile Include="Models\ContributionViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
