@@ -21,24 +21,31 @@ namespace Enterprise_Web.Models
             this.Contributions = new HashSet<Contribution>();
         }
 
+        [Required]
         [Display(Name = "User ID")]
         public string userId { get; set; }
 
+        [Required]
         [Display(Name = "ID")]
         public int stdID { get; set; }
 
+        [Required]
         [Display(Name = "Fullname")]
         public string std_fullname { get; set; }
 
+        [Required]
         [Display(Name = "Email")]
         public string std_mail { get; set; }
 
+        [Required]
         [Display(Name = "Gender")]
         public string std_gender { get; set; }
 
+        [Required]
         [Display(Name = "Date of Birth")]
         public Nullable<System.DateTime> std_doB { get; set; }
 
+        [Required]
         [Display(Name = "Phone numbers")]
         public string std_phone { get; set; }
     

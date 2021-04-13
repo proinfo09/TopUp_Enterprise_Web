@@ -15,24 +15,30 @@ namespace Enterprise_Web.Models
 
     public partial class Contribution
     {
+        [Required]
         [Display(Name = "Constribution ID")]
         public int consID { get; set; }
 
+        [Required]
         [Display(Name = "Tittle")]
         public string cons_Name { get; set; }
 
         [Display(Name = "Comment")]
         public string cons_comment { get; set; }
 
+        [Required]
         [Display(Name = "Submit Date")]
         public Nullable<System.DateTime> cons_submit { get; set; }
 
+        [Required]
         [Display(Name = "Status")]
         public string cons_status { get; set; }
 
+        [Required]
         [Display(Name = "Student ID")]
         public int stdID { get; set; }
 
+        [Required]
         [Display(Name = "File ID")]
         public int fileID { get; set; }
     
