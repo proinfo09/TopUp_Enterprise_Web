@@ -34,7 +34,6 @@ namespace Enterprise_Web.Models
         public virtual DbSet<Contribution> Contributions { get; set; }
         public virtual DbSet<Faculty> Faculties { get; set; }
         public virtual DbSet<File> Files { get; set; }
-        public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<User_Admin_Detail> User_Admin_Detail { get; set; }
         public virtual DbSet<User_Guest_Detail> User_Guest_Detail { get; set; }
         public virtual DbSet<User_Marketing_Coordinator_Detail> User_Marketing_Coordinator_Detail { get; set; }
@@ -42,5 +41,6 @@ namespace Enterprise_Web.Models
         public virtual DbSet<User_Student_Detail> User_Student_Detail { get; set; }
         public virtual DbSet<BlogPost> BlogPosts { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
     }
 }

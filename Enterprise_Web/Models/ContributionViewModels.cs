@@ -14,11 +14,7 @@ namespace Enterprise_Web.Models
         public int imgID { get; set; }
         public int stdID { get; set; }
         public int fileID { get; set; }
-
-        public virtual File File { get; set; }
         public string file_Title { get; set; }
-        public virtual Image Image { get; set; }
         public string img_Title { get; set; }
-        public virtual User_Student_Detail User_Student_Detail { get; set; }
     }
 }

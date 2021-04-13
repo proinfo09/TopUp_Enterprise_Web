@@ -48,26 +48,8 @@
                 @Html.ValidationMessageFor(model => model.cons_status, "", new { @class = "text-danger" })
             </div>
         </div>
-
-
-
-
-
         <input type="File" name="file" id="file" value="Choose File" />
-        <fieldset>
-            <legend>Image</legend>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.img_Title)
-            </div>
-            <div class="editor-field">
-                <input id="img_Title" title="Upload a product image"
-                       type="file" name="file" />
-            </div>
-
-        </fieldset>
-        <p><input type="submit" id="btnSubmit" class="button" value="Submit" /></p>
-
-
+        <button type="submit" value="Create">Upload</button>
     </div>
 }
 <div>
