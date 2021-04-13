@@ -1,63 +1,94 @@
 ﻿@model IEnumerable<Enterprise_Web.Models.Contribution>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.cons_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cons_comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cons_submit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cons_status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.File.file_Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image.img_Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User_Student_Detail.userId)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.cons_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cons_comment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cons_submit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cons_status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.File.file_Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image.img_Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User_Student_Detail.userId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.consID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.consID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.consID })
-        </td>
-    </tr>
+@{
+    Layout = "";
 }
 
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+</head>
+<body>
+
+    <div class="container mb-3 mt-3">
+        <table class="table table-striped table-bordered mydatatable" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cons_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cons_comment)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cons_submit)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cons_status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.File.file_Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image.img_Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User_Student_Detail.userId)
+                    </th>
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cons_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cons_comment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cons_submit)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cons_status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.File.file_Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Image.img_Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User_Student_Detail.userId)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.consID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.consID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.consID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $('.mydatatable').DataTable();
+    </script>
+
+</body>
+</html>

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using PusherServer;
-using System.IO.Compression;   
-
-
+using System.IO.Compression;
+using System.Net.Mail;
+using System.Configuration;
 
 namespace Enterprise_Web.Controllers
 {
@@ -44,6 +44,17 @@ namespace Enterprise_Web.Controllers
             {
                 sw.Write(data, 0, data.Length);
             }
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress(ConfigurationManager.AppSettings["Email"].ToString());
+            mailMessage.To.Add("luxubuno2@gmail.com");
+            mailMessage.Subject = "Hello There";
+            mailMessage.Body = "Hello my friend!";
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));
+            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["Email"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
+            smtpClient.Credentials = credentials;
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
 
             return RedirectToAction("File");
         }

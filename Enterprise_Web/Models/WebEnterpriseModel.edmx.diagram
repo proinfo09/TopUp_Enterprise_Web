@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="Model.Contribution" Width="1.5" PointX="7.5" PointY="20.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Faculty" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.File" Width="1.5" PointX="5.25" PointY="25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Image" Width="1.5" PointX="5.25" PointY="27.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.User_Admin_Detail" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.User_Guest_Detail" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.User_Marketing_Coordinator_Detail" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
@@ -29,12 +28,13 @@
         <AssociationConnector Association="Model.fk_User_Marketing_Manager_Detail_AspNetUser_ID" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_User_Student_Detail_AspNetUser_ID" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_cons_fileidID" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.fk_cons_imgID" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_cons_stdID" ManuallyRouted="false" />
         <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Model.BlogPost" Width="1.5" PointX="7.375" PointY="1" />
         <EntityTypeShape EntityType="Model.Comment" Width="1.5" PointX="9.625" PointY="0.875" />
-        <AssociationConnector Association="Model.FK_Cmt_BlogPost" />
+        <AssociationConnector Association="Model.FK_Cmt_Post" />
+        <EntityTypeShape EntityType="Model.Image" Width="1.5" PointX="9.75" PointY="21" />
+        <AssociationConnector Association="Model.FK_Image_Contribution" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

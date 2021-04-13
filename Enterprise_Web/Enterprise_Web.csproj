@@ -234,7 +234,6 @@
     <Compile Include="Models\BlogPost.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TermCondiModels.cs" />
     <Compile Include="Models\Closure_Day.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
@@ -244,7 +243,6 @@
     <Compile Include="Models\Contribution.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ContributionViewModels.cs" />
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
@@ -254,10 +252,12 @@
     <Compile Include="Models\File.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TermCondiModels.cs" />
+    <Compile Include="Models\ContributionViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\User_Admin_Detail.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
@@ -565,6 +565,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Files\" />
     <Folder Include="Views\Guest\" />
+    <Folder Include="Views\Img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

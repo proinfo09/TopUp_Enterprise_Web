@@ -17,12 +17,15 @@ namespace Enterprise_Web.Models
     {
         public int csdID { get; set; }
 
+        [Required]
         [Display(Name = "Start Date")]
         public System.DateTime startDay { get; set; }
 
+        [Required]
         [Display(Name = "End Date")]
         public System.DateTime endDay { get; set; }
 
+        [Required]
         [Display(Name = "Final Date")]
         public System.DateTime finalDay { get; set; }
     }

@@ -15,24 +15,31 @@ namespace Enterprise_Web.Models
 
     public partial class User_Marketing_Manager_Detail
     {
+        [Required]
         [Display(Name = "User ID")]
         public string userId { get; set; }
 
+        [Required]
         [Display(Name = "ID")]
         public int mkmID { get; set; }
 
+        [Required]
         [Display(Name = "Fullname")]
         public string mkm_fullname { get; set; }
 
+        [Required]
         [Display(Name = "Email")]
         public string mkm_mail { get; set; }
 
+        [Required]
         [Display(Name = "Gender")]
         public string mkm_gender { get; set; }
 
+        [Required]
         [Display(Name = "Date of Birth")]
         public Nullable<System.DateTime> mkm_doB { get; set; }
 
+        [Required]
         [Display(Name = "Phone numbers")]
         public string mkm_phone { get; set; }
     

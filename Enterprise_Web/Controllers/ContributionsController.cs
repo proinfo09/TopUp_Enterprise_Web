@@ -17,7 +17,7 @@ namespace Enterprise_Web.Controllers
         // GET: Contributions
         public ActionResult Index()
         {
-            var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
             return View(contributions.ToList());
         }
 
@@ -60,7 +60,6 @@ namespace Enterprise_Web.Controllers
             }
 
             ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
-            ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title", contribution.imgID);
             ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
             return View(contribution);
         }
@@ -78,7 +77,6 @@ namespace Enterprise_Web.Controllers
                 return HttpNotFound();
             }
             ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
-            ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title", contribution.imgID);
             ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
             return View(contribution);
         }
@@ -97,7 +95,6 @@ namespace Enterprise_Web.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
-            ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title", contribution.imgID);
             ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
             return View(contribution);
         }
@@ -138,19 +135,19 @@ namespace Enterprise_Web.Controllers
         }
         public ActionResult ContributionManagments()
         {
-            var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
             return View(contributions.ToList());
         }
 
         public ActionResult Mm_ContributionManagments()
         {
-            var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
             return View(contributions.ToList());
         }
 
         public ActionResult Mc_ContributionManagments()
         {
-            var contributions = db.Contributions.Include(c => c.File).Include(c => c.Image).Include(c => c.User_Student_Detail);
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
             return View(contributions.ToList());
         }
 

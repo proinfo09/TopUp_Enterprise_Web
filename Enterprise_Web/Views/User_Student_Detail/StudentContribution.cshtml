@@ -21,9 +21,6 @@
             @Html.DisplayNameFor(model => model.File.file_Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Image.img_Title)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.User_Student_Detail.userId)
         </th>
         <th></th>
@@ -47,15 +44,11 @@
             @Html.DisplayFor(modelItem => item.File.file_Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Image.img_Title)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.User_Student_Detail.userId)
         </td>
         <td>
             @Html.ActionLink("Edit", "EditContribution", new { id=item.consID }) |
             @Html.ActionLink("Details", "DetailsContribution", new { id=item.consID }) |
-            @Html.ActionLink("Delete", "DeleteContribution", new { id=item.consID })
         </td>
     </tr>
 }

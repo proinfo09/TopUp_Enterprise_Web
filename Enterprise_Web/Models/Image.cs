@@ -16,18 +16,15 @@ namespace Enterprise_Web.Models
     public partial class Image
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Image()
-        {
-            this.Contributions = new HashSet<Contribution>();
-        }
 
         [Display(Name = "ID")]
         public int imgID { get; set; }
 
         [Display(Name = "Image Tittle")]
         public string img_Title { get; set; }
+        [Display(Name = "ContributionID")]
+        public int consID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contribution> Contributions { get; set; }
+        public virtual Contribution Contribution { get; set; }
     }
 }

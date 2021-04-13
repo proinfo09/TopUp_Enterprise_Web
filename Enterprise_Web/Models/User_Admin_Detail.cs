@@ -15,24 +15,31 @@ namespace Enterprise_Web.Models
 
     public partial class User_Admin_Detail
     {
+        [Required]
         [Display(Name = "User ID")]
         public string userId { get; set; }
 
+        [Required]
         [Display(Name = "ID")]
         public int admID { get; set; }
 
+        [Required]
         [Display(Name = "Fullname")]
         public string admin_fullname { get; set; }
 
+        [Required]
         [Display(Name = "Email")]
         public string admin_mail { get; set; }
 
+        [Required]
         [Display(Name = "Gender")]
         public string admin_gender { get; set; }
 
+        [Required]
         [Display(Name = "Date of Birth")]
         public Nullable<System.DateTime> admin_doB { get; set; }
 
+        [Required]
         [Display(Name = "Phone numbers")]
         public string admin_phone { get; set; }
 

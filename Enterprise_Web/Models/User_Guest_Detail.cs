@@ -15,24 +15,31 @@ namespace Enterprise_Web.Models
 
     public partial class User_Guest_Detail
     {
+        [Required]
         [Display(Name = "User ID")]
         public string userId { get; set; }
 
+        [Required]
         [Display(Name = "ID")]
         public int gstID { get; set; }
 
+        [Required]
         [Display(Name = "Fullname")]
         public string gst_fullname { get; set; }
 
+        [Required]
         [Display(Name = "Email")]
         public string gst_mail { get; set; }
 
+        [Required]
         [Display(Name = "Gender")]
         public string gst_gender { get; set; }
 
+        [Required]
         [Display(Name = "Guest Gender")]
         public Nullable<System.DateTime> gst_doB { get; set; }
 
+        [Required]
         [Display(Name = "Phine numbers")]
         public string gst_phone { get; set; }
     
