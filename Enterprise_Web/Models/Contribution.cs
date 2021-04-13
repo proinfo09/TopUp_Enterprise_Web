@@ -11,16 +11,32 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Contribution
     {
+        [Display(Name = "Constribution ID")]
         public int consID { get; set; }
+
+        [Display(Name = "Tittle")]
         public string cons_Name { get; set; }
+
+        [Display(Name = "Comment")]
         public string cons_comment { get; set; }
+
+        [Display(Name = "Submit Date")]
         public Nullable<System.DateTime> cons_submit { get; set; }
+
+        [Display(Name = "Status")]
         public string cons_status { get; set; }
+
+        [Display(Name = "Image ID")]
         public int imgID { get; set; }
+
+        [Display(Name = "Student ID")]
         public int stdID { get; set; }
+
+        [Display(Name = "File ID")]
         public int fileID { get; set; }
     
         public virtual File File { get; set; }

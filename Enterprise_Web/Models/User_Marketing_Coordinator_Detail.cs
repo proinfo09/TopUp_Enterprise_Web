@@ -11,15 +11,29 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User_Marketing_Coordinator_Detail
     {
+        [Display(Name = "User ID")]
         public string userId { get; set; }
+
+        [Display(Name = "ID")]
         public int mkcID { get; set; }
+
+        [Display(Name = "Fullname")]
         public string mkc_fullname { get; set; }
+
+        [Display(Name = "Email")]
         public string mkc_mail { get; set; }
+
+        [Display(Name = "Gender")]
         public string mkc_gender { get; set; }
+
+        [Display(Name = "Date of birth")]
         public Nullable<System.DateTime> mkc_doB { get; set; }
+
+        [Display(Name = "Phone numbers")]
         public string mkc_phone { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
