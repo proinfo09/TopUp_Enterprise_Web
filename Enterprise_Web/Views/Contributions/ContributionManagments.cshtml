@@ -52,8 +52,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.User_Student_Detail.userId)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.consID }) |
+        <td>       
             @Html.ActionLink("Details", "Details", new { id=item.consID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.consID })
         </td>
@@ -61,3 +60,10 @@
 }
 
 </table>
+
+<p>
+    @Html.ActionLink("View Selected Contributions", "") |
+    @Html.ActionLink("View Falcuty's Contributions", "") |
+    @Html.ActionLink("View Selected Falcuty's Contributions", "") |
+    @Html.ActionLink("Download ALL Selected", "") |
+</p>

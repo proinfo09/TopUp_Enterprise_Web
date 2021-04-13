@@ -66,12 +66,16 @@
             @Html.DisplayFor(modelItem => item.fileID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Select", "Select", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }
 
 </table>
+
+<p>
+    @Html.ActionLink("View Falcuty's Contributions", "") 
+    @Html.ActionLink("View Selected Falcuty's Contributions", "") 
+</p>
