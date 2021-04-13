@@ -33,7 +33,8 @@
         <EntityTypeShape EntityType="Model.BlogPost" Width="1.5" PointX="7.375" PointY="1" />
         <EntityTypeShape EntityType="Model.Comment" Width="1.5" PointX="9.625" PointY="0.875" />
         <AssociationConnector Association="Model.FK_Cmt_Post" />
-        <EntityTypeShape EntityType="Model.Image" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.Image" Width="1.5" PointX="9.75" PointY="21" />
+        <AssociationConnector Association="Model.FK_Image_Contribution" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

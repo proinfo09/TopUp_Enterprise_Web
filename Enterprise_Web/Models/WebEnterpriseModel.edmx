@@ -125,6 +125,7 @@
           </Key>
           <Property Name="imgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="img_Title" Type="varchar" MaxLength="50" />
+          <Property Name="consID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User_Admin_Detail">
           <Key>
@@ -302,6 +303,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Image_Contribution">
+          <End Role="Contributions" Type="Self.Contributions" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contributions">
+              <PropertyRef Name="consID" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="consID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_User_Guest_Detail_AspNetUser_ID">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="User_Guest_Detail" Type="Self.User_Guest_Detail" Multiplicity="*" />
@@ -404,6 +417,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Image_Contribution" Association="Self.FK_Image_Contribution">
+            <End Role="Contributions" EntitySet="Contributions" />
+            <End Role="Image" EntitySet="Image" />
           </AssociationSet>
           <AssociationSet Name="fk_User_Guest_Detail_AspNetUser_ID" Association="Self.fk_User_Guest_Detail_AspNetUser_ID">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -514,6 +531,7 @@
           <Property Name="fileID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="File" Relationship="Self.fk_cons_fileidID" FromRole="Contributions" ToRole="File" />
           <NavigationProperty Name="User_Student_Detail" Relationship="Self.fk_cons_stdID" FromRole="Contributions" ToRole="User_Student_Detail" />
+          <NavigationProperty Name="Images" Relationship="Model.FK_Image_Contribution" FromRole="Contribution" ToRole="Image" />
         </EntityType>
         <EntityType Name="Faculty">
           <Key>
@@ -791,6 +809,10 @@
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
           <EntitySet Name="Images" EntityType="Model.Image" />
+          <AssociationSet Name="FK_Image_Contribution" Association="Model.FK_Image_Contribution">
+            <End Role="Contribution" EntitySet="Contributions" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BlogPost">
           <Key>
@@ -829,7 +851,21 @@
           </Key>
           <Property Name="imgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="img_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="consID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contribution" Relationship="Model.FK_Image_Contribution" FromRole="Image" ToRole="Contribution" />
         </EntityType>
+        <Association Name="FK_Image_Contribution">
+          <End Type="Model.Contribution" Role="Contribution" Multiplicity="1" />
+          <End Type="Model.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contribution">
+              <PropertyRef Name="consID" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="consID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1026,6 +1062,7 @@
           <EntitySetMapping Name="Images">
             <EntityTypeMapping TypeName="Model.Image">
               <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="consID" ColumnName="consID" />
                 <ScalarProperty Name="img_Title" ColumnName="img_Title" />
                 <ScalarProperty Name="imgID" ColumnName="imgID" />
               </MappingFragment>

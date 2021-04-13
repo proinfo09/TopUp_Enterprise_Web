@@ -22,5 +22,9 @@ namespace Enterprise_Web.Models
 
         [Display(Name = "Image Tittle")]
         public string img_Title { get; set; }
+        [Display(Name = "ContributionID")]
+        public int consID { get; set; }
+    
+        public virtual Contribution Contribution { get; set; }
     }
 }
