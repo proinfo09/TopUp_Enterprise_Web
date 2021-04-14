@@ -12,20 +12,16 @@ namespace Enterprise_Web.Models
         [Display(Name = "Contributions Name")]
         public string cons_Name { get; set; }
 
-        [Required]
+      
         [Display(Name = "Contributions Comment")]
         public string cons_comment { get; set; }
         public Nullable<System.DateTime> cons_submit { get; set; }
 
-        [Required]
+        
         [Display(Name = "Contributions Status")]
         public string cons_status { get; set; }
 
-        [Required]
-        [Display(Name = "ImageID")]
-        public int imgID { get; set; }
-
-        [Required]
+        
         [Display(Name = "StudentID")]
         public int stdID { get; set; }
 
@@ -37,8 +33,5 @@ namespace Enterprise_Web.Models
         [Display(Name = "File Title")]
         public string file_Title { get; set; }
 
-        [Required]
-        [Display(Name = "Image Title")]
-        public string img_Title { get; set; }
     }
 }

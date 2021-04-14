@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<Enterprise_Web.Models.Contribution>
 
+@{
+    ViewBag.Title = "StudentContribution";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <p>
     @Html.ActionLink("Create New", "CreateContribution")
 </p>
@@ -26,32 +31,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.cons_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cons_comment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cons_submit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cons_status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.File.file_Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User_Student_Detail.userId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditContribution", new { id = item.consID }) |
-            @Html.ActionLink("Upload Image", "CreatImage", new { id = item.consID }) |
-            @Html.ActionLink("Details", "DetailsContribution", new { id = item.consID }) 
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cons_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cons_comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cons_submit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cons_status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.File.file_Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_Student_Detail.userId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditContribution", new { id = item.consID }) |
+                @Html.ActionLink("Upload Image", "CreateImage", new { id = item.consID }) |
+                @Html.ActionLink("Details", "DetailsContribution", new { id = item.consID })
+            </td>
+        </tr>
+    }
 
 </table>

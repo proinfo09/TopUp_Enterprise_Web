@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -146,6 +148,49 @@ namespace Enterprise_Web.Controllers
                 return HttpNotFound();
             }
             return View(user_Marketing_Manager_Detail);
+        }
+
+        public ActionResult Download()
+        {
+
+            string[] imgs = Directory.GetFiles(
+                            Server.MapPath("~/images"));
+            string[] files = Directory.GetFiles(
+                            Server.MapPath("~/Content/Files/"));
+            var articles = new[] { imgs, files }.SelectMany(id => id).ToList();
+            List<string> downloads = new List<string>();
+            foreach (string article in articles)
+            {
+                downloads.Add(Path.GetFileName(article));
+            }
+            return View(downloads);
+        }
+
+        [HttpPost]
+        public FileResult ProcessForm(List<string> selectedfiles)
+        {
+            if (System.IO.File.Exists(Server.MapPath
+                              ("~/ZipFiles/bundle.zip")))
+            {
+                System.IO.File.Delete(Server.MapPath
+                              ("~/ZipFiles/bundle.zip"));
+            }
+            ZipArchive zip = ZipFile.Open(Server.MapPath
+                     ("~/ZipFiles/bundle.zip"), ZipArchiveMode.Create);
+            foreach (string file in selectedfiles)
+            {
+                if (file.Contains(".doc")) 
+                {
+                    zip.CreateEntryFromFile(Server.MapPath
+                     ("~/Content/Files/" + file), file);
+                } else
+                    zip.CreateEntryFromFile(Server.MapPath
+                         ("~/images/" + file), file);
+            }
+            zip.Dispose();
+            string input = "Filename.zip";
+            return File(Server.MapPath("~/ZipFiles/bundle.zip"),
+                      "application/zip", input);
         }
     }
 }

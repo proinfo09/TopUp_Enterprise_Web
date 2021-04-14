@@ -14,10 +14,10 @@
             @Html.ActionLink("My profile", "AdminProfile", "User_Admin_Detail")
         </li>
         <li>
-            @Html.ActionLink("Manage Contributions", "ContributionManagements", "Contributions")
+            @Html.ActionLink("Manage Contributions", "Index", "Contributions")
         </li>
         <li>
-            @Html.ActionLink("Report(đang làm)", "Report", "User_Admin_Detail")
+            @Html.ActionLink("Report", "Report", "User_Admin_Detail")
         </li>
         <li>
             @Html.ActionLink("Setting Closure date", "Index", "Closure_Day")
@@ -31,9 +31,9 @@
         <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li>@Html.ActionLink("Manage Students", "Index", "Students")</li>
-        <li>@Html.ActionLink("Manage MCs", "Index", "Marketing_Coordinator")</li>
-        <li>@Html.ActionLink("Manage MMs", "Index", "Marketing_Manager")</li>
+        <li>@Html.ActionLink("Manage Students", "Index", "User_Student_Detail")</li>
+        <li>@Html.ActionLink("Manage MCs", "Index", "User_Marketing_Coordinator_Detail")</li>
+        <li>@Html.ActionLink("Manage MMs", "Index", "User_Marketing_Manager_Detail")</li>
     </ul>
 </div>
 

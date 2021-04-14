@@ -16,7 +16,7 @@ namespace Enterprise_Web.Controllers
     public class HomeController : Controller
     {
         private WebEnterpriseEntities db = new WebEnterpriseEntities();
-        public ActionResult Index1()
+        public ActionResult Index()
         {
             return View();
         }
@@ -60,10 +60,10 @@ namespace Enterprise_Web.Controllers
         }
 
         
-        public ActionResult Index()
-        {
-            return View(db.BlogPosts.AsQueryable());
-        }
+        //public ActionResult Index2()
+        //{
+        //    return View(db.BlogPosts.AsQueryable());
+        //}
 
         public ActionResult Create()
         {
@@ -114,17 +114,20 @@ namespace Enterprise_Web.Controllers
 
             return Content("Success");
         }
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+        public ActionResult Index2()
+        {
+            return View(db.BlogPosts.ToList());
+        }
 
 
         //Zip & Download all sellected article
         public ActionResult Download()
         {
-            string[] files = Directory.GetFiles(
+            string[] imgs = Directory.GetFiles(
                             Server.MapPath("~/images"));
+            string[] files = Directory.GetFiles(
+                            Server.MapPath("~/Content/Files/"));
+            var article = new[] { imgs, files}.SelectMany(id => id).ToList();
             List<string> downloads = new List<string>();
             foreach (string file in files)
             {
