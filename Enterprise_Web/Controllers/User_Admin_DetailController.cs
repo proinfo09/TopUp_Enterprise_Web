@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Enterprise_Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Enterprise_Web.Controllers
 {
@@ -14,7 +15,7 @@ namespace Enterprise_Web.Controllers
     {
         private WebEnterpriseEntities db = new WebEnterpriseEntities();
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         // GET: User_Admin_Detail
         public ActionResult Index()
         {
@@ -138,18 +139,20 @@ namespace Enterprise_Web.Controllers
 
 
         // GET: User_Admin_Detail/Details/5
-        public ActionResult AdminProfile(int? id)
+        public ActionResult AdminProfile()
         {
-            if (id == null)
+            var userId = User.Identity.GetUserId();
+            if (userId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User_Admin_Detail user_Admin_Detail = db.User_Admin_Detail.Find(id);
-            if (user_Admin_Detail == null)
+            AspNetUser user = db.AspNetUsers.Find(userId);
+            var adm = user.User_Admin_Detail.FirstOrDefault();
+            if (adm == null)
             {
                 return HttpNotFound();
             }
-            return View(user_Admin_Detail);
+            return View(adm);
         }
     }
 }
