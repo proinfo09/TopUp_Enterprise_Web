@@ -9,9 +9,77 @@
             <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
-            <li>
-                @Html.ActionLink("Dashboard", "Dashboard", "Manage");
-            </li>
+            <ul class="nav navbar-nav navbar-right">
+                    @if (Session["ID"] != null)
+                    {
+                        if (Session["Admin_Username"] != null)
+                        {
+                            <li>
+                                @Html.ActionLink("Hello: " + @Session["Admin_UserName"].ToString() + "!", "Index", "Administrators", routeValues: null, htmlAttributes: new { title = "Manage" }) <!--tạm thời click vào user name thì link đến trang Index của Courses-->
+                            </li>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">My Profile</button>
+                                <div class="dropdown-content">
+                                    <li>@Html.ActionLink("Administrator Dashboard", "AdminDashBoard", "Administrators")</li>
+                                    <li>@Html.ActionLink("Update Information", "UpdateInfo", "Administrators")</li>
+                                    <li>@Html.ActionLink("Change Password", "ChangePassword", "Administrators")</li>
+                                    <li>@Html.ActionLink("Log out", "Logout", "Home")</li>
+                                </div>
+                            </div>
+                        }
+                        else if (Session["Staff_Username"] != null)
+                        {
+                            <li>
+                                @Html.ActionLink("Hello: " + @Session["Staff_UserName"].ToString() + "!", "Index", "Staff", routeValues: null, htmlAttributes: new { title = "Manage" }) <!--tạm thời click vào user name thì link đến trang Index của Courses-->
+                            </li>
+                            <div class="dropdown">
+                                <button class="dropbtn">My Profile</button>
+                                <div class="dropdown-content">
+                                    <li>@Html.ActionLink("Training Staff Dashboard", "StaffDashBoard", "TrainingStaff")</li>
+                                    <li>@Html.ActionLink("Update Information", "UpdateInfo", "TrainingStaff")</li>
+                                    <li>@Html.ActionLink("Change Password", "ChangePassword", "TrainingStaff")</li>
+                                    <li>@Html.ActionLink("Log out", "Logout", "Home")</li>
+                                </div>
+                            </div>
+                        }
+                        else if (Session["Trainer_Username"] != null)
+                        {
+                            <li>
+                                @Html.ActionLink("Hello: " + @Session["Trainer_UserName"].ToString() + "!", "Index", "Trainer", routeValues: null, htmlAttributes: new { title = "Manage" }) <!--tạm thời click vào user name thì link đến trang Index của Courses-->
+                            </li>
+                            <div class="dropdown">
+                                <button class="dropbtn">My Profile</button>
+                                <div class="dropdown-content">
+                                    <li>@Html.ActionLink("Trainer Dashboard", "TrainerDashBoard", "Trainer")</li>
+                                    <li>@Html.ActionLink("Update Information", "UpdateInfo", "Trainer")</li>
+                                    <li>@Html.ActionLink("Change Password", "ChangePassword", "Trainer")</li>
+                                    <li>@Html.ActionLink("Log out", "Logout", "Home")</li>
+                                </div>
+                            </div>
+                        }
+                        else if (Session["Trainee_Username"] != null)
+                        {
+                            <li>
+                                @Html.ActionLink("Hello: " + @Session["Trainee_UserName"].ToString() + "!", "Index", "Trainee", routeValues: null, htmlAttributes: new { title = "Manage" }) <!--tạm thời click vào user name thì link đến trang Index của Courses-->
+                            </li>
+                            <div class="dropdown">
+                                <button class="dropbtn">My Profile</button>
+                                <div class="dropdown-content">
+                                    <li>@Html.ActionLink("Trainee Dashboard", "TrainerDashBoard", "Trainee")</li>
+                                    <li>@Html.ActionLink("Update Information", "UpdateInfo", "Trainee")</li>
+                                    <li>@Html.ActionLink("Change Password", "ChangePassword", "Trainee")</li>
+                                    <li>@Html.ActionLink("Log out", "Logout", "Home")</li>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Register", "Register", "Home") </li>
+                        <li>@Html.ActionLink("Log in", "Login", "Home") </li>
+                    }
+                </ul>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
     }
