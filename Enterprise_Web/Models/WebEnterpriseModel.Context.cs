@@ -10,6 +10,7 @@
 namespace Enterprise_Web.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -42,5 +43,6 @@ namespace Enterprise_Web.Models
         public virtual DbSet<BlogPost> BlogPosts { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Image> Images { get; set; }
+        public IEnumerable<object> Enterprise_Web { get; internal set; }
     }
 }
