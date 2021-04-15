@@ -144,13 +144,12 @@ namespace Enterprise_Web.Controllers
         public ActionResult StudentProfile()
         {
             var userId = User.Identity.GetUserId();
-            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
             if (userId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             AspNetUser user = db.AspNetUsers.Find(userId);
-            var std = user.User_Student_Detail.FirstOrDefault();
+            var std = user.User_Admin_Detail.FirstOrDefault();
             if (std == null)
             {
                 return HttpNotFound();
@@ -307,5 +306,22 @@ namespace Enterprise_Web.Controllers
             db.SaveChanges();
             return RedirectToAction("Create");
         }
+
+        // GET: Student/Details/5
+        //public ActionResult A()
+        //{
+        //    var userId = User.Identity.GetUserId();
+        //    if (userId == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    AspNetUser user = db.AspNetUsers.Find(userId);
+        //    var std = user.User_Admin_Detail.FirstOrDefault();
+        //    if (std == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(std);
+        //}
     }
 }

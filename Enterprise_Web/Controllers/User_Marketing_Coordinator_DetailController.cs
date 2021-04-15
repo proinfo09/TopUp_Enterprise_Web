@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Enterprise_Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Enterprise_Web.Controllers
 {
@@ -136,16 +137,18 @@ namespace Enterprise_Web.Controllers
 
         public ActionResult McProfile(int? id)
         {
-            if (id == null)
+            var userId = User.Identity.GetUserId();
+            if (userId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User_Marketing_Coordinator_Detail user_Marketing_Coordinator_Detail = db.User_Marketing_Coordinator_Detail.Find(id);
-            if (user_Marketing_Coordinator_Detail == null)
+            AspNetUser user = db.AspNetUsers.Find(userId);
+            var mkc = user.User_Marketing_Coordinator_Detail.FirstOrDefault();
+            if (mkc == null)
             {
                 return HttpNotFound();
             }
-            return View(user_Marketing_Coordinator_Detail);
+            return View(mkc);
         }
     }
 }

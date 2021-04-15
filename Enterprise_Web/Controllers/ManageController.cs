@@ -106,13 +106,13 @@ namespace Enterprise_Web.Controllers
             var role = user.AspNetRoles.FirstOrDefault();
             switch (role.Id) {
                 case "1": //if role is admin 
-                    return Redirect("User_Admin_Detail/AdminDashboard");
+                    return RedirectToRoute("User_Admin_Detail/AdminDashboard");
                     break;
                 case "2": //if role is admin 
                     return Redirect("User_Marketing_Manager_Detail/MmDashboard");
                     break;
                 case "3": //if role is admin 
-                    return Redirect("User_Marketing_Coordinator_Detail/McDashboard");
+                    return RedirectToRoute("User_Marketing_Coordinator_Detail/McDashboard");
                     break;
                 case "4": //if role is admin 
                     return RedirectToAction("StudentDashboard");

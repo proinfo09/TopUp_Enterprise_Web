@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    @*<div class="container">
         <br />
         <p>Your Comment</p>
         <form onsubmit="return false;">
@@ -66,12 +66,12 @@
             <textarea rows="3" placeholder="Your Comment" id="Body" v-model="comment.Body" class="form-control"></textarea>
             <button class="btn btn-success" id="saveBtn" v-on:click="submit_comment()">save</button>
         </form>
-    </div>
+    </div>*@
 </div>
 
 @*<button onclick="myFunction()">Try it</button>*@
 
-<script>
+@*<script>
     function myFunction() {
       
         document.getElementById("saveBtn").disabled = false;
@@ -80,7 +80,7 @@
             document.getElementById("saveBtn").disabled = true;
         }, 10000);
     }
-</script>
+</script>*@
 <p>
 
     @Html.ActionLink("Back to List", "Index")
