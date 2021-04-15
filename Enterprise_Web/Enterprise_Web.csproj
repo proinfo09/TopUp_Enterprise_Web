@@ -397,16 +397,13 @@
     <Content Include="ZipFiles\bundle.zip" />
     <Content Include="Views\User_Student_Detail\CreateImage.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\Download.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Report\Index.cshtml" />
-=======
     <Content Include="Views\User_Admin_Detail\Role.cshtml" />
     <Content Include="Views\AspNetRoles\Create.cshtml" />
     <Content Include="Views\AspNetRoles\Delete.cshtml" />
     <Content Include="Views\AspNetRoles\Details.cshtml" />
     <Content Include="Views\AspNetRoles\Edit.cshtml" />
     <Content Include="Views\AspNetRoles\Index.cshtml" />
->>>>>>> 12cfa18ac3e3db226a46219d9590dbfd91a49290
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
