@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Enterprise_Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Enterprise_Web.Controllers
 {
@@ -147,8 +148,20 @@ namespace Enterprise_Web.Controllers
 
         public ActionResult Mc_ContributionManagments()
         {
+            var userId = User.Identity.GetUserId();
             var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
-            return View(contributions.ToList());
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AspNetUser user = db.AspNetUsers.Find(userId);
+            var mc = user.User_Marketing_Coordinator_Detail.FirstOrDefault();
+
+            if (mc == null)
+            {
+                return HttpNotFound();
+            }
+            return View(contributions.ToList().Where(item => item.User_Student_Detail.AspNetUser.facID == mc.AspNetUser.facID));
         }
 
         public ActionResult UploadImage()
