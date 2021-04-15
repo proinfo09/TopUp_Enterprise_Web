@@ -205,11 +205,13 @@
     <Compile Include="Controllers\Api\MarketingCordinatorController.cs" />
     <Compile Include="Controllers\Api\MarketingManagerController.cs" />
     <Compile Include="Controllers\Api\StudentsController.cs" />
+    <Compile Include="Controllers\AspNetRolesController.cs" />
     <Compile Include="Controllers\Closure_DayController.cs" />
     <Compile Include="Controllers\ContributionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\User_Admin_DetailController.cs" />
     <Compile Include="Controllers\User_Guest_DetailController.cs" />
     <Compile Include="Controllers\User_Marketing_Coordinator_DetailController.cs" />
@@ -324,6 +326,8 @@
     <Content Include="Models\WebEnterpriseModel.edmx.diagram">
       <DependentUpon>WebEnterpriseModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\chart\exporting.js" />
+    <Content Include="Scripts\chart\highcharts.js" />
     <Content Include="Views\User_Admin_Detail\Create.cshtml" />
     <Content Include="Views\User_Admin_Detail\Delete.cshtml" />
     <Content Include="Views\User_Admin_Detail\Details.cshtml" />
@@ -393,6 +397,13 @@
     <Content Include="ZipFiles\bundle.zip" />
     <Content Include="Views\User_Student_Detail\CreateImage.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\Download.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\User_Admin_Detail\Role.cshtml" />
+    <Content Include="Views\AspNetRoles\Create.cshtml" />
+    <Content Include="Views\AspNetRoles\Delete.cshtml" />
+    <Content Include="Views\AspNetRoles\Details.cshtml" />
+    <Content Include="Views\AspNetRoles\Edit.cshtml" />
+    <Content Include="Views\AspNetRoles\Index.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
