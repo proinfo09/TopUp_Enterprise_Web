@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Enterprise_Web.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Enterprise_Web.Controllers
 {
@@ -154,5 +155,23 @@ namespace Enterprise_Web.Controllers
             }
             return View(adm);
         }
+        
+        public ActionResult Role()
+        {
+            AppUsersDbContext context = new AppUsersDbContext();
+            var Roles = context.Roles.ToList();
+            return View(Roles);
+        }
+         
+        public ActionResult Testing()
+        {
+            var user = User.Identity;
+            AppUsersDbContext context = new AppUsersDbContext();
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var s = UserManager.GetRoles(user.GetUserId());
+            return View();
+        }
+
+
     }
 }
