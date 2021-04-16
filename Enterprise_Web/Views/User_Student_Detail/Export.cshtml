@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Enterprise_Web.Models.UserViewModel>
+@{
+    ViewBag.Title = "Export";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Export</h2>
+
+<div class="container">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>userID</th>
+                <th>stdID</th>
+                <th>std_fullname</th>
+                <th>std_mail</th>
+                <th>std_gender</th>
+                <th>std_phone</th>
+                <th>std_doB</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.userId</td>
+                        <td>@item.stdID</td>
+                        <td>@item.std_fullname</td>
+                        <td>@item.std_mail</td>
+                        <td>@item.std_gender</td>
+                        <td>@item.std_phone</td>
+                        <td>@item.std_doB</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <a href="@Url.Action("ExportToExcel","User_Student_Detail")">Export Excel</a>
+</div>
+
