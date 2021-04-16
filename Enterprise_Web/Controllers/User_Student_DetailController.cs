@@ -210,8 +210,8 @@ namespace Enterprise_Web.Controllers
             contribution.consID = model.consID;
             contribution.cons_Name = model.cons_Name;
             contribution.cons_comment = model.cons_comment;
-            contribution.cons_status = model.cons_status;
-            contribution.cons_submit = model.cons_submit;
+            contribution.cons_status = ContributionViewModels.Available;
+            contribution.cons_submit = DateTime.Now;
             contribution.stdID = std.stdID;
             contribution.fileID = lastFileId;
             db.Contributions.Add(contribution);
@@ -263,6 +263,7 @@ namespace Enterprise_Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                contribution.cons_submit = DateTime.Now;
                 db.Entry(contribution).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
