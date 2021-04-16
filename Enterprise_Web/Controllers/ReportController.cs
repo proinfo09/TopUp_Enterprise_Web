@@ -23,7 +23,7 @@ namespace Enterprise_Web.Controllers
             int graphic = db.Contributions.Where(x => x.User_Student_Detail.AspNetUser.facID == 2).Count();
             int it = db.Contributions.Where(x => x.User_Student_Detail.AspNetUser.facID == 1).Count();
             Ratio obj = new Ratio();
-            obj.BusinessAdministratione = bussiness;
+            obj.BusinessAdministration = bussiness;
             obj.EventManagement = eventmanage;
             obj.GraphicDesign = graphic;
             obj.InformationTechnology = it;
@@ -32,7 +32,7 @@ namespace Enterprise_Web.Controllers
         }
         public class Ratio
         {
-            public int BusinessAdministratione { get; set; }
+            public int BusinessAdministration { get; set; }
             public int EventManagement { get; set; }
             public int GraphicDesign { get; set; }
             public int InformationTechnology { get; set; }
