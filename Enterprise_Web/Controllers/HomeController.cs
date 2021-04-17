@@ -77,6 +77,16 @@ namespace Enterprise_Web.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        
+        public ActionResult ClosureDate()
+        {
+            Closure_Day closure = db.Closure_Days.Find(
+                
+                
+                
+                );
+            return Json(closure, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult Details(int? id)
         {

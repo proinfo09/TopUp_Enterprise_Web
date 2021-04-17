@@ -8,7 +8,7 @@ namespace Enterprise_Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new AuthorizeAttribute()); //Need to login to access the page
+            //filters.Add(new AuthorizeAttribute()); //Need to login to access the page
         }
     }
 }
