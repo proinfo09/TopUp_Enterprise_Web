@@ -33,12 +33,16 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" id="btnSubmit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
+<script>
+    if (Date > db.) {
+        document.getElementById("btnSubmit").disabled = true; 
+    }
+</script>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
