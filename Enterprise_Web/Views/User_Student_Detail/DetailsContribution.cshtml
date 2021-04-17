@@ -5,62 +5,153 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+<script src="//js.pusher.com/4.0/pusher.min.js"></script>
+<style>
+    .user_name {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .comments-list .media {
+        border-bottom: 1px dotted #ccc;
+    }
+</style>
+
 <h2>Details</h2>
+<div id="app">
+    <div>
+        <h4>Contribution</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.cons_Name)
+            </dt>
 
-<div>
-    <h4>Contribution</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.cons_Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.cons_Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.cons_Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.cons_comment)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cons_comment)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.cons_comment)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.cons_comment)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.cons_submit)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cons_submit)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.cons_submit)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.cons_submit)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.cons_status)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cons_status)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.cons_status)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.cons_status)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.File.file_Title)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.File.file_Title)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.File.file_Title)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.File.file_Title)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.User_Student_Detail.userId)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.User_Student_Detail.userId)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.User_Student_Detail.userId)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.User_Student_Detail.userId)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="page-header">
+                    <h1><small class="pull-right">{{comments.length}} comments</small> Comments </h1>
+                </div>
+                <div class="comments-list">
+                    <div class="media" v-for="com in comments">
+                        <div class="media-body">
+                            <h4 class="media-heading user_name">{{com.Name}}</h4>
+                            {{com.Body}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+            <br />
+            <p>Your Comment</p>
+            <form onsubmit="return false;">
+                <input type="text" id="Name" placeholder="Your Name" v-model="comment.Name" class="form-control" />
+                <textarea rows="3" placeholder="Your Comment" id="Body" v-model="comment.Body" class="form-control"></textarea>
+                <button class="btn btn-success" id="saveBtn" v-on:click="submit_comment()">save</button>
+            </form>
+    </div>
 </div>
+<script>
+    var pusher = new Pusher('9711cf863b669984e1f2', {
+        cluster: 'ap1'
+    });
+    var my_channel = pusher.subscribe('asp_channel');
+    var app = new Vue({
+        el: '#app',
+        data: {
+            comments: [],
+            comment: {
+                Name: '',
+                Body: '',
+                consID: @Model.consID,
+            }
+        },
+        created: function() {
+            this.get_comments();
+            this.listen();
+        },
+        methods: {
+            get_comments: function() {
+                axios.get('@Url.Action("Comments", "User_Student_Detail", new { id = @Model.consID }, protocol: Request.Url.Scheme)')
+                    .then((response) => {
+
+                        this.comments = response.data;
+
+                    });
+
+            },
+            listen: function() {
+                my_channel.bind("asp_event", (data) => {
+                    if (data.BlogPostID == this.comment.BlogPostID) {
+                        this.comments.push(data);
+                    }
+
+                })
+            },
+            submit_comment: function() {
+                axios.post('@Url.Action("Comment", "User_Student_Detail", new {}, protocol: Request.Url.Scheme)', this.comment)
+                    .then((response) => {
+                        this.comment.Name = '';
+                        this.comment.Body = '';
+                        alert("Comment Submitted");
+
+                    });
+            }
+
+        }
+    });
+</script>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.consID }) |
     @Html.ActionLink("Back to List", "Index")

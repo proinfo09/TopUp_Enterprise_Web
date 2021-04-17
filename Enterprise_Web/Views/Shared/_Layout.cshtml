@@ -150,6 +150,7 @@
         }
     </style>
 
+    @Scripts.Render("~/bundles/jquery")
 
 </head>
 <body>
@@ -225,8 +226,8 @@
     <script src="dashboard.js"></script>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>

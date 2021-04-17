@@ -39,7 +39,6 @@ namespace Enterprise_Web.Models
         public virtual DbSet<User_Marketing_Coordinator_Detail> User_Marketing_Coordinator_Detail { get; set; }
         public virtual DbSet<User_Marketing_Manager_Detail> User_Marketing_Manager_Detail { get; set; }
         public virtual DbSet<User_Student_Detail> User_Student_Detail { get; set; }
-        public virtual DbSet<BlogPost> BlogPosts { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Image> Images { get; set; }
     }

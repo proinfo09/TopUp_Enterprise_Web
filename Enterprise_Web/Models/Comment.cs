@@ -24,8 +24,8 @@ namespace Enterprise_Web.Models
         [Display(Name = "Comment")]
         public string Body { get; set; }
 
-        public int BlogPostID { get; set; }
+        public int consID { get; set; }
 
-        public virtual BlogPost BlogPost { get; set; }
+        public virtual Contribution Contribution { get; set; }
     }
 }
