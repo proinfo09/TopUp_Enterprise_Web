@@ -17,8 +17,9 @@ namespace Enterprise_Web.Models
         public int CommentID { get; set; }
         public string Name { get; set; }
         public string Body { get; set; }
+
         public int consID { get; set; }
-    
+
         public virtual Contribution Contribution { get; set; }
     }
 }

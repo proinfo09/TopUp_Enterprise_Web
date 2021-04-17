@@ -8,11 +8,13 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Enterprise_Web.Models;
 using Microsoft.AspNet.Identity;
-
+using OfficeOpenXml;
+using PusherServer;
 
 namespace Enterprise_Web.Controllers
 {
@@ -27,6 +29,76 @@ namespace Enterprise_Web.Controllers
             return View(user_Student_Detail.ToList());
         }
 
+        public ActionResult Export()
+        {
+            var user_Student_Detail = db.User_Student_Detail.Include(u => u.AspNetUser);
+            List<UserViewModel> userViews = db.User_Student_Detail.Select(x => new UserViewModel
+            {
+                userId = x.userId,
+                stdID = x.stdID,
+                std_fullname = x.std_fullname,
+                std_mail = x.std_mail,
+                std_gender = x.std_gender,
+                std_phone = x.std_phone,
+                std_doB = x.std_doB
+
+            }).ToList();
+            return View(userViews);
+        }
+
+        public void ExportToExcel()
+        {
+            List<UserViewModel> userViews = db.User_Student_Detail.Select(x => new UserViewModel
+            {
+                userId = x.userId,
+                stdID = x.stdID,
+                std_fullname = x.std_fullname,
+                std_mail = x.std_mail,
+                std_gender = x.std_gender,
+                std_phone = x.std_phone,
+                std_doB = x.std_doB
+
+            }).ToList();
+
+            ExcelPackage.LicenseContext = LicenseContext.Commercial;
+            ExcelPackage pck = new ExcelPackage();
+            ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Report");
+
+            ws.Cells["A1"].Value = "Report";
+            ws.Cells["B1"].Value = "Report1";
+
+            ws.Cells["A2"].Value = "Date";
+            ws.Cells["B2"].Value = string.Format("{0:dd MMMM yyyy} at {0:H: mm tt}", DateTimeOffset.Now);
+
+            ws.Cells["A4"].Value = "userId";
+            ws.Cells["B4"].Value = "stdID";
+            ws.Cells["C4"].Value = "std_fullname";
+            ws.Cells["D4"].Value = "std_mail";
+            ws.Cells["E4"].Value = "std_gender";
+            ws.Cells["F4"].Value = "std_phone";
+            ws.Cells["G4"].Value = "std_doB";
+
+            int rowStart = 5;
+            foreach (var item in userViews)
+            {
+                ws.Cells[string.Format("A{0}", rowStart)].Value = item.userId;
+                ws.Cells[string.Format("B{0}", rowStart)].Value = item.stdID;
+                ws.Cells[string.Format("C{0}", rowStart)].Value = item.std_fullname;
+                ws.Cells[string.Format("D{0}", rowStart)].Value = item.std_mail;
+                ws.Cells[string.Format("E{0}", rowStart)].Value = item.std_gender;
+                ws.Cells[string.Format("F{0}", rowStart)].Value = item.std_phone;
+                ws.Cells[string.Format("G{0}", rowStart)].Value = item.std_doB;
+                rowStart++;
+            }
+
+            ws.Cells["A:AZ"].AutoFitColumns();
+            Response.Clear();
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment: filename=" + "ExcelReport.xlsx");
+            Response.BinaryWrite(pck.GetAsByteArray());
+            Response.End();
+
+        }
         // GET: User_Student_Detail/Details/5
         public ActionResult Details(int? id)
         {
@@ -306,6 +378,46 @@ namespace Enterprise_Web.Controllers
             });
             db.SaveChanges();
             return RedirectToAction("Create");
+        }
+
+        public ActionResult DetailsContribution(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Contribution contribution = db.Contributions.Find(id);
+            if (contribution == null)
+            {
+                return HttpNotFound();
+            }
+            return View(contribution);
+        }
+
+        public ActionResult Comments(int? id)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var comments = db.Comments.Where(x => x.consID == id).ToArray();
+            return Json(comments, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Comment(Comment data)
+        {
+            db.Comments.Add(data);
+            db.SaveChanges();
+            var options = new PusherOptions();
+            options.Cluster = "ap1";
+            var pusher = new Pusher("1185884", "9711cf863b669984e1f2", "73a4067f2b75a0bfe4eb", options);
+            ITriggerResult result = await pusher.TriggerAsync("asp_channel", "asp_event", data);
+            return Content("ok");
+        }
+
+        public ActionResult ClosureDate()
+        {
+            
+           Closure_Day closure = db.Closure_Days.Find(db.Closure_Days.Max(c => c.csdID));
+            return Json(closure, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Student/Details/5
