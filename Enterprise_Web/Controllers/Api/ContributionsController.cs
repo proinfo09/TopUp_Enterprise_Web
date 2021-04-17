@@ -36,7 +36,7 @@ namespace Enterprise_Web.Controllers.Api
         [HttpPost]
         public ContributionDto CreateContribution(ContributionDto contributionDto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             var contribution = Mapper.Map<ContributionDto, Contribution>(contributionDto);

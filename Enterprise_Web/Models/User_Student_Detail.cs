@@ -12,10 +12,10 @@ namespace Enterprise_Web.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentDto
+    public partial class User_Student_Detail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public StudentDto()
+        public User_Student_Detail()
         {
             this.Contributions = new HashSet<Contribution>();
         }

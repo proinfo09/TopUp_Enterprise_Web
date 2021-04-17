@@ -8,6 +8,7 @@ using System.Web.Routing;
 using System.Web.Http;
 using Enterprise_Web.App_Start;
 using AutoMapper;
+using Enterprise_Web.AutoMapperConfig;
 
 namespace Enterprise_Web
 {
@@ -15,7 +16,7 @@ namespace Enterprise_Web
     {
         protected void Application_Start()
         {
-            Mapper.Initialize(c => c.AddProfile<MappingProfile>()); 
+            AutoMapper.Mapper.Initialize(config: cfg => cfg.AddProfile<AutoMapperProfile>());
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

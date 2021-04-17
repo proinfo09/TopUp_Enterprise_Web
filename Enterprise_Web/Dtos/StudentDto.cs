@@ -12,6 +12,7 @@ namespace Enterprise_Web.Dtos
         public string std_fullname { get; set; }
         public string std_mail { get; set; }
         public string std_gender { get; set; }
+        public string std_doB { get; set; }
         public string std_phone { get; set; }
     }
 }
