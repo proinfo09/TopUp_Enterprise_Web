@@ -76,7 +76,7 @@
 
         .left {
             left: 0;
-            background-color: #A3BCB6;
+            background-color: #4bebd8;
         }
 
         .right {
@@ -107,17 +107,14 @@
 <body>
     <div class="split left">
         <div class="centered">
-            <div>
-                <img src="~/images/2.png" alt="logo" style="width:128px;height:128px;">
-                <h1 class="mb-0 mt-3 display-4">Anchor</h1>
-                <h5 class="mb-4 font-weight-light">Free Bootstrap UI Kit  </h5>
-            </div>
+            <div class="d-flex justify-content-center" style="padding-bottom:120px; margin-right:20px">
+                <img src="~/img systerm/logoss.png" alt="logo" style="width:50;height:50%;">
         </div>
     </div>
 
     <div class="split right">
         <div class="centered">
-            <h1>Login</h1>
+            <h1 >Login</h1>
             <section id="loginForm">
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
