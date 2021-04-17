@@ -82,8 +82,8 @@
           </Key>
           <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Body" Type="nvarchar(max)" />
-          <Property Name="BlogPostID" Type="int" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="consID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Contributions">
           <Key>
@@ -118,8 +118,8 @@
           <Property Name="imgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="img_Title" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="consID" Type="int" Nullable="false" />
-          <Property Name="ContentType" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ContentType" Type="nvarchar(max)" />
+          <Property Name="Data" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="User_Admin_Detail">
           <Key>
@@ -202,6 +202,18 @@
             </Principal>
             <Dependent Role="AspNetUsers">
               <PropertyRef Name="facID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cmt_Contribution">
+          <End Role="Contributions" Type="Self.Contributions" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contributions">
+              <PropertyRef Name="consID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="consID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -370,6 +382,10 @@
           <AssociationSet Name="fk_AspUser_Faculty_facID" Association="Self.fk_AspUser_Faculty_facID">
             <End Role="Faculty" EntitySet="Faculty" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cmt_Contribution" Association="Self.FK_Cmt_Contribution">
+            <End Role="Contributions" EntitySet="Contributions" />
+            <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
           <AssociationSet Name="fk_cons_fileidID" Association="Self.fk_cons_fileidID">
             <End Role="File" EntitySet="File" />
@@ -797,7 +813,7 @@
           </Key>
           <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="consID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Contribution" Relationship="Model.FK_Cmt_Contribution" FromRole="Comment" ToRole="Contribution" />
         </EntityType>
@@ -809,8 +825,8 @@
           <Property Name="img_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="consID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Contribution" Relationship="Model.FK_Image_Contribution" FromRole="Image" ToRole="Contribution" />
-          <Property Name="ContentType" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Image_Contribution">
           <End Type="Model.Contribution" Role="Contribution" Multiplicity="1" />
@@ -1013,7 +1029,7 @@
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="Model.Comment">
               <MappingFragment StoreEntitySet="Comment">
-                <ScalarProperty Name="consID" ColumnName="BlogPostID" />
+                <ScalarProperty Name="consID" ColumnName="consID" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CommentID" ColumnName="CommentID" />

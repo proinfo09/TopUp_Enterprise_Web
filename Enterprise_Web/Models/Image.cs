@@ -11,7 +11,8 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class Image
     {
         public int imgID { get; set; }
@@ -19,7 +20,8 @@ namespace Enterprise_Web.Models
         public int consID { get; set; }
         public string ContentType { get; set; }
         public byte[] Data { get; set; }
-    
+        
+        public HttpPostedFileBase ImageFile { get; set; }
         public virtual Contribution Contribution { get; set; }
     }
 }

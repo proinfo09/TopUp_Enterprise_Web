@@ -235,6 +235,9 @@
     <Compile Include="Controllers\User_Student_DetailController.cs" />
     <Compile Include="Dtos\AdminDto.cs" />
     <Compile Include="Dtos\ContributionDto.cs" />
+    <Compile Include="Dtos\GuestDto.cs" />
+    <Compile Include="Dtos\McDto.cs" />
+    <Compile Include="Dtos\MmDto.cs" />
     <Compile Include="Dtos\StudentDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -442,11 +445,6 @@
     <Content Include="Views\Contributions\Mc_ContributionManagments.cshtml" />
     <Content Include="Views\User_Guest_Detail\GuestDashboard.cshtml" />
     <Content Include="Views\User_Guest_Detail\GuestContribution.cshtml" />
-    <Content Include="Views\Images\Create.cshtml" />
-    <Content Include="Views\Images\Delete.cshtml" />
-    <Content Include="Views\Images\Details.cshtml" />
-    <Content Include="Views\Images\Edit.cshtml" />
-    <Content Include="Views\Images\Index.cshtml" />
     <Content Include="Views\Home\File.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
@@ -469,6 +467,7 @@
     <Content Include="Views\AspNetRoles\Edit.cshtml" />
     <Content Include="Views\AspNetRoles\Index.cshtml" />
     <Content Include="Views\DatePicker\Index.cshtml" />
+    <Content Include="Views\Images\Add.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -642,7 +641,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Files\" />
     <Folder Include="Views\Guest\" />
-    <Folder Include="Views\Img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
