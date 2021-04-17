@@ -32,6 +32,8 @@ namespace Enterprise_Web.Models
         [Display(Name = "File Title")]
         public string file_Title { get; set; }
 
+
+
         public static readonly string Available = "Available";
     }
 }

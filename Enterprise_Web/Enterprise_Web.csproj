@@ -234,9 +234,6 @@
     <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BlogPost.cs">
-      <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Closure_Day.cs">
       <DependentUpon>WebEnterpriseModel.tt</DependentUpon>
     </Compile>

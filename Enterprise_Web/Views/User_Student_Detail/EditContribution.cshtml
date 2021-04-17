@@ -64,73 +64,7 @@
         </div>
     </div>
 }
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="page-header">
-                <h1><small class="pull-right">{{comments.length}} comments</small> Comments </h1>
-            </div>
-            <div class="comments-list">
-                <div class="media" v-for="com in comments">
-                    <div class="media-body">
-                        <h4 class="media-heading user_name">{{com.Name}}</h4>
-                        {{com.Body}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    var pusher = new Pusher('9711cf863b669984e1f2', {
-        cluster: 'ap1'
-    });
-    var my_channel = pusher.subscribe('asp_channel');
-    var app = new Vue({
-        el: '#app',
-        data: {
-            comments: [],
-            comment: {
-                Name: '',
-                Body: '',
-                consID: @Model.consID,
-            }
-        },
-        created: function() {
-            this.get_comments();
-            this.listen();
-        },
-        methods: {
-            get_comments: function() {
-                axios.get('@Url.Action("Comments", "Home", new { id = @Model.consID }, protocol: Request.Url.Scheme)')
-                    .then((response) => {
 
-                        this.comments = response.data;
-
-                    });
-
-            },
-            listen: function() {
-                my_channel.bind("asp_event", (data) => {
-                    if (data.BlogPostID == this.comment.BlogPostID) {
-                        this.comments.push(data);
-                    }
-
-                })
-            },
-            submit_comment: function() {
-                axios.post('@Url.Action("Comment", "Home", new {}, protocol: Request.Url.Scheme)', this.comment)
-                    .then((response) => {
-                        this.comment.Name = '';
-                        this.comment.Body = '';
-                        alert("Comment Submitted");
-
-                    });
-            }
-
-        }
-    });
-</script>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
