@@ -23,7 +23,7 @@ namespace Enterprise_Web.Models
             this.User_Guest_Detail = new HashSet<User_Guest_Detail>();
             this.User_Marketing_Coordinator_Detail = new HashSet<User_Marketing_Coordinator_Detail>();
             this.User_Marketing_Manager_Detail = new HashSet<User_Marketing_Manager_Detail>();
-            this.User_Student_Detail = new HashSet<User_Student_Detail>();
+            this.User_Student_Detail = new HashSet<StudentDto>();
             this.AspNetRoles = new HashSet<AspNetRole>();
         }
     
@@ -55,7 +55,7 @@ namespace Enterprise_Web.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Marketing_Manager_Detail> User_Marketing_Manager_Detail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Student_Detail> User_Student_Detail { get; set; }
+        public virtual ICollection<StudentDto> User_Student_Detail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
     }

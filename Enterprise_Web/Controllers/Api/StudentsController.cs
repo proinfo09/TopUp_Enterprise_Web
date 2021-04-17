@@ -1,4 +1,5 @@
-﻿using Enterprise_Web.Models;
+﻿using AutoMapper;
+using Enterprise_Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,9 @@ namespace Enterprise_Web.Controllers.Api
             _db = new WebEnterpriseEntities();
         }
         //GET /api/Student
-        public IEnumerable<User_Student_Detail> GetStudent()
+        public IEnumerable<StudentDto> GetStudent()
         {
-            return _db.User_Student_Detail.ToList();
+            return _db.User_Student_Detail.ToList().Select(Mapper.Map<User_Student_DetailController, StudentDto>);
         }
 
         //GET /api/Student/1

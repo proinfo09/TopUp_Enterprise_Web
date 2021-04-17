@@ -1,4 +1,6 @@
-﻿using Enterprise_Web.Models;
+﻿using AutoMapper;
+using Enterprise_Web.Dtos;
+using Enterprise_Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,37 +17,40 @@ namespace Enterprise_Web.Controllers.Api
             _db = new WebEnterpriseEntities();
         }
         //GET /api/Contribution
-        public IEnumerable<Contribution> GetContributions()
+        public IEnumerable<ContributionDto> GetContributions()
         {
-            return _db.Contributions.ToList();
+            return _db.Contributions.ToList().Select(Mapper.Map<Contribution, ContributionDto>);
         }
 
         //GET /api/contributions/1
-        public Contribution GetContribution(int id)
+        public ContributionDto GetContribution(int id)
         {
             var contribution = _db.Contributions.SingleOrDefault(c => c.consID == id);
 
             if (contribution == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            return contribution;
+            return Mapper.Map < Contribution, ContributionDto > (contribution);
         }
 
         //POST /api/contribution
         [HttpPost]
-        public Contribution CreateContribution(Contribution conntribution)
+        public ContributionDto CreateContribution(ContributionDto contributionDto)
         {
             if (ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            _db.Contributions.Add(conntribution);
+            var contribution = Mapper.Map<ContributionDto, Contribution>(contributionDto);
+            _db.Contributions.Add(contribution);
             _db.SaveChanges();
 
-            return conntribution;
+            contributionDto.consID = contribution.consID;
+
+            return contributionDto;
         }
 
         //PUT /api/contribution/1
         [HttpPut]
-        public void UpdateContribution(int id, Contribution contribution)
+        public void UpdateContribution(int id, ContributionDto contributionDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -55,13 +60,8 @@ namespace Enterprise_Web.Controllers.Api
             if (contributionInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            contributionInDb.cons_Name = contribution.cons_Name;
-            contributionInDb.cons_comment = contribution.cons_comment;
-            contributionInDb.cons_status = contribution.cons_status;
-            contributionInDb.cons_submit = contribution.cons_submit;
-            contributionInDb.stdID = contribution.stdID;
-            contributionInDb.fileID = contribution.fileID;
-
+            Mapper.Map(contributionDto, contributionInDb); 
+   
             _db.SaveChanges();
         }
 
