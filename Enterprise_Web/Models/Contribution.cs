@@ -18,6 +18,7 @@ namespace Enterprise_Web.Models
         public Contribution()
         {
             this.Images = new HashSet<Image>();
+            this.Comments = new HashSet<Comment>();
         }
     
         public int consID { get; set; }
@@ -32,5 +33,7 @@ namespace Enterprise_Web.Models
         public virtual User_Student_Detail User_Student_Detail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

@@ -30,11 +30,10 @@
         <AssociationConnector Association="Model.fk_cons_fileidID" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_cons_stdID" ManuallyRouted="false" />
         <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.BlogPost" Width="1.5" PointX="7" PointY="0.75" />
         <EntityTypeShape EntityType="Model.Comment" Width="1.5" PointX="9" PointY="0.625" />
-        <AssociationConnector Association="Model.FK_Cmt_Post" />
         <EntityTypeShape EntityType="Model.Image" Width="1.5" PointX="9.75" PointY="19.25" />
         <AssociationConnector Association="Model.FK_Image_Contribution" />
+        <AssociationConnector Association="Model.FK_Cmt_Contribution" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
