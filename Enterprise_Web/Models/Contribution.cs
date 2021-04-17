@@ -30,7 +30,7 @@ namespace Enterprise_Web.Models
         public int fileID { get; set; }
     
         public virtual File File { get; set; }
-        public virtual User_Student_Detail User_Student_Detail { get; set; }
+        public virtual StudentDto User_Student_Detail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
