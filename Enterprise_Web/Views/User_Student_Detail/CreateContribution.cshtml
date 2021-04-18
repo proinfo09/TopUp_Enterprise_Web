@@ -41,6 +41,13 @@
             @Html.ValidationMessageFor(model => model.cons_submit, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ContentType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="ImageFile" required />
+        </div>
+    </div>
     <br />
     <div class="form-group-lg" style="width:83.40%">
         <form action="/action_page.php">
@@ -51,7 +58,7 @@
         </form>
     </div>
 
-    
+
     <div>
         <p>@Html.ActionLink("Upload Image", "")</p>
         <p>@Html.ActionLink("Term and conditions", "")</p>
@@ -72,7 +79,7 @@
         })
     })
 
-
+    
 </script>
 
 
