@@ -33,7 +33,13 @@ namespace Enterprise_Web.Models
         public string file_Title { get; set; }
 
 
-
         public static readonly string Available = "Available";
+
+        public int imgID { get; set; }
+        public string img_Title { get; set; }
+
+        [Display(Name = "Upload Image")]
+        public string ContentType { get; set; }
+        public byte[] Data { get; set; }
     }
 }

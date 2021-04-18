@@ -30,13 +30,21 @@ namespace Enterprise_Web.Controllers
             string fileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
             string extention = Path.GetExtension(imageModel.ImageFile.FileName);
             fileName = fileName + DateTime.Now.ToString("mmddyy") + extention;
-            imageModel.ContentType = "~/Images/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+            imageModel.ContentType = "~/~?Images/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/~/Images/"), fileName);
             imageModel.ImageFile.SaveAs(fileName);
             db.Images.Add(imageModel);
             db.SaveChanges();
             ModelState.Clear();
             return View();
+        }
+        [HttpGet]
+        public ActionResult View(int id)
+        {
+            Image imageModel = new Image();
+            imageModel = db.Images.Where(x => x.imgID == id).FirstOrDefault();
+
+            return View(imageModel);
         }
         
     }    

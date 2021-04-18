@@ -468,6 +468,7 @@
     <Content Include="Views\AspNetRoles\Index.cshtml" />
     <Content Include="Views\DatePicker\Index.cshtml" />
     <Content Include="Views\Images\Add.cshtml" />
+    <Content Include="Views\Images\View.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
