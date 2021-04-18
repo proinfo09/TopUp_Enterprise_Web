@@ -27,6 +27,8 @@ namespace Enterprise_Web.Controllers
         public ActionResult Index()
         {
             var user_Student_Detail = db.User_Student_Detail.Include(u => u.AspNetUser);
+            ViewBag.roleID = new SelectList(db.AspNetRoles, "Id", "Name");
+            //ViewBag.userId = new SelectList(db.AspNetUsers, "Id", "Email", user_Student_Detail.userId);
             return View(user_Student_Detail.ToList());
         }
 

@@ -59,24 +59,11 @@ namespace Enterprise_Web.Controllers
             return RedirectToAction("File");
         }
 
-        
-        //public ActionResult Index2()
-        //{
-        //    return View(db.BlogPosts.AsQueryable());
-        //}
-
+       
         public ActionResult Create()
         {
             return View();
         }
-
-        //[HttpPost]
-        //public ActionResult Create(BlogPost post)
-        //{
-        //    db.BlogPosts.Add(post);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
         
         public ActionResult ClosureDate()
         {
@@ -87,17 +74,6 @@ namespace Enterprise_Web.Controllers
                 );
             return Json(closure, JsonRequestBehavior.AllowGet);
         }
-
-        //public ActionResult Details(int? id)
-        //{
-        //    return View(db.BlogPosts.Find(id));
-        //}
-
-        //public ActionResult Comments(int? id)
-        //{
-        //    var comments = db.Comments.Where(x => x.BlogPostID == id).ToArray();
-        //    return Json(comments, JsonRequestBehavior.AllowGet);
-        //}
 
         [HttpPost]
         public async Task<ActionResult> Comment(Comment data)
@@ -124,10 +100,6 @@ namespace Enterprise_Web.Controllers
 
             return Content("Success");
         }
-        //public ActionResult Index2()
-        //{
-        //    return View(db.BlogPosts.ToList());
-        //}
 
 
         //Zip & Download all sellected article
