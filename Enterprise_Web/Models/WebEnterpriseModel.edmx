@@ -118,8 +118,8 @@
           <Property Name="imgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="img_Title" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="consID" Type="int" Nullable="false" />
-          <Property Name="ContentType" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ContentType" Type="nvarchar(max)" />
+          <Property Name="Data" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="User_Admin_Detail">
           <Key>
@@ -825,8 +825,8 @@
           <Property Name="img_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="consID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Contribution" Relationship="Model.FK_Image_Contribution" FromRole="Image" ToRole="Contribution" />
-          <Property Name="ContentType" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Image_Contribution">
           <End Type="Model.Contribution" Role="Contribution" Multiplicity="1" />

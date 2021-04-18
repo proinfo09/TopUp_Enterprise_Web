@@ -1,9 +1,10 @@
-﻿using Enterprise_Web.Models;
+﻿using AutoMapper;
+using Enterprise_Web.Dtos;
+using Enterprise_Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Enterprise_Web.Controllers.Api
@@ -16,38 +17,41 @@ namespace Enterprise_Web.Controllers.Api
             _db = new WebEnterpriseEntities();
         }
         //GET /api/MarketingManager
-        public IEnumerable<User_Marketing_Manager_Detail> GetMarketm()
+        public IEnumerable<MmDto> GetMarketms()
         {
-            return _db.User_Marketing_Manager_Detail.ToList();
+            return _db.User_Marketing_Manager_Detail.ToList().Select(Mapper.Map<User_Marketing_Manager_Detail, MmDto>);
         }
 
         //GET /api/MarketingManager/1
-        public User_Marketing_Manager_Detail GetMarketm(int id)
+        public MmDto GetMarketm(int id)
         {
             var marketm = _db.User_Marketing_Manager_Detail.SingleOrDefault(c => c.mkmID == id);
 
             if (marketm == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            return marketm;
+            return Mapper.Map<User_Marketing_Manager_Detail, MmDto>(marketm);
         }
             
 
             //POST /api/MarketingManager
             [HttpPost]
-        public User_Marketing_Manager_Detail CreateMarketm(User_Marketing_Manager_Detail marketm)
+        public MmDto CreateMarketm(MmDto marketmDto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var marketm = Mapper.Map<MmDto, User_Marketing_Manager_Detail>(marketmDto);
             _db.User_Marketing_Manager_Detail.Add(marketm);
             _db.SaveChanges();
 
-            return marketm;
+            marketmDto.mkmID = marketm.mkmID;
+
+            return marketmDto;
         }
 
         //PUT /api/MarketingManager/1
         [HttpPut]
-        public void UpdateMarketm(int id, User_Marketing_Manager_Detail marketm)
+        public void UpdateMarketm(int id, MmDto marketmDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -57,13 +61,7 @@ namespace Enterprise_Web.Controllers.Api
             if (marketmInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-                marketmInDb.mkm_fullname = marketmInDb.mkm_fullname;
-                marketmInDb.mkm_mail = marketmInDb.mkm_mail;
-                marketmInDb.mkm_gender = marketmInDb.mkm_gender;
-                marketmInDb.mkm_phone = marketmInDb.mkm_phone;
-                marketmInDb.mkmID = marketmInDb.mkmID;
-                marketmInDb.mkm_doB = marketmInDb.mkm_doB;
-                marketmInDb.userId = marketmInDb.userId;
+            Mapper.Map(marketmDto, marketmInDb);
 
             _db.SaveChanges();
         }

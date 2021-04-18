@@ -1,9 +1,10 @@
-﻿using Enterprise_Web.Models;
+﻿using AutoMapper;
+using Enterprise_Web.Dtos;
+using Enterprise_Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Enterprise_Web.Controllers.Api
@@ -16,37 +17,40 @@ namespace Enterprise_Web.Controllers.Api
             _db = new WebEnterpriseEntities();
         }
         //GET /api/Admin
-        public IEnumerable<User_Admin_Detail> GetAdmin()
+        public IEnumerable<AdminDto> GetAdmin()
         {
-            return _db.User_Admin_Detail.ToList();
+            return _db.User_Admin_Detail.ToList().Select(Mapper.Map<User_Admin_Detail, AdminDto>);
         }
 
         //GET /api/Admin/1
-        public User_Admin_Detail GetAdmin(int id)
+        public AdminDto GetAdmin(int id)
         {
             var admin = _db.User_Admin_Detail.SingleOrDefault(c => c.admID == id);
 
             if (admin == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            return admin;
+            return Mapper.Map<User_Admin_Detail, AdminDto>(admin);
         }
 
         //POST /api/Admin
         [HttpPost]
-        public User_Admin_Detail CreateAdmin(User_Admin_Detail admin)
+        public AdminDto CreateAdmin(AdminDto adminDto)
         {
             if (ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var admin = Mapper.Map<AdminDto, User_Admin_Detail>(adminDto);
             _db.User_Admin_Detail.Add(admin);
             _db.SaveChanges();
 
-            return admin;
+            adminDto.admID = admin.admID;
+
+            return adminDto;
         }
 
         //PUT /api/Admin/1
         [HttpPut]
-        public void UpdateAdmin(int id, User_Admin_Detail admin)
+        public void UpdateAdmin(int id, AdminDto adminDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -56,13 +60,7 @@ namespace Enterprise_Web.Controllers.Api
             if (adminInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            adminInDb.admin_fullname = adminInDb.admin_fullname;
-            adminInDb.admin_mail = adminInDb.admin_mail;
-            adminInDb.admin_gender = adminInDb.admin_gender;
-            adminInDb.admin_phone = adminInDb.admin_phone;
-            adminInDb.admID = adminInDb.admID;
-            adminInDb.admin_doB = adminInDb.admin_doB;
-            adminInDb.userId = adminInDb.userId;
+            Mapper.Map(adminDto, adminInDb);
 
             _db.SaveChanges();
         }

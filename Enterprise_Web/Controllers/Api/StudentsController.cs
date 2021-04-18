@@ -1,11 +1,11 @@
-﻿using Enterprise_Web.Models;
+﻿using AutoMapper;
+using Enterprise_Web.Dtos;
+using Enterprise_Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-
 
 namespace Enterprise_Web.Controllers.Api
 {
@@ -17,37 +17,41 @@ namespace Enterprise_Web.Controllers.Api
             _db = new WebEnterpriseEntities();
         }
         //GET /api/Student
-        public IEnumerable<User_Student_Detail> GetStudent()
+        public IEnumerable<StudentDto> GetStudents()
         {
-            return _db.User_Student_Detail.ToList();
+            return _db.User_Student_Detail.ToList().Select(extractedStudent => Mapper.Map<User_Student_Detail, StudentDto>(extractedStudent));
         }
 
         //GET /api/Student/1
-        public User_Student_Detail GetStudent(int id)
+        public StudentDto GetStudent(int id)
         {
             var student = _db.User_Student_Detail.SingleOrDefault(c => c.stdID == id);
 
             if (student == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            return student;
+            return Mapper.Map<User_Student_Detail, StudentDto>(student);
         }
 
         //POST /api/Student
         [HttpPost]
-        public User_Student_Detail CreateStudent(User_Student_Detail student)
+        public StudentDto CreateStudent(StudentDto studentDto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            _db.User_Student_Detail.Add(student);
+            var student = Mapper.Map<StudentDto, User_Student_Detail>(studentDto);
+            _db.User_Student_Detail.Add(student
+                );
             _db.SaveChanges();
 
-            return student;
+            studentDto.stdID = student.stdID;
+
+            return studentDto;
         }
 
         //PUT /api/Student/1
         [HttpPut]
-        public void UpdateStudent(int id, User_Student_Detail student)
+        public void UpdateStudent(int id, StudentDto studentDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -57,13 +61,7 @@ namespace Enterprise_Web.Controllers.Api
             if (studentInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            studentInDb.std_fullname = student.std_fullname;
-            studentInDb.std_mail = student.std_mail;
-            studentInDb.std_gender = student.std_gender;
-            studentInDb.std_phone = student.std_phone;
-            studentInDb.stdID = student.stdID;
-            studentInDb.std_doB = student.std_doB;
-            studentInDb.userId = student.userId;
+            Mapper.Map(studentDto, studentInDb);
 
             _db.SaveChanges();
         }

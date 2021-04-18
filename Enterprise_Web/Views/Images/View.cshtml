@@ -1,0 +1,50 @@
+﻿@model Enterprise_Web.Models.Image
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Image</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.img_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.img_Title)
+        </dd>
+
+        <dt>
+          
+        </dt>
+
+        <dd>
+           <img src="@Url.Content(Model.ContentType)" width="250" height="250" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contribution.cons_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contribution.cons_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.imgID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

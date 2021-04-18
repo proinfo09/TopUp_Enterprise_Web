@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
     <title>Dashboard Template · Bootstrap v5.0</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
@@ -148,9 +150,12 @@
             padding-left: 25pt;
             padding-right: 25pt;
         }
+
+   
+
     </style>
 
-    @Scripts.Render("~/bundles/jquery")
+
 
 </head>
 <body>
@@ -160,7 +165,12 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <ul class="nav-item">
+                @Html.Partial("_LoginPartial")
+            </ul>
         </div>
+
+        
     </nav>
 
     <div class="container-fluid">
@@ -177,20 +187,20 @@
                 @*<div class="row">*@
                 <nav id="sidebarMenu" class="col-lg-2 d-md-block bg-light sidebar collapse" style="background-color: #FFFFFF">
                     <div class="position-sticky pt-3"></div>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
-                                <img src="~/images/2.png" alt="logo" style="width:108px;height:108px;">
-                            </a>
-                        </li>
+                    <ul class="nav flex-column justify-content-center">
+                       <li ><img src="~/img systerm/logoss.png" alt="logo" style="width:70%;height:20%; margin-left:2rem;"></li>
                         <li class="nav-item">
                             @Html.ActionLink("Application name", "Index", "Home", new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            @Html.Partial("_LoginPartial")
+                            @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })
+                            @Html.ActionLink("Dashboard", "Dashboard", "Manage", new { @class = "nav-link" })
+                        </li>
+                        <li>
+                            <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            
                         </li>
                     </ul>
 

@@ -1,9 +1,10 @@
-﻿using Enterprise_Web.Models;
+﻿using AutoMapper;
+using Enterprise_Web.Dtos;
+using Enterprise_Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Enterprise_Web.Controllers.Api
@@ -16,37 +17,40 @@ namespace Enterprise_Web.Controllers.Api
             _db = new WebEnterpriseEntities();
         }
         //GET /api/maketingcordinator
-        public IEnumerable<User_Marketing_Coordinator_Detail> GetMarketingC()
+        public IEnumerable<McDto> GetMarketingCs()
         {
-            return _db.User_Marketing_Coordinator_Detail.ToList();
+            return _db.User_Marketing_Coordinator_Detail.ToList().Select(Mapper.Map<User_Marketing_Coordinator_Detail, McDto>);
         }
 
         //GET /api/maketingcordinator/1
-        public User_Marketing_Coordinator_Detail GetMarketingC(int id)
+        public McDto GetMarketingC(int id)
         {
             var marketc = _db.User_Marketing_Coordinator_Detail.SingleOrDefault(c => c.mkcID == id);
 
             if (marketc == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            return marketc;
+            return Mapper.Map<User_Marketing_Coordinator_Detail, McDto>(marketc);
         }
 
         //POST /api/maketingcordinator
         [HttpPost]
-        public User_Marketing_Coordinator_Detail CreateMarketingC(User_Marketing_Coordinator_Detail marketc)
+        public McDto CreateMarketingC(McDto marketcDto)
         {
             if (ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var marketc = Mapper.Map<McDto, User_Marketing_Coordinator_Detail>(marketcDto);
             _db.User_Marketing_Coordinator_Detail.Add(marketc);
             _db.SaveChanges();
 
-            return marketc;
+            marketcDto.mkcID = marketc.mkcID;
+
+            return marketcDto;
         }
 
         //PUT /api/maketingcordinator/1
         [HttpPut]
-        public void UpdateMarketingC(int id, User_Marketing_Coordinator_Detail marketc)
+        public void UpdateMarketingC(int id, McDto marketcDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -56,13 +60,7 @@ namespace Enterprise_Web.Controllers.Api
             if (marketcInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            marketcInDb.mkc_fullname = marketcInDb.mkc_fullname;
-            marketcInDb.mkc_mail = marketcInDb.mkc_mail;
-            marketcInDb.mkc_gender = marketcInDb.mkc_gender;
-            marketcInDb.mkc_phone = marketcInDb.mkc_phone;
-            marketcInDb.mkcID = marketcInDb.mkcID;
-            marketcInDb.mkc_doB = marketcInDb.mkc_doB;
-            marketcInDb.userId = marketcInDb.userId;
+            Mapper.Map(marketcDto, marketcInDb);
 
             _db.SaveChanges();
         }
