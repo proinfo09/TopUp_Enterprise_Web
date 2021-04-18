@@ -162,16 +162,6 @@ namespace Enterprise_Web.Controllers
             var Roles = context.Roles.ToList();
             return View(Roles);
         }
-         
-        public ActionResult Testing()
-        {
-            var user = User.Identity;
-            AppUsersDbContext context = new AppUsersDbContext();
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            var s = UserManager.GetRoles(user.GetUserId());
-            return View();
-        }
-
 
     }
 }
