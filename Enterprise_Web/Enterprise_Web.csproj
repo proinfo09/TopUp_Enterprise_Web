@@ -48,6 +48,7 @@
   <ItemGroup>
     <Reference Include="DataTables-Editor-Server, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DataTables-Editor-Server.2.0.1\lib\net46\DataTables-Editor-Server.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -241,6 +242,9 @@
     <Compile Include="Controllers\User_Student_DetailController.cs" />
     <Compile Include="Dtos\AdminDto.cs" />
     <Compile Include="Dtos\ContributionDto.cs" />
+    <Compile Include="Dtos\GuestDto.cs" />
+    <Compile Include="Dtos\McDto.cs" />
+    <Compile Include="Dtos\MmDto.cs" />
     <Compile Include="Dtos\StudentDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
