@@ -1,9 +1,10 @@
-﻿using Enterprise_Web.Models;
+﻿using AutoMapper;
+using Enterprise_Web.Dtos;
+using Enterprise_Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Enterprise_Web.Controllers.Api
@@ -16,37 +17,40 @@ namespace Enterprise_Web.Controllers.Api
             _db = new WebEnterpriseEntities();
         }
         //GET /api/Guest
-        public IEnumerable<User_Guest_Detail> GetGuest()
+        public IEnumerable<GuestDto> GetGuest()
         {
-            return _db.User_Guest_Detail.ToList();
+            return _db.User_Guest_Detail.ToList().Select(Mapper.Map<User_Guest_Detail, GuestDto>);
         }
 
         //GET /api/Guest/1
-        public User_Guest_Detail GetGuest(int id)
+        public GuestDto GetGuest(int id)
         {
             var guest = _db.User_Guest_Detail.SingleOrDefault(c => c.gstID == id);
 
             if (guest == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            return guest;
+            return Mapper.Map<User_Guest_Detail, GuestDto>(guest);
         }
 
         //POST /api/Guest
         [HttpPost]
-        public User_Guest_Detail CreateGuest(User_Guest_Detail guest)
+        public GuestDto CreateGuest(GuestDto guestDto)
         {
             if (ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var guest = Mapper.Map<GuestDto, User_Guest_Detail>(guestDto);
             _db.User_Guest_Detail.Add(guest);
             _db.SaveChanges();
 
-            return guest;
+            guestDto.gstID = guest.gstID;
+
+            return guestDto;
         }
 
         //PUT /api/Guest/1
         [HttpPut]
-        public void UpdateGuest(int id, User_Guest_Detail guest)
+        public void UpdateGuest(int id, GuestDto guestDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -56,13 +60,7 @@ namespace Enterprise_Web.Controllers.Api
             if (guestInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            guestInDb.gst_fullname = guest.gst_fullname;
-            guestInDb.gst_mail = guest.gst_mail;
-            guestInDb.gst_gender = guest.gst_gender;
-            guestInDb.gst_phone = guest.gst_phone;
-            guestInDb.gstID = guest.gstID;
-            guestInDb.gst_doB = guest.gst_doB;
-            guestInDb.userId = guest.userId;
+            Mapper.Map(guestDto, guestInDb);
 
             _db.SaveChanges();
         }

@@ -11,6 +11,7 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using Enterprise_Web.Models;
 using Microsoft.AspNet.Identity;
 using OfficeOpenXml;
@@ -413,6 +414,13 @@ namespace Enterprise_Web.Controllers
             var pusher = new Pusher("1185884", "9711cf863b669984e1f2", "73a4067f2b75a0bfe4eb", options);
             ITriggerResult result = await pusher.TriggerAsync("asp_channel", "asp_event", data);
             return Content("ok");
+        }
+
+        public ActionResult ClosureDate()
+        {
+            
+           Closure_Day closure = db.Closure_Days.Find(db.Closure_Days.Max(c => c.csdID));
+            return Json(closure, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Student/Details/5

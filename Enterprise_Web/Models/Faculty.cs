@@ -11,8 +11,7 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Faculty
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,11 +19,8 @@ namespace Enterprise_Web.Models
         {
             this.AspNetUsers = new HashSet<AspNetUser>();
         }
-
-        [Display(Name = "Faculty ID")]
+    
         public int facID { get; set; }
-
-        [Display(Name = "Faculty's Name")]
         public string facName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

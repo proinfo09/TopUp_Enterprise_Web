@@ -48,6 +48,8 @@
   <ItemGroup>
     <Reference Include="DataTables-Editor-Server, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DataTables-Editor-Server.2.0.1\lib\net46\DataTables-Editor-Server.dll</HintPath>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -215,6 +217,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AutoMapperConfig\AutoMapperProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\AdminController.cs" />
     <Compile Include="Controllers\Api\ContributionsController.cs" />
@@ -236,6 +239,9 @@
     <Compile Include="Controllers\User_Marketing_Coordinator_DetailController.cs" />
     <Compile Include="Controllers\User_Marketing_Manager_DetailController.cs" />
     <Compile Include="Controllers\User_Student_DetailController.cs" />
+    <Compile Include="Dtos\AdminDto.cs" />
+    <Compile Include="Dtos\ContributionDto.cs" />
+    <Compile Include="Dtos\StudentDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -527,6 +533,9 @@
     <Content Include="images\Jellyfish.jpg" />
     <Content Include="images\Koala.jpg" />
     <Content Include="images\Tulips.jpg" />
+    <Content Include="img systerm\logo.jpg" />
+    <Content Include="img systerm\logos.jpg" />
+    <Content Include="img systerm\logoss.png" />
     <Content Include="Models\WebEnterpriseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WebEnterpriseModel.edmx</DependentUpon>
@@ -682,7 +691,6 @@
     <Content Include="Views\Home\File.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\User_Student_Detail\Details.cshtml" />
     <Content Include="Views\User_Student_Detail\Create.cshtml" />
     <Content Include="Views\User_Student_Detail\Edit.cshtml" />
