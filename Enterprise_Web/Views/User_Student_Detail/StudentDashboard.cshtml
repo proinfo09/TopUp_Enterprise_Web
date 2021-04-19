@@ -6,19 +6,19 @@
 
 <h2>StudentDashBoard</h2>
 
-<div class="list-group">
+<div class="list-group col-10">
     <ul style=" font-size: 20px">
-        <li>
-            @Html.ActionLink("My profile", "StudentProfile", "User_Student_Detail")
+        <li class="list-group-item list-group-item-action list-group-item-warning">
+            @Html.ActionLink("My profile", "StudentProfile", "User_Student_Detail", new { @class = "text-decoration-none text-dark" })
         </li>
-        <li>
-            @Html.ActionLink("Manage Contributions", "StudentContribution", "User_Student_Detail")
+        <li class="list-group-item list-group-item-action list-group-item-info">
+            @Html.ActionLink("Manage Contributions", "StudentContribution", "User_Student_Detail", new { @class = "text-decoration-none text-dark" })
         </li>
-        <li>
-            @Html.ActionLink("Notification", "", "")
+        <li class="list-group-item list-group-item-action list-group-item-light">
+            @Html.ActionLink("Notification", "", "", new { @class = "text-decoration-none text-dark" })
         </li>
-        <li>
-            @Html.ActionLink("Report", "Report", "User_Admin_Detail")
+        <li class="list-group-item list-group-item-action list-group-item-success">
+            @Html.ActionLink("Report", "Report", "User_Admin_Detail", new { @class = "text-decoration-none text-dark" })
         </li>
     </ul>
 </div>
