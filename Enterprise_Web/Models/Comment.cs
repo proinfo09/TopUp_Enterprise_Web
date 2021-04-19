@@ -11,12 +11,21 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Comment
     {
+
+        [Display(Name = "CommentID")]
         public int CommentID { get; set; }
+
+        [Display(Name = "Name")]
         public string Name { get; set; }
+
+        [Display(Name = "Body")]
         public string Body { get; set; }
+
+        [Display(Name = "ContributionID")]
         public int consID { get; set; }
     
         public virtual Contribution Contribution { get; set; }
