@@ -683,7 +683,7 @@
     <Content Include="Views\User_Marketing_Coordinator_Detail\McProfile.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\MmDashboard.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\MmProfile.cshtml" />
-    <Content Include="Views\Contributions\Mm_ContributionManagments.cshtml" />
+    <Content Include="Views\User_Marketing_Manager_Detail\Mm_ContributionManagements.cshtml" />
     <Content Include="Views\Contributions\Mc_ContributionManagments.cshtml" />
     <Content Include="Views\User_Guest_Detail\GuestDashboard.cshtml" />
     <Content Include="Views\User_Guest_Detail\GuestContribution.cshtml" />
