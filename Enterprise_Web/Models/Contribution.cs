@@ -11,7 +11,8 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Contribution
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,6 +25,7 @@ namespace Enterprise_Web.Models
         public int consID { get; set; }
         public string cons_Name { get; set; }
         public string cons_comment { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public Nullable<System.DateTime> cons_submit { get; set; }
         public string cons_status { get; set; }
         public int stdID { get; set; }
