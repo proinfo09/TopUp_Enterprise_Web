@@ -29,7 +29,7 @@ namespace Enterprise_Web.Controllers
             ViewBag.consID = new SelectList(db.Contributions, "consID", "cons_Name");
             string fileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
             string extention = Path.GetExtension(imageModel.ImageFile.FileName);
-            fileName = fileName + DateTime.Now.ToString("mmddyy") + extention;
+            fileName = fileName + DateTime.Now.ToString("mmddyyfff") + extention;
             imageModel.ContentType = "~/~?Images/" + fileName;
             fileName = Path.Combine(Server.MapPath("~/~/Images/"), fileName);
             imageModel.ImageFile.SaveAs(fileName);
