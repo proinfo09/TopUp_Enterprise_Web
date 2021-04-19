@@ -12,7 +12,7 @@ namespace Enterprise_Web.Controllers
 {
     public class Closure_DayController : Controller
     {
-        private WebEntepriseEntities2 db = new WebEntepriseEntities2();
+        private WebEnterpriseEntities db = new WebEnterpriseEntities();
 
         // GET: Closure_Day
         public ActionResult Index()

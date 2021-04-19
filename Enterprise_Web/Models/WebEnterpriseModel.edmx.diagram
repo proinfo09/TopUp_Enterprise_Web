@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8e7b5b1fe6da44b7832ee4ea999dcd06" Name="Diagram1" DisplayType="true" ZoomLevel="106">
+        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetRole" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUser" Width="2.25" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Closure_Day" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Contribution" Width="1.5" PointX="7.5" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Faculty" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.File" Width="1.5" PointX="5.25" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User_Admin_Detail" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User_Guest_Detail" Width="1.5" PointX="6.875" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User_Marketing_Coordinator_Detail" Width="1.5" PointX="5.625" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User_Marketing_Manager_Detail" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User_Student_Detail" Width="1.5" PointX="5.25" PointY="21.625" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_Admin_Detail_userId_AspNetUser_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_AspUser_Faculty_facID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_User_Guest_Detail_AspNetUser_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_User_Marketing_Coordinator_Detail_AspNetUser_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_User_Marketing_Manager_Detail_AspNetUser_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_User_Student_Detail_AspNetUser_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_cons_fileidID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_cons_stdID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Comment" Width="1.5" PointX="9.75" PointY="20.5" />
+        <EntityTypeShape EntityType="Model.Image" Width="1.5" PointX="9.75" PointY="23.25" />
+        <AssociationConnector Association="Model.FK_Image_Contribution" />
+        <AssociationConnector Association="Model.FK_Cmt_Contribution" />
+        <AssociationConnector Association="Model.FK_Comment_Contribution" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -11,19 +11,16 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class Image
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Image()
-        {
-            this.Contributions = new HashSet<Contribution>();
-        }
-    
         public int imgID { get; set; }
         public string img_Title { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contribution> Contributions { get; set; }
+        public int consID { get; set; }
+        public string ContentType { get; set; }
+        public byte[] Data { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
+        public virtual Contribution Contribution { get; set; }
     }
 }

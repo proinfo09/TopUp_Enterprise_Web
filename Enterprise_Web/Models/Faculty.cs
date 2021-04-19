@@ -17,19 +17,13 @@ namespace Enterprise_Web.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Faculty()
         {
-            this.Guests = new HashSet<Guest>();
-            this.Marketing_Coordinator = new HashSet<Marketing_Coordinator>();
-            this.Students = new HashSet<Student>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
         public int facID { get; set; }
         public string facName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Guest> Guests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Marketing_Coordinator> Marketing_Coordinator { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

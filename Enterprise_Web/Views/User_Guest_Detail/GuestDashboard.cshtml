@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "GuestDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GuestDashboard</h2>
+<div class="list-group">
+    <ul style=" font-size: 20px">
+        <li>
+            @Html.ActionLink("My profile", "GuestProfile", "User_Guest_Detail")
+        </li>
+        <li>
+            @Html.ActionLink("View Contributions", "ViewContributions", "Contributions")
+        </li>
+    </ul>
+</div>

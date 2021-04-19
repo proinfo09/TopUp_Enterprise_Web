@@ -1,0 +1,36 @@
+﻿@model Enterprise_Web.Models.DatepickerModels
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+    <br />
+    @Html.EditorFor(model => model.dtmDate, new { htmlAttributes = new { @class = "datepicker" } })
+}
+
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+@section scripts{
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <script>
+
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "mm-dd-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "2020:2025",
+                //minDate: new Date("2021, 0, 1"),
+                //minDate: new Date("2024, 0, 1"),
+                showOn: "both",
+                buttonText: "<i class='fa fa-calendar'></i>"
+            });
+        });
+
+    </script>
+}

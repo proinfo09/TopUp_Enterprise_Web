@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Enterprise_Web.Models.Contribution>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<link href="~/Content/DataTables/css/responsive.dataTables.min.css" rel="stylesheet" />
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+<script src="~/Scripts/DataTables/dataTables.responsive.min.js"></script>
+<style>
+    div.container {
+        max-width: 1200px
+    }
+</style>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="box-title">
+            <b>Contribution Managements</b>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover table-bordered table-condensed" id="ContributionSelected" >
+            <thead>
+                <tr>
+                    <th>
+                        <b>
+                            @Html.DisplayNameFor(model => model.consID)
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            @Html.DisplayNameFor(model => model.cons_Name)
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            @Html.DisplayNameFor(model => model.cons_submit)
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            @Html.DisplayNameFor(model => model.User_Student_Detail.AspNetUser.Faculty.facName)
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            @Html.DisplayNameFor(model => model.User_Student_Detail.std_mail)
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            @Html.DisplayNameFor(model => model.File.file_Title)
+                        </b>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.consID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cons_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cons_submit, "{0 : dddd, MMMM d, yyyy}")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User_Student_Detail.AspNetUser.Faculty.facName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User_Student_Detail.std_mail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.File.file_Title)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Download", "Download", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            $('#ContributionSelected thead tr').clone(true).appendTo('#ContributionSelected thead');
+            $('#ContributionSelected thead tr:eq(1) th').each(function (i) {
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+
+                $('input', this).on('keyup change', function () {
+                    if (table.column(i).search() !== this.value) {
+                        table
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+
+            var table = $('#ContributionSelected').DataTable({
+                "orderCellsTop": true,
+                "fixedHeader": true,
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "responsive": true,
+                dom: 'Qfrtip',
+                "searchBuilder": {
+                    conditions: {
+                        num: {
+                            'between': {
+                                search: function (value, comparison) {
+                                    // Depending on which input element is bigger will change the comparisons that need to be made
+                                    if (+comparison[0] < +comparison[1]) {
+                                        return +comparison[0] <= +value && +value <= +comparison[1];
+                                    }
+                                    else {
+                                        return +comparison[1] <= +value && +value <= +comparison[0];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+}

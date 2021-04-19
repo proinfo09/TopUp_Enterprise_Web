@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "MmDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Marketing Manager Dashboard</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="list-group">
+    <ul style=" font-size: 20px">
+        <li>
+            @Html.ActionLink("My profile", "MmProfile", "User_Marketing_Manager_Detail")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Contributions", "Mm_ContributionManagments", "Contributions")
+        </li>
+        <li>
+            @Html.ActionLink("Report(đang làm)", "Report", "User_Marketing_Manager_Detail")
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,67 @@
+﻿@model Enterprise_Web.Models.User_Guest_Detail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User_Guest_Detail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.gst_fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gst_fullname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gst_mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gst_mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gst_gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gst_gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gst_doB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gst_doB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gst_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gst_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.gstID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

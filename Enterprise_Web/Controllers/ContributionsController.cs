@@ -7,17 +7,18 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Enterprise_Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Enterprise_Web.Controllers
 {
     public class ContributionsController : Controller
     {
-        private WebEntepriseEntities2 db = new WebEntepriseEntities2();
+        private WebEnterpriseEntities db = new WebEnterpriseEntities();
 
         // GET: Contributions
         public ActionResult Index()
         {
-            var contributions = db.Contributions.Include(c => c.Image).Include(c => c.Student);
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
             return View(contributions.ToList());
         }
 
@@ -39,17 +40,18 @@ namespace Enterprise_Web.Controllers
         // GET: Contributions/Create
         public ActionResult Create()
         {
+            ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title");
             ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title");
-            ViewBag.stdID = new SelectList(db.Students, "stdID", "std_username");
+            ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId");
             return View();
         }
 
         // POST: Contributions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "consID,cons_Name,cons_FileName,cons_comment,cons_submit,cons_status,imgID,stdID")] Contribution contribution)
+        public ActionResult Create([Bind(Include = "consID,cons_Name,cons_comment,cons_submit,cons_status,imgID,stdID,fileID")] Contribution contribution)
         {
             if (ModelState.IsValid)
             {
@@ -58,8 +60,8 @@ namespace Enterprise_Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title", contribution.imgID);
-            ViewBag.stdID = new SelectList(db.Students, "stdID", "std_username", contribution.stdID);
+            ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
+            ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
             return View(contribution);
         }
 
@@ -75,17 +77,17 @@ namespace Enterprise_Web.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title", contribution.imgID);
-            ViewBag.stdID = new SelectList(db.Students, "stdID", "std_username", contribution.stdID);
+            ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
+            ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
             return View(contribution);
         }
 
         // POST: Contributions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "consID,cons_Name,cons_FileName,cons_comment,cons_submit,cons_status,imgID,stdID")] Contribution contribution)
+        public ActionResult Edit([Bind(Include = "consID,cons_Name,cons_comment,cons_submit,cons_status,imgID,stdID,fileID")] Contribution contribution)
         {
             if (ModelState.IsValid)
             {
@@ -93,8 +95,8 @@ namespace Enterprise_Web.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title", contribution.imgID);
-            ViewBag.stdID = new SelectList(db.Students, "stdID", "std_username", contribution.stdID);
+            ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
+            ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
             return View(contribution);
         }
 
@@ -132,11 +134,43 @@ namespace Enterprise_Web.Controllers
             }
             base.Dispose(disposing);
         }
-
-        public ActionResult ContributionsManagement()
+        public ActionResult ContributionManagments()
         {
-            var contributions = db.Contributions.Include(c => c.Image).Include(c => c.Student);
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
             return View(contributions.ToList());
+        }
+
+        public ActionResult Mm_ContributionManagments()
+        {
+            ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title");
+            ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title");
+            ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId");
+            var selected = "Selected";
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
+            return View(contributions.ToList().Where(item => item.cons_status == selected));
+        }
+
+        public ActionResult Mc_ContributionManagments()
+        {
+            var userId = User.Identity.GetUserId();
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AspNetUser user = db.AspNetUsers.Find(userId);
+            var mc = user.User_Marketing_Coordinator_Detail.FirstOrDefault();
+
+            if (mc == null)
+            {
+                return HttpNotFound();
+            }
+            return View(contributions.ToList().Where(item => item.User_Student_Detail.AspNetUser.facID == mc.AspNetUser.facID));
+        }
+
+        public ActionResult UploadImage()
+        {
+            return View();
         }
     }
 }

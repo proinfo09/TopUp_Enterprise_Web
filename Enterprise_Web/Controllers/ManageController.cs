@@ -13,6 +13,7 @@ namespace Enterprise_Web.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        private WebEnterpriseEntities db = new WebEnterpriseEntities();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -97,6 +98,32 @@ namespace Enterprise_Web.Controllers
                 message = ManageMessageId.Error;
             }
             return RedirectToAction("ManageLogins", new { Message = message });
+        }
+
+        public ActionResult Dashboard()
+        {
+            AspNetUser user = db.AspNetUsers.Find(User.Identity.GetUserId());
+            var role = user.AspNetRoles.FirstOrDefault();
+            switch (role.Id) {
+                case "1": //if role is admin 
+                    return RedirectToRoute("User_Admin_Detail/AdminDashboard");
+                    break;
+                case "2": //if role is admin 
+                    return Redirect("User_Marketing_Manager_Detail/MmDashboard");
+                    break;
+                case "3": //if role is admin 
+                    return RedirectToRoute("User_Marketing_Coordinator_Detail/McDashboard");
+                    break;
+                case "4": //if role is admin 
+                    return RedirectToAction("StudentDashboard");
+                    break;
+                case "5": //if role is admin 
+                    return Redirect("User_Guest_Detail/GuestDashboard");
+                    break;
+                default:
+                    break;
+            }
+            return View();
         }
 
         //

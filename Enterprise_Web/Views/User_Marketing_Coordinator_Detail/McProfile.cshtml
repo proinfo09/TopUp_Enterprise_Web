@@ -1,0 +1,76 @@
+﻿@model Enterprise_Web.Models.User_Marketing_Coordinator_Detail
+
+@{
+    ViewBag.Title = "McProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>McProfile</h2>
+
+<div>
+    <h4>User_Marketing_Coordinator_Detail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mkcID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mkcID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mkc_fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mkc_fullname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mkc_mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mkc_mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mkc_gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mkc_gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mkc_doB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mkc_doB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mkc_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mkc_phone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.mkcID }) |
+    @Html.ActionLink("Change Password", "", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "McDashboard")
+</p>
