@@ -224,7 +224,7 @@ namespace Enterprise_Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             AspNetUser user = db.AspNetUsers.Find(userId);
-            var std = user.User_Admin_Detail.FirstOrDefault();
+            var std = user.User_Student_Detail.FirstOrDefault();
             if (std == null)
             {
                 return HttpNotFound();
