@@ -11,9 +11,19 @@ namespace Enterprise_Web.Controllers
     {
         WebEnterpriseEntities db = new WebEnterpriseEntities();
         // GET: Report
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            int total = db.Contributions.Count();
+            int selected = db.Contributions.Where(x => x.cons_status == "Selected").Count();
+            int pending = db.Contributions.Where(x => x.cons_status == "Pending").Count();
+            Ratio obj = new Ratio();
+            obj.total = total;
+            obj.selected = selected;
+            obj.pending = pending;
+
+            //return Json(obj, JsonRequestBehavior.AllowGet);
+            return View(obj);
         }
 
         public ActionResult GetData()
@@ -36,7 +46,15 @@ namespace Enterprise_Web.Controllers
             public int EventManagement { get; set; }
             public int GraphicDesign { get; set; }
             public int InformationTechnology { get; set; }
-        
+            public int total { get; set; }
+            public int selected { get; set; }
+            public int pending{ get; set; }
+  
+
+
         }
+
+
+
     }
 }
