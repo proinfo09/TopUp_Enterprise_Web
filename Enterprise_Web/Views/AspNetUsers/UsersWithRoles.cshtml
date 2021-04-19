@@ -20,7 +20,6 @@
                     <th><b>Username</b></th>
                     <th><b>Email</b></th>
                     <th><b>Roles</b></th>
-                    <th><b>Action</b></th>
                 </tr>
             </thead>
             <tbody>
@@ -29,10 +28,7 @@
                     <tr>
                         <td>@user.Username</td>
                         <td>@user.Email</td>
-                        <td>@Html.DropDownListFor(u => user.Role, (IEnumerable<SelectListItem>)ViewBag.Roles as SelectList, "Select...")</td>
-                        <td>
-                            <button class="updatebutton">update</button>
-                        </td>
+                        <td>@user.Role </td>
                     </tr>
 
                 }
@@ -74,9 +70,7 @@
                 "ordering": true,
                 "info": true,
                 "autoWidth": true,
-                "responsive": {
-                    details: false
-                },
+                "responsive": true,
                 dom: 'Qfrtip',
                 "searchBuilder": {
                     conditions: {
@@ -94,22 +88,6 @@
                             }
                         }
                     }
-                }
-            });
-        });
-    </script>
-    <script>
-        $("table tbody").on("click", ".updatebutton", function () {
-            var userId = $(this).closest("tr").find("td").eq(0).text().trim();
-            $.ajax({
-                url: "@Url.Action("UpdateRole")",
-                data: {
-                    UserId: userId,
-                    RoleId: $("#item_Roles").val()
-                },
-                success: function (data) {
-                    alert(data);
-                    location.reload(true);
                 }
             });
         });

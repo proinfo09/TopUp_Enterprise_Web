@@ -20,7 +20,6 @@ namespace Enterprise_Web.Models
         public int consID { get; set; }
         public string ContentType { get; set; }
         public byte[] Data { get; set; }
-        
         public HttpPostedFileBase ImageFile { get; set; }
         public virtual Contribution Contribution { get; set; }
     }
