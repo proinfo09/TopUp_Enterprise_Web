@@ -5,20 +5,19 @@
 }
 
 <h2>Marketing Manager Dashboard</h2>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<div class="list-group">
-    <ul style=" font-size: 20px">
-        <li>
-            @Html.ActionLink("My profile", "MmProfile", "User_Marketing_Manager_Detail")
-        </li>
-        <li>
-            @Html.ActionLink("Manage Contributions", "Mm_ContributionManagments", "Contributions")
-        </li>
-        <li>
-            @Html.ActionLink("Report(đang làm)", "Report", "User_Marketing_Manager_Detail")
-        </li>
-    </ul>
+<div class="list-group col-10">
+<ul style=" font-size: 20px">
+    <li class="list-group-item list-group-item-action list-group-item-warning">
+        @Html.ActionLink("My profile", "MmProfile", "User_Marketing_Manager_Detail", new { @class = "text-decoration-none text-dark" })
+    </li>
+    <li class="list-group-item list-group-item-action list-group-item-info">
+        @Html.ActionLink("Manage Contributions", "Index", "Contributions", new { @class = "text-decoration-none text-dark" })
+    </li>
+    <li class="list-group-item list-group-item-action list-group-item-light">
+        @Html.ActionLink("Report(đang làm)", "Report", "User_Marketing_Manager_Detail", new { @class = "text-decoration-none text-dark" })
+    </li>
+</ul>
 </div>
+
+
