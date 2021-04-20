@@ -44,11 +44,6 @@ namespace Enterprise_Web.Controllers
             return View();
         }
 
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
         public ActionResult ClosureDate()
         {
             Closure_Day closure = db.Closure_Days.Find(
@@ -89,11 +84,5 @@ namespace Enterprise_Web.Controllers
         {
             return View();
         }
-        //public FileResult ProcessForm()
-        //{
-        //    string path = ExcelGenerationCode(fileName);
-        //    return File(path, "application/vnd.ms-excel", "your download file name");
-        //}
-        
     }
 }
