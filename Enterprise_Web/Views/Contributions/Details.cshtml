@@ -1,4 +1,5 @@
 ﻿@model Enterprise_Web.Models.Contribution
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "DetailsContribution";
@@ -65,13 +66,6 @@
                 @Html.DisplayFor(model => model.File.file_Title)
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.User_Student_Detail.userId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.User_Student_Detail.userId)
-            </dd>
 
         </dl>
     </div>
@@ -96,7 +90,7 @@
         <br />
         <p>Your Comment</p>
         <form onsubmit="return false;">
-            <input type="text" id="Name" placeholder="Your Name" v-model="comment.Name" class="form-control" />
+            <input type="text" id="Name" placeholder="Your Name" v-model="comment.Name" class="form-control" value="@User.Identity.Name.ToString()" />
             <textarea rows="3" placeholder="Your Comment" id="Body" v-model="comment.Body" class="form-control"></textarea>
             <button class="btn btn-success" id="saveBtn" v-on:click="submit_comment()">save</button>
         </form>
