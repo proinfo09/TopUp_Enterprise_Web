@@ -14,7 +14,7 @@ namespace Enterprise_Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-
+            //var total = db.Contributions.Where(x => x.consID.Equals("Total")).Count();
             return View();
         }
         public ActionResult GetDataTable()
@@ -27,6 +27,8 @@ namespace Enterprise_Web.Controllers
             obj.selected = selected;
             obj.pending = pending;
             return Json(obj, JsonRequestBehavior.AllowGet);
+            var Total = db.Contributions.Where(x => x.consID.Equals("Contribution")).Count();
+            return View(Total);
         }
         
 

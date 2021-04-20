@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Report";
     Layout = "~/Views/Shared/_Layout.cshtml";
+  
 }
 
 
@@ -14,28 +15,22 @@
     <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>  
 </div>
 <div class="container">
+    @Html.Hidden("Contribution", "Selected", "Pending")
+
     <h2>Contribution Report</h2>
-    <table class="table table-bordered" id="Con_table">
-            <tr>
-                <th>Total Contribution</th>
-                <th>Selected</th>
-                <th>Pending</th>
-            </tr>
-    </table>
+  
 </div>
     <script>
-                $(document).ready(function () {  
-                    $.getJSON("/Report/GetDataTable", function (data) {
-                        var Con_data = '';
-                        $.each(data, function (key, value) {
-                            Con_data += '<tr>';
-                            Con_data += '<td>' + value.total + '</td>';
-                            Con_data += '<td>' + value.selected + '</td>';
-                            Con_data += '<td>' + value.pending + '</td>';
-                            Con_data += '</tr>';
-                        });
-                        $('#Con_table').append(Con_data);
-                    });
+        $(document).ready(function () {
+            $.getJSON("/Report/GetDataTable", function (data) {
+                var Con_data = '';
+                $.each(data, function (key, value) {
+                    var value = Con_data.getElementById("total").value;
+                    var value = Con_data.getElementById("selected").value;
+                    var value = Con_data.getElementById("pending").value;
+                });
+                $('Con_table').append(Con_data);
+            });
             $.getJSON("/Report/GetDataChart", function (data){
                 Highcharts.chart('container', {
                     chart: {
@@ -70,7 +65,7 @@
                             name: 'Bussiness Administation',
                             y: data.BusinessAdministration
                         }, {
-                            name: 'Event Management',
+                           name: 'Event Management',
                             y: data.EventManagement
                         }, {
                             name: 'Graphic Design',
@@ -83,6 +78,4 @@
                 });
             });
         });
-
-
     </script>
