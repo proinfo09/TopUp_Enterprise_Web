@@ -58,9 +58,7 @@
                     @Html.DisplayFor(modelItem => item.fileID)
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "Details", "Contributions", new { id = item.consID }, null) | @*html.Attributes: nulll*@
-                    @Html.ActionLink("Mark", "Edit", "Contributions", new { id = item.consID }, null) | @*html.Attributes: nulll*@
-                    @Html.ActionLink("Delete", "Delete", "Contributions", new { id = item.consID }, null)  @*html.Attributes: nulll*@
+                    @Html.ActionLink("Details", "Details", "Contributions", new { id = item.consID }, null) @*html.Attributes: nulll*@
                 </td>
             </tr>
         }

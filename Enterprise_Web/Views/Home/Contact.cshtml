@@ -1,17 +1,186 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿
+@{
+    ViewBag.Title = "Contact US";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<!doctype html>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<html lang="en">
+<style>
+    header {
+        font-family: "Helvetica Neue", Times, sans-serif;
+        font-size: 2vw;
+        letter-spacing: 1px;
+        word-spacing: 5px;
+        color: #000000;
+        font-weight: 700;
+        text-align: center;
+        line-height: 1.5em;
+        width: 100%;
+        height: auto;
+        color: blue;
+    }
+
+    main {
+        margin-left: 20px;
+        font-family: "Helvetica Neue", Times, sans-serif;
+        color: #000000;
+        font-size: 19px;
+    }
+
+
+    .fa {
+        margin-top: 10px;
+        margin-left: 5px;
+        padding: 20px;
+        font-size: 30px;
+        width: 60px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 50%;
+    }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+    .fa-facebook {
+        background: #3B5998;
+        color: white;
+    }
+
+    .fa-google {
+        background: #DD4B39;
+        color: white;
+    }
+
+    .fa-instagram {
+        background: #125688;
+        color: white;
+    }
+
+    .fa-yahoo {
+        background: #430297;
+        color: white;
+    }
+</style>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="gre-page-header gre-no-banners">
+            <div class="grid-container">
+                <p class="grid-site-context">
+                    <a href="https://enterprise.gre.ac.uk">Business & Enterprise</a>
+                </p>
+                <h1 class="gre-long-title" style="color: #430297;">About Greenwich Research & Enterprise (GRE)</h1>
+            </div>
+        </header>
+
+        <main id="gre-main-content" role="main">
+            <!--MAIN PAGE BODY INCLUDING RIGHT NAV-->
+            <section class="gre-page-body">
+                <div class="gre-main-content">
+                    <div class="row">
+                        <div class="col-8">
+                            <h2 style="color: red">Our Mission</h2>
+
+                            <div class="mission_content">
+                                Our mission is to inspire society and the world through discovering, applying and
+                                sharing
+                                knowledge.&nbsp;Recent accolades include Queen's Anniversary Prizes for Higher and
+                                Further
+                                Education for our work in transforming the lives of African farmers; Guardian newspaper
+                                awards
+                                for research impact in the areas of fire safety engineering and subsistence agriculture,
+                                Rockefeller Grand Challenge Prize for cassava food innovation and several Times Awards
+                                for our
+                                collaborative research.
+                            </div>
+                            <div>
+
+                                <a title="Research" href="https://www.gre.ac.uk/research">
+                                    Find out more about
+                                    Research
+                                </a>
+                                <br> <br>
+                            </div>
+                        </div>
+
+                        <div class="col-4" style="border-left: 2px solid #000000;">
+                            <h1 style="color: Red">Contact with us:</h1>
+                            <!-- Add font awesome icons -->
+                            <a href="#" class="fa fa-facebook"></a>
+                            <a href="#" class="fa fa-google"></a>
+                            <a href="#" class="fa fa-instagram"></a>
+                            <a href="#" class="fa fa-yahoo"></a>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </section>
+            <hr>
+            <br>
+            <section class="gre-custom-footer gre-interrupt gre-accented" style="margin-left: 20px;">
+                <div class="row">
+                    <div class="left-col col-3">
+                        <h3>HÀ NỘI</h3>
+                        <hr>
+                        <h5>ĐẠI HỌC GREENWICH (VIỆT NAM)</h5>
+                        <h5>Tòa nhà DETECH -Số 8 Tôn Thất Thuyết-P.Mỹ Đình 2-Q.Nam Từ Liêm</h5>
+                        <h5>Điện thoại: 024.7300.2266</h5>
+                        <h5>
+                        </h5>
+                        <h5>Hotline: 0981.558.080 | 0971.274.545</h5>
+                    </div>
+                    <div class="left-col col-3">
+                        <h3>HỒ CHÍ MINH</h3>
+                        <hr>
+                        <h5>ĐẠI HỌC GREENWICH (VIỆT NAM)</h5>
+                        <h5>CS1: Số 142-146 Phạm Phú Thứ - Phường 4 - Quận 6 (Cuối đường 3/2)</h5>
+                        <h5>CS2: 205 Nguyễn Xí, Phường 26, Bình Thạnh.</h5>
+                        <h5>Điện thoại: 028.7300.2266</h5>
+                        <h5>Hotline: 0933.108.554 | 0971.294.545</h5>
+                    </div>
+                    <div class="left-col col-3">
+                        <h3>ĐÀ NẴNG</h3>
+                        <hr>
+                        <h5>ĐẠI HỌC GREENWICH (VIỆT NAM)</h5>
+                        <p>658 Ngô Quyền, Phường An Hải Bắc, Quận Sơn Trà, Tp. Đà Nẵng<br></p>
+                        <h5>Điện thoại: 0236.730.2266<br></h5>
+                        <h5>Hotline: 0934.892.687</h5>
+                    </div>
+                    <div class="left-col col-3">
+                        <h3>CẦN THƠ</h3>
+                        <hr>
+                        <h5>ĐẠI HỌC GREENWICH (VIỆT NAM)</h5>
+                        <h5>Số 160 đường 30/4, phường An phú, quận Ninh Kiều - TP. Cần Thơ</h5>
+                        <h5>Điện thoại: 0292.3512.369</h5>
+                        <h5>Hotline: 0968.670.804 | 0936.600.861</h5>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

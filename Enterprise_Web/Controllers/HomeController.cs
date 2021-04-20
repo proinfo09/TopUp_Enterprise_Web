@@ -49,50 +49,6 @@ namespace Enterprise_Web.Controllers
         //    return View();
         //}
 
-            public ActionResult File()
-        {
-            var path = Server.MapPath("~/Content/Files/");
-
-            var dir = new DirectoryInfo(path);
-
-            var files = dir.EnumerateFiles().Select(f => f.Name);
-
-            return View(files);
-        }
-
-        [HttpPost]
-        public ActionResult File(HttpPostedFileBase file)
-        {
-            var path = Path.Combine(Server.MapPath("~/Content/Files/"), file.FileName);
-
-            var data = new byte[file.ContentLength];
-            file.InputStream.Read(data, 0, file.ContentLength);
-
-            using (var sw = new FileStream(path, FileMode.Create))
-            {
-                sw.Write(data, 0, data.Length);
-            }
-
-            MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress(ConfigurationManager.AppSettings["Email"].ToString());
-            mailMessage.To.Add("luxubuno2@gmail.com");
-            mailMessage.Subject = "Hello There";
-            mailMessage.Body = "Hello my friend!";
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));
-            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["Email"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
-            smtpClient.Credentials = credentials;
-            smtpClient.EnableSsl = true;
-            smtpClient.Send(mailMessage);
-
-            return RedirectToAction("File");
-        }
-
-       
-        public ActionResult Create()
-        {
-            return View();
-        }
-        
         public ActionResult ClosureDate()
         {
             Closure_Day closure = db.Closure_Days.Find(
@@ -129,43 +85,9 @@ namespace Enterprise_Web.Controllers
             return RedirectToAction("StudentDashboard", "User_Student_Detail");
         }
 
-
-        //Zip & Download all sellected article
-        public ActionResult Download()
+        public ActionResult Contact()
         {
-            string[] imgs = Directory.GetFiles(
-                            Server.MapPath("~/images"));
-            string[] files = Directory.GetFiles(
-                            Server.MapPath("~/Content/Files/"));
-            var article = new[] { imgs, files}.SelectMany(id => id).ToList();
-            List<string> downloads = new List<string>();
-            foreach (string file in files)
-            {
-                downloads.Add(Path.GetFileName(file));
-            }
-            return View(downloads);
-        }
-
-        [HttpPost]
-        public FileResult ProcessForm(List<string> selectedfiles)
-        {
-            if (System.IO.File.Exists(Server.MapPath
-                              ("~/ZipFiles/bundle.zip")))
-            {
-                System.IO.File.Delete(Server.MapPath
-                              ("~/ZipFiles/bundle.zip"));
-            }
-            ZipArchive zip = ZipFile.Open(Server.MapPath
-                     ("~/ZipFiles/bundle.zip"), ZipArchiveMode.Create);
-            foreach (string file in selectedfiles)
-            {
-                zip.CreateEntryFromFile(Server.MapPath
-                     ("~/images/" + file), file);
-            }
-            zip.Dispose();
-            string input = "Filename.zip";
-            return File(Server.MapPath("~/ZipFiles/bundle.zip"),
-                      "application/zip", input);
+            return View();
         }
         //public FileResult ProcessForm()
         //{

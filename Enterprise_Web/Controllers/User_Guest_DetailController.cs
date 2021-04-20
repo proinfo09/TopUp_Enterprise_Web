@@ -89,7 +89,7 @@ namespace Enterprise_Web.Controllers
             {
                 db.Entry(user_Guest_Detail).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             ViewBag.userId = new SelectList(db.AspNetUsers, "Id", "Email", user_Guest_Detail.userId);
             return View(user_Guest_Detail);

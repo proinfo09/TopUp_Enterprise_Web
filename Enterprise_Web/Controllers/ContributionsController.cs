@@ -93,7 +93,7 @@ namespace Enterprise_Web.Controllers
             {
                 db.Entry(contribution).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
             ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
