@@ -683,8 +683,8 @@
     <Content Include="Views\User_Marketing_Coordinator_Detail\McProfile.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\MmDashboard.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\MmProfile.cshtml" />
-    <Content Include="Views\Contributions\Mm_ContributionManagments.cshtml" />
-    <Content Include="Views\Contributions\Mc_ContributionManagments.cshtml" />
+    <Content Include="Views\User_Marketing_Manager_Detail\Mm_ContributionManagements.cshtml" />
+    <Content Include="Views\User_Marketing_Coordinator_Detail\Mc_ContributionManagments.cshtml" />
     <Content Include="Views\User_Guest_Detail\GuestDashboard.cshtml" />
     <Content Include="Views\User_Guest_Detail\GuestContribution.cshtml" />
     <Content Include="Views\Home\File.cshtml" />
@@ -701,7 +701,7 @@
     <Content Include="Views\User_Student_Detail\CreateImage.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\Download.cshtml" />
     <Content Include="Views\User_Student_Detail\Export.cshtml" />
-    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\Chart.cshtml" />
     <Content Include="Views\User_Admin_Detail\Role.cshtml" />
     <Content Include="Views\AspNetRoles\Create.cshtml" />
     <Content Include="Views\AspNetRoles\Delete.cshtml" />
@@ -716,6 +716,8 @@
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Views\Shared\_Dashboard.cshtml" />
+    <Content Include="Views\User_Guest_Detail\GuestProfile.cshtml" />
+    <Content Include="Views\User_Guest_Detail\GuestView.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

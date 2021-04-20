@@ -1,9 +1,14 @@
 ﻿@model Enterprise_Web.Models.User_Admin_Detail
+@{
+    ViewBag.Title = "AdminProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <div>
-    <h4>User_Admin_Detail</h4>
+    <h4>Profile</h4>
     <hr />
     <dl class="dl-horizontal">
+        <h4>Admin</h4>
         <dt>
             @Html.DisplayNameFor(model => model.admin_fullname)
         </dt>

@@ -5,25 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Edit Personal Information</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+    @Html.HiddenFor(model => model.userId)
+    @Html.HiddenFor(model => model.stdID)
+
     <div class="form-horizontal">
-        <h4>User_Student_Detail</h4>
+        <h4>Student</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.userId, "userId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("userId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        @Html.HiddenFor(model => model.stdID)
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.std_fullname, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -64,10 +59,10 @@
                 @Html.ValidationMessageFor(model => model.std_phone, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
     </div>

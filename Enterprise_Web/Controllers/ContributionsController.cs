@@ -93,7 +93,7 @@ namespace Enterprise_Web.Controllers
             {
                 db.Entry(contribution).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title", contribution.fileID);
             ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId", contribution.stdID);
@@ -138,34 +138,6 @@ namespace Enterprise_Web.Controllers
         {
             var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
             return View(contributions.ToList());
-        }
-
-        public ActionResult Mm_ContributionManagments()
-        {
-            ViewBag.fileID = new SelectList(db.Files, "fileID", "file_Title");
-            ViewBag.imgID = new SelectList(db.Images, "imgID", "img_Title");
-            ViewBag.stdID = new SelectList(db.User_Student_Detail, "stdID", "userId");
-            var selected = "Selected";
-            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
-            return View(contributions.ToList().Where(item => item.cons_status == selected));
-        }
-
-        public ActionResult Mc_ContributionManagments()
-        {
-            var userId = User.Identity.GetUserId();
-            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
-            if (userId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AspNetUser user = db.AspNetUsers.Find(userId);
-            var mc = user.User_Marketing_Coordinator_Detail.FirstOrDefault();
-
-            if (mc == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contributions.ToList().Where(item => item.User_Student_Detail.AspNetUser.facID == mc.AspNetUser.facID));
         }
 
         public ActionResult UploadImage()

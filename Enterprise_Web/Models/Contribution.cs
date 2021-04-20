@@ -21,14 +21,27 @@ namespace Enterprise_Web.Models
             this.Images = new HashSet<Image>();
             this.Comments = new HashSet<Comment>();
         }
-    
+
+        [Display(Name = "ContributionID")]
         public int consID { get; set; }
+
+        [Display(Name = "Name")]
         public string cons_Name { get; set; }
+
+        [Display(Name = "Comment")]
         public string cons_comment { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
+
+        [Display(Name = "Date Submit")]
         public Nullable<System.DateTime> cons_submit { get; set; }
+
+        [Display(Name = "Status")]
         public string cons_status { get; set; }
+
+        [Display(Name = "StudentID")]
         public int stdID { get; set; }
+
+        [Display(Name = "FileID")]
         public int fileID { get; set; }
     
         public virtual File File { get; set; }

@@ -8,7 +8,7 @@
 
         <ul class="nav flex-column">
             <li class="nav-item ">
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link", title = "Manage" })
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link-danger ", title = "Manage", style = " Color:white; font-size:1.2rem" })
             </li>
         </ul>
     }
@@ -16,7 +16,6 @@
 else
 {
     <ul class="nav flex-column">
-        <li class="nav-item">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "registerLink" })</li>
-        <li class="nav-item">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "loginLink" })</li>
+        <li class="nav-item">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "loginLink", style = " Color:red; font-size:1.2rem" })</li>
     </ul>
 }

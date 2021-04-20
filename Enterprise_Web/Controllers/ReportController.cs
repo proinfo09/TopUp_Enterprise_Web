@@ -11,12 +11,29 @@ namespace Enterprise_Web.Controllers
     {
         WebEnterpriseEntities db = new WebEnterpriseEntities();
         // GET: Report
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Chart()
         {
+            //var total = db.Contributions.Where(x => x.consID.Equals("Total")).Count();
             return View();
         }
+        //public ActionResult GetDataTable()
+        //{
+        //    int total = db.Contributions.Count();
+        //    int selected = db.Contributions.Where(x => x.cons_status == "Selected").Count();
+        //    int pending = db.Contributions.Where(x => x.cons_status == "Pending").Count();
+        //    Report obj = new Report();
+        //    obj.total = total;
+        //    obj.selected = selected;
+        //    obj.pending = pending;
+        //    return Json(obj, JsonRequestBehavior.AllowGet);
+        //    var Total = db.Contributions.Where(x => x.consID.Equals("Contribution")).Count();
+        //    return View(Total);
+        //}
+        
 
-        public ActionResult GetData()
+            
+        public ActionResult GetDataChart()
         {
             int bussiness = db.Contributions.Where(x => x.User_Student_Detail.AspNetUser.facID == 3).Count();
             int eventmanage = db.Contributions.Where(x => x.User_Student_Detail.AspNetUser.facID == 4).Count();
@@ -36,7 +53,6 @@ namespace Enterprise_Web.Controllers
             public int EventManagement { get; set; }
             public int GraphicDesign { get; set; }
             public int InformationTechnology { get; set; }
-        
         }
     }
 }

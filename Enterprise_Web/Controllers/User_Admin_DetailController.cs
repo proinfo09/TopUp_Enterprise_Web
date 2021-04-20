@@ -91,7 +91,7 @@ namespace Enterprise_Web.Controllers
             {
                 db.Entry(user_Admin_Detail).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             ViewBag.userId = new SelectList(db.AspNetUsers, "Id", "Email", user_Admin_Detail.userId);
             return View(user_Admin_Detail);

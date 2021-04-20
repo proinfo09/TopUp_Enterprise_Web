@@ -13,17 +13,17 @@
             @Html.ActionLink("My profile", "MCProfile", "User_Marketing_Coordinator_Detail", new { @class = "text-decoration-none text-dark" })
         </li>
         <li class="list-group-item list-group-item-action list-group-item-info">
-            @Html.ActionLink("Manage Contributions", "Index", "Contributions", new { @class = "text-decoration-none text-dark" })
+            @Html.ActionLink("Manage Contributions", "Mc_ContributionManagments", "User_Marketing_Coordinator_Detail", new { @class = "text-decoration-none text-dark" })
         </li>
         <li class="list-group-item list-group-item-action list-group-item-light">
-            @Html.ActionLink("Report", "Index", "Report", new { @class = "text-decoration-none text-dark" })
+            @Html.ActionLink("Report", "Chart", "Report", null, new { @class = "text-decoration-none text-dark" })
         </li>
         @*<li class="list-group-item list-group-item-danger">
             @Html.ActionLink("Setting Closure date", "Index", "Closure_Day")
         </li>*@
-        <li class="list-group-item list-group-item-action list-group-item-success">
+        @*<li class="list-group-item list-group-item-action list-group-item-success">
             @Html.ActionLink("Manage Students", "Index", "User_Student_Detail", new { @class = "text-decoration-none text-dark" })
-        </li>
+        </li>*@
     </ul>
 </div>
 

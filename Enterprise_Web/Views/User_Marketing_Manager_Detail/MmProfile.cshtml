@@ -5,20 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>MmProfile</h2>
+<h2>Profile</h2>
 
 <div>
-    <h4>User_Marketing_Manager_Detail</h4>
+    <h4>Marketing Manager Detail</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.userId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.userId)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.mkmID)
         </dt>
@@ -47,9 +39,14 @@
             @Html.DisplayNameFor(model => model.mkm_gender)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.mkm_gender)
-        </dd>
+        @if (@Model.mkm_gender == "M")
+        {
+            <span>Male</span>
+        }
+        else
+        {
+            <span>Female</span>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.mkm_doB)
@@ -72,5 +69,5 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.mkmID } @*new { /* id = Model.PrimaryKey */ }*@) |
     @Html.ActionLink("Change Password", "", new { /* id = Model.PrimaryKey */}) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "MmDashboard")
 </p>

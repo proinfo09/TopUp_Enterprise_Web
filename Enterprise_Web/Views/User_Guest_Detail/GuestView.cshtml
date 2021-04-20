@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<Enterprise_Web.Models.Contribution>
-
 @{
-    ViewBag.Title = "StudentContribution";
+    ViewBag.Title = "GuestView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>
-    @Html.ActionLink("Create New", "CreateContribution")
-</p>
+<h2>View Contribution</h2>
 
 <div class="table-responsive">
     <table class="table">
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.consID)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.cons_Name)
             </th>
@@ -25,10 +25,10 @@
                 @Html.DisplayNameFor(model => model.cons_status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.File.file_Title)
+                @Html.DisplayNameFor(model => model.stdID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User_Student_Detail.userId)
+                @Html.DisplayNameFor(model => model.fileID)
             </th>
             <th></th>
         </tr>
@@ -36,6 +36,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.consID)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.cons_Name)
                 </td>
@@ -49,17 +52,19 @@
                     @Html.DisplayFor(modelItem => item.cons_status)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.File.file_Title)
+                    @Html.DisplayFor(modelItem => item.stdID)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.User_Student_Detail.userId)
+                    @Html.DisplayFor(modelItem => item.fileID)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditContribution", new { id = item.consID }) |
-                    @Html.ActionLink("Details", "DetailsContribution", new { id = item.consID })
+                    @Html.ActionLink("Details", "Details", "Contributions", new { id = item.consID }, null) @*html.Attributes: nulll*@
                 </td>
             </tr>
         }
 
     </table>
-    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "GuestDashboard")
+</div>
