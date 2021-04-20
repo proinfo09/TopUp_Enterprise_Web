@@ -47,9 +47,14 @@
             @Html.DisplayNameFor(model => model.mkm_gender)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.mkm_gender)
-        </dd>
+        @if (@Model.mkm_gender == "M")
+        {
+            <span>Male</span>
+        }
+        else
+        {
+            <span>Female</span>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.mkm_doB)

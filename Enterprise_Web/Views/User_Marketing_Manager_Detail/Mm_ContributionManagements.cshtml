@@ -15,8 +15,11 @@
             <b>Contribution Managements</b>
         </h3>
     </div>
+    <td>
+        @Html.ActionLink("Download", "Download")
+    </td>
     <div class="panel-body">
-        <table class="table table-hover table-bordered table-condensed" id="ContributionSelected" >
+        <table class="table table-hover table-bordered table-condensed" id="ContributionSelected">
             <thead>
                 <tr>
                     <th>
@@ -49,7 +52,6 @@
                             @Html.DisplayNameFor(model => model.File.file_Title)
                         </b>
                     </th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -73,10 +75,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.File.file_Title)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Download", "Download", new { /* id=item.PrimaryKey */ })
                         </td>
                     </tr>
                 }
