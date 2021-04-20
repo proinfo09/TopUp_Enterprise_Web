@@ -190,7 +190,10 @@
                             @Html.ActionLink("Account setting", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link", title = "Manage" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Dashboard", "Index", "Home",null, new { @class = "nav-link" })
+                            @Html.ActionLink("Dashboard", "Index", "Home", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Contact us", "Contact", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li>
                             <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>

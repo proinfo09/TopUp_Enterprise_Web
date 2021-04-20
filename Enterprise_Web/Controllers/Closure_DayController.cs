@@ -15,7 +15,7 @@ namespace Enterprise_Web.Controllers
         private WebEnterpriseEntities db = new WebEnterpriseEntities();
 
         // GET: Closure_Day
-        public ActionResult ClosureDate()
+        public ActionResult Index()
         {
             return View(db.Closure_Days.ToList());
         }

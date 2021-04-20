@@ -667,7 +667,7 @@
     <Content Include="Views\Closure_Day\Delete.cshtml" />
     <Content Include="Views\Closure_Day\Details.cshtml" />
     <Content Include="Views\Closure_Day\Edit.cshtml" />
-    <Content Include="Views\Closure_Day\ClosureDate.cshtml" />
+    <Content Include="Views\Closure_Day\Index.cshtml" />
     <Content Include="Views\Contributions\Create.cshtml" />
     <Content Include="Views\Contributions\Delete.cshtml" />
     <Content Include="Views\Contributions\Details.cshtml" />

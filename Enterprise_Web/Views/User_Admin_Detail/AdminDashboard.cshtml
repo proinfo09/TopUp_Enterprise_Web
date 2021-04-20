@@ -11,7 +11,7 @@
             @Html.ActionLink("My profile", "AdminProfile", "User_Admin_Detail", new { @class = "text-decoration-none text-dark" })
         </li>
         <li class="list-group-item list-group-item-action list-group-item-info">
-            @Html.ActionLink("Manage User", "Index", "Contributions", new { @class = "text-decoration-none text-dark" })
+            @Html.ActionLink("Manage User", "UsersWithRoles", "AspNetUsers",null, new { @class = "text-decoration-none text-dark" })
         </li>
         <li class="list-group-item list-group-item-action list-group-item-dark">
             @Html.ActionLink("View Contribution", "Index", "Contributions", null, new { @class = "text-decoration-none text-dark" })
@@ -20,7 +20,7 @@
             @Html.ActionLink("Report", "Chart", "Report", null, new { @class = "text-decoration-none text-dark" })
         </li>
         <li class="list-group-item list-group-item-action list-group-item-success">
-            @Html.ActionLink("Setting Closure date", "ClosureDate", "Closure_Day",null, new { @class = "text-decoration-none text-dark" })
+            @Html.ActionLink("Setting Closure date", "Index", "Closure_Day",null, new { @class = "text-decoration-none text-dark" })
         </li>
     </ul>
 </div>
