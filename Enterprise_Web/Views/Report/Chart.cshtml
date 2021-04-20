@@ -10,27 +10,17 @@
 
 <script src="~/Scripts/chart/highcharts.js"></script>
 
-
+<h2>Contribution Report</h2>
 <div class="jumbotron">
     <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>  
 </div>
 <div class="container">
-    @Html.Hidden("Contribution", "Selected", "Pending")
+    
 
-    <h2>Contribution Report</h2>
   
 </div>
     <script>
         $(document).ready(function () {
-            $.getJSON("/Report/GetDataTable", function (data) {
-                var Con_data = '';
-                $.each(data, function (key, value) {
-                    var value = Con_data.getElementById("total").value;
-                    var value = Con_data.getElementById("selected").value;
-                    var value = Con_data.getElementById("pending").value;
-                });
-                $('Con_table').append(Con_data);
-            });
             $.getJSON("/Report/GetDataChart", function (data){
                 Highcharts.chart('container', {
                     chart: {
