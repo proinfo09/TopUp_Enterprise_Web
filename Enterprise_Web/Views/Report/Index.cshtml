@@ -1,6 +1,8 @@
-﻿
+﻿@model IEnumerable<Enterprise_Web.Models.Contribution>
+
 @{
     ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -9,63 +11,78 @@
 
 
 <div class="jumbotron">
-    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>  
 </div>
-
-<script>
-
-
-    $(document).ready(function () {
-        $.getJSON("/Report/GetData", function (data) {
-
-
-
-            Highcharts.chart('container', {
-                chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false,
-                    type: 'pie'
-                },
-                title: {
-                    text: 'Contribution Ratio'
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                            style: {
-                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+<div class="container">
+    <h2>Contribution Report</h2>
+    <table class="table table-bordered" id="Con_table">
+            <tr>
+                <th>Total Contribution</th>
+                <th>Selected</th>
+                <th>Pending</th>
+            </tr>
+    </table>
+</div>
+    <script>
+                $(document).ready(function () {  
+                    $.getJSON("/Report/GetDataTable", function (data) {
+                        var Con_data = '';
+                        $.each(data, function (key, value) {
+                            Con_data += '<tr>';
+                            Con_data += '<td>' + value.total + '</td>';
+                            Con_data += '<td>' + value.selected + '</td>';
+                            Con_data += '<td>' + value.pending + '</td>';
+                            Con_data += '</tr>';
+                        });
+                        $('#Con_table').append(Con_data);
+                    });
+            $.getJSON("/Report/GetDataChart", function (data){
+                Highcharts.chart('container', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Contribution Ratio'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
                             }
                         }
-                    }
-                },
-                series: [{
-                    name: 'Brands',
-                    colorByPoint: true,
-                    data: [{
-                        name: 'Bussiness Administation',
-                        y: data.BusinessAdministration
-                    }, {
-                        name: 'Event Management',
-                        y: data.EventManagement
-                    }, {
-                        name: 'Graphic Design',
-                        y: data.GraphicDesign
-                    }, {
-                        name: 'Information Technology',
-                        y: data.InformationTechnology
+                    },
+                    series: [{
+                        name: 'Brands',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'Bussiness Administation',
+                            y: data.BusinessAdministration
+                        }, {
+                            name: 'Event Management',
+                            y: data.EventManagement
+                        }, {
+                            name: 'Graphic Design',
+                            y: data.GraphicDesign
+                        }, {
+                            name: 'Information Technology',
+                            y: data.InformationTechnology
+                        }]
                     }]
-                }]
+                });
             });
         });
-    });
 
 
-</script>
+    </script>

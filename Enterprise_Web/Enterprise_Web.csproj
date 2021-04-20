@@ -683,8 +683,8 @@
     <Content Include="Views\User_Marketing_Coordinator_Detail\McProfile.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\MmDashboard.cshtml" />
     <Content Include="Views\User_Marketing_Manager_Detail\MmProfile.cshtml" />
-    <Content Include="Views\Contributions\Mm_ContributionManagments.cshtml" />
-    <Content Include="Views\Contributions\Mc_ContributionManagments.cshtml" />
+    <Content Include="Views\User_Marketing_Manager_Detail\Mm_ContributionManagements.cshtml" />
+    <Content Include="Views\User_Marketing_Coordinator_Detail\Mc_ContributionManagments.cshtml" />
     <Content Include="Views\User_Guest_Detail\GuestDashboard.cshtml" />
     <Content Include="Views\User_Guest_Detail\GuestContribution.cshtml" />
     <Content Include="Views\Home\File.cshtml" />
@@ -715,6 +715,7 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Views\Shared\_Dashboard.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

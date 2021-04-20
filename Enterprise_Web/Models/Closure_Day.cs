@@ -11,12 +11,19 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Closure_Day
     {
         public int csdID { get; set; }
+
+        [Display(Name = "Start Day")]
         public System.DateTime startDay { get; set; }
+
+        [Display(Name = "End Day")]
         public System.DateTime endDay { get; set; }
+
+        [Display(Name = "Final Day")]
         public System.DateTime finalDay { get; set; }
     }
 }

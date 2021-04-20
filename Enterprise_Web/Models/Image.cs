@@ -11,16 +11,22 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Web;
 
     public partial class Image
     {
+
+        [Display(Name = "ImageID")]
         public int imgID { get; set; }
+
+        [Display(Name = "Image Title")]
         public string img_Title { get; set; }
+
+        [Display(Name = "ContritbutionID")]
         public int consID { get; set; }
         public string ContentType { get; set; }
         public byte[] Data { get; set; }
-        
         public HttpPostedFileBase ImageFile { get; set; }
         public virtual Contribution Contribution { get; set; }
     }

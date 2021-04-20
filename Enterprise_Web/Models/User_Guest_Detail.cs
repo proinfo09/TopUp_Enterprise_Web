@@ -11,15 +11,31 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User_Guest_Detail
     {
+
+        [Display(Name = "UserID")]
         public string userId { get; set; }
+
+        [Display(Name = "GuestID")]
         public int gstID { get; set; }
+
+        [Display(Name = "Fullname")]
         public string gst_fullname { get; set; }
+
+        [Display(Name = "Mail")]
         public string gst_mail { get; set; }
+
+        [Display(Name = "Gender")]
         public string gst_gender { get; set; }
+
+        [Display(Name = "Date of birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         public Nullable<System.DateTime> gst_doB { get; set; }
+
+        [Display(Name = "Phone")]
         public string gst_phone { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }

@@ -11,7 +11,8 @@ namespace Enterprise_Web.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User_Student_Detail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +20,27 @@ namespace Enterprise_Web.Models
         {
             this.Contributions = new HashSet<Contribution>();
         }
-    
+
+        [Display(Name = "UserID")]
         public string userId { get; set; }
+
+        [Display(Name = "StudentID")]
         public int stdID { get; set; }
+
+        [Display(Name = "Fullname")]
         public string std_fullname { get; set; }
+
+        [Display(Name = "Mail")]
         public string std_mail { get; set; }
+
+        [Display(Name = "Gender")]
         public string std_gender { get; set; }
+
+        [Display(Name = "Date of birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         public Nullable<System.DateTime> std_doB { get; set; }
+
+        [Display(Name = "Phone")]
         public string std_phone { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
