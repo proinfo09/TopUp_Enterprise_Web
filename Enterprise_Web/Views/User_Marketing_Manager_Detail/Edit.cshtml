@@ -13,7 +13,7 @@
     @Html.HiddenFor(model => model.userId)
     @Html.HiddenFor(model => model.mkmID)
     <div class="form-horizontal">
-        <h4>User_Marketing_Manager_Detail</h4>
+        <h4>Marketing Manager Detail</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -66,5 +66,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "MmDashboard")
 </div>

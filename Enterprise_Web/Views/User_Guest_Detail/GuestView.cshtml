@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<Enterprise_Web.Models.Contribution>
-
 @{
-    ViewBag.Title = "Mc_ContributionManagments";
+    ViewBag.Title = "GuestView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Manage Contribution</h2>
+<h2>View Contribution</h2>
 
 <div class="table-responsive">
     <table class="table">
@@ -68,7 +67,6 @@
 
     </table>
 </div>
-
 <div>
-    @Html.ActionLink("Back to List", "McDashboard")
+    @Html.ActionLink("Back to List", "GuestDashboard")
 </div>
