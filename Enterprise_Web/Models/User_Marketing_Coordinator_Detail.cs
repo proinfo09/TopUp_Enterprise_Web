@@ -32,8 +32,10 @@ namespace Enterprise_Web.Models
         public string mkc_gender { get; set; }
 
         [Display(Name = "Date of birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         public Nullable<System.DateTime> mkc_doB { get; set; }
 
+        [DisplayFormat(NullDisplayText = "User don't have phone number yet.")]
         [Display(Name = "Phone")]
         public string mkc_phone { get; set; }
     

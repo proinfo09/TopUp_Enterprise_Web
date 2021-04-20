@@ -32,6 +32,7 @@ namespace Enterprise_Web.Models
         public string gst_gender { get; set; }
 
         [Display(Name = "Date of birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         public Nullable<System.DateTime> gst_doB { get; set; }
 
         [Display(Name = "Phone")]
