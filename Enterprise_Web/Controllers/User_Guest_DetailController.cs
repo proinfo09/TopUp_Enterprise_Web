@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Enterprise_Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Enterprise_Web.Controllers
 {
@@ -138,6 +139,40 @@ namespace Enterprise_Web.Controllers
         {
             var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
             return View(contributions.ToList().Where(item => item.stdID != id));
+        }
+
+        public ActionResult GuestProfile()
+        {
+            var userId = User.Identity.GetUserId();
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AspNetUser user = db.AspNetUsers.Find(userId);
+            var gst = user.User_Guest_Detail.FirstOrDefault();
+            if (gst == null)
+            {
+                return HttpNotFound();
+            }
+            return View(gst);
+        }
+
+        public ActionResult GuestView()
+        {
+            var userId = User.Identity.GetUserId();
+            var contributions = db.Contributions.Include(c => c.File).Include(c => c.User_Student_Detail);
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AspNetUser user = db.AspNetUsers.Find(userId);
+            var gst = user.User_Guest_Detail.FirstOrDefault();
+
+            if (gst == null)
+            {
+                return HttpNotFound();
+            }
+            return View(contributions.ToList().Where(item => item.User_Student_Detail.AspNetUser.facID == gst.AspNetUser.facID));
         }
     }
 }

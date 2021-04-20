@@ -3,7 +3,7 @@
     ViewBag.Title = "AdminDashBoard";
 }
 
-<h2>AdminDashBoard</h2>
+<h2>Admin   DashBoard</h2>
 
 <div class="list-group col-10">
     <ul style=" font-size: 20px">
@@ -11,25 +11,20 @@
             @Html.ActionLink("My profile", "AdminProfile", "User_Admin_Detail", new { @class = "text-decoration-none text-dark" })
         </li>
         <li class="list-group-item list-group-item-action list-group-item-info">
-            @Html.ActionLink("Manage Contributions", "Index", "Contributions", new { @class = "text-decoration-none text-dark" })
+            @Html.ActionLink("Manage User", "Index", "Contributions", new { @class = "text-decoration-none text-dark" })
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+            @Html.ActionLink("View Contribution", "Index", "Contributions", null, new { @class = "text-decoration-none text-dark" })
         </li>
         <li class="list-group-item list-group-item-action list-group-item-light">
-            @Html.ActionLink("Report", "Index", "Report", new { @class = "text-decoration-none text-dark" })
+            @Html.ActionLink("Report", "Chart", "Report", null, new { @class = "text-decoration-none text-dark" })
         </li>
         <li class="list-group-item list-group-item-action list-group-item-success">
-            @Html.ActionLink("Setting Closure date", "Index", "Closure_Day", new { @class = "text-decoration-none text-dark" })
+            @Html.ActionLink("Setting Closure date", "ClosureDate", "Closure_Day",null, new { @class = "text-decoration-none text-dark" })
         </li>
     </ul>
 </div>
 
-<div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-        Manage Accounts
-    </a>
-
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <li>@Html.ActionLink("Manage Students", "Index", "User_Student_Detail", new { @class = "dropdown-item" })</li>
-        <li>@Html.ActionLink("Manage MCs", "Index", "User_Marketing_Coordinator_Detail", new { @class = "dropdown-item" })</li>
-        <li>@Html.ActionLink("Manage MMs", "Index", "User_Marketing_Manager_Detail", new { @class = "dropdown-item" })</li>
-    </ul>
+<div>
+    @Html.ActionLink("Back to List", "AdminDashboard")
 </div>

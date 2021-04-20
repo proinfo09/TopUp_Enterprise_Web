@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>MmProfile</h2>
+<h2>Profile</h2>
 
 <div>
-    <h4>User_Marketing_Manager_Detail</h4>
+    <h4>Marketing Manager Detail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -77,5 +77,5 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.mkmID } @*new { /* id = Model.PrimaryKey */ }*@) |
     @Html.ActionLink("Change Password", "", new { /* id = Model.PrimaryKey */}) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "MmDashboard")
 </p>

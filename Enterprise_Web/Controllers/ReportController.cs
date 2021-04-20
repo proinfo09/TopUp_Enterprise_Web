@@ -12,24 +12,24 @@ namespace Enterprise_Web.Controllers
         WebEnterpriseEntities db = new WebEnterpriseEntities();
         // GET: Report
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Chart()
         {
             //var total = db.Contributions.Where(x => x.consID.Equals("Total")).Count();
             return View();
         }
-        public ActionResult GetDataTable()
-        {
-            int total = db.Contributions.Count();
-            int selected = db.Contributions.Where(x => x.cons_status == "Selected").Count();
-            int pending = db.Contributions.Where(x => x.cons_status == "Pending").Count();
-            Report obj = new Report();
-            obj.total = total;
-            obj.selected = selected;
-            obj.pending = pending;
-            return Json(obj, JsonRequestBehavior.AllowGet);
-            var Total = db.Contributions.Where(x => x.consID.Equals("Contribution")).Count();
-            return View(Total);
-        }
+        //public ActionResult GetDataTable()
+        //{
+        //    int total = db.Contributions.Count();
+        //    int selected = db.Contributions.Where(x => x.cons_status == "Selected").Count();
+        //    int pending = db.Contributions.Where(x => x.cons_status == "Pending").Count();
+        //    Report obj = new Report();
+        //    obj.total = total;
+        //    obj.selected = selected;
+        //    obj.pending = pending;
+        //    return Json(obj, JsonRequestBehavior.AllowGet);
+        //    var Total = db.Contributions.Where(x => x.consID.Equals("Contribution")).Count();
+        //    return View(Total);
+        //}
         
 
             
@@ -54,13 +54,5 @@ namespace Enterprise_Web.Controllers
             public int GraphicDesign { get; set; }
             public int InformationTechnology { get; set; }
         }
-        public class Report
-        {
-            public int total { get; set; }
-            public int selected { get; set; }
-            public int pending { get; set; }
-        }
-
-
     }
 }

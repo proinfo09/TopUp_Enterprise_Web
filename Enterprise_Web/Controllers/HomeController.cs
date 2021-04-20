@@ -43,8 +43,13 @@ namespace Enterprise_Web.Controllers
             }
             return View();
         }
-        
-        public ActionResult File()
+
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+
+            public ActionResult File()
         {
             var path = Server.MapPath("~/Content/Files/");
 
@@ -121,7 +126,7 @@ namespace Enterprise_Web.Controllers
                 return View(viewModel);
             }
 
-            return Content("Success");
+            return RedirectToAction("StudentDashboard", "User_Student_Detail");
         }
 
 

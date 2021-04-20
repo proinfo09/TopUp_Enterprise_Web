@@ -14,72 +14,86 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-<div class="form-horizontal">
-    <h4> Create Contribution</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.cons_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.cons_Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.cons_Name, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.cons_comment, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.cons_comment, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.cons_comment, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.cons_submit, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.cons_submit, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.cons_submit, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ContentType, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="file" name="ImageFile" required />
-        </div>
-    </div>
-    <br />
-    <div class="form-group-lg" style="width:83.40%">
-        <form action="/action_page.php">
-            <div class="input-group mb-3" style="margin-right:15rem;">
-                <input type="file" class="form-control" placeholder="Chose" id="file" name="file">
+    <div class="form-horizontal">
+        <h4> Create Contribution</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.cons_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cons_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cons_Name, "", new { @class = "text-danger" })
             </div>
-            <button type="submit" id="btnUpload" value="Create" class="btn btn-primary" style="margin-left:980px">Upload</button>
-        </form>
-    </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cons_comment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cons_comment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cons_comment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cons_submit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cons_submit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cons_submit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ImageFile" required />
+            </div>
+        </div>
+        <br />
+        <div class="form-group-lg" style="width:83.40%">
+            <form action="/action_page.php">
+                <div class="input-group mb-3" style="margin-right:15rem;">
+                    <input type="file" class="form-control" placeholder="Chose" id="file" name="file">
+                </div>
+                <input type="checkbox" id="checkme" />
+                <label for="checkme">I agreed to Term & Condition</label>
+                <button type="submit" id="btnUpload" value="Create" class="btn btn-primary" style="margin-left:980px" disabled>Upload</button>
+            </form>
+        </div>
 
 
-    <div>
-        <p>@Html.ActionLink("Upload Image", "")</p>
-        <p>@Html.ActionLink("Term and conditions", "")</p>
-        <p>@Html.ActionLink("Back to List", "Index")</p>
+        <div>
+            <p>@Html.ActionLink("Back to List", "StudentDashboard")</p>
+        </div>
     </div>
-</div>
 }
 
 @*<script>
-    $(document).ready(function () {
-        $.getJSON("/User_Student_Detail/ClosureDate", function (data) {
-            if (Date > data.endDay) {
-                document.getElementById("btnUpload").disabled = true;
-            }
-            //if (Date > data.finalDay) {
-            //    document.getElementById("btn")
-            //}
+        $(document).ready(function () {
+            $.getJSON("/User_Student_Detail/ClosureDate", function (data) {
+                if (Date > data.endDay) {
+                    document.getElementById("btnUpload").disabled = true;
+                }
+                //if (Date > data.finalDay) {
+                //    document.getElementById("btn")
+                //}
+            })
         })
-    })
 
-    
-</script>*@
+
+    </script>*@
+
+<!-- Script to disable checkbox -->
+<script>
+    var checker = document.getElementById('checkme');
+    var sendbtn = document.getElementById('btnUpload');
+    checker.onchange = function () {
+        if (!!this.checked) {
+            sendbtn.disabled = false;
+        }
+        else {
+            sendbtn.disabled = true;
+        }
+    };
+</script>
 
 
